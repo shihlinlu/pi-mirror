@@ -10,7 +10,7 @@
 		</header>
 		<main>
 			<h3>Purpose:</h3>
-			<p>This IoT project is intended to create an elegant and intuitive daily smart mirror that allows users to view important information, such as weather, indoor air quality, calendar, reminders, notes, and email. This can also integrate with home automation and security systems. In educational usage, this smart mirror enables students easy access to potentially high impact low urgency information.</p>
+			<p>This IoT project is intended to create an elegant and intuitive daily smart mirror that allows users to view important information, such as weather, indoor air quality, notes. This can also integrate with home automation and security systems. In educational usage, this smart mirror enables students easy access to potentially high impact low urgency information.</p>
 			<h3>Audience:</h3>
 			<p>Primary users of this smart mirror are typically technology enthusiasts, students, and business owners. Users who have software development knowledge can also customize the smart mirror to add more functionality with the open-source code.</p>
 			<h3>Goals:</h3>
