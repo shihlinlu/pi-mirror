@@ -10,21 +10,25 @@
         <h1> Class </h1>
     </header>
     <main>
+
+        <p> <strong>Purpose:</strong> <br> To give students easy access to potentially high impact low urgency information.</p>
+        <p> <strong>Goal: </strong> <br> Make sharing and gathering information about things nobody wants to talk about so easy we never have to talk about them.</p>
+        <p> <strong>Audience:</strong> <br> Students, teachers, and faculty or educational institutions. </p>
         <h3>Name: Jon</h3>
         <h3>Age: 20 </h3>
-        <h3>Profession: Student</h3>
-        <p>Jon is a student at Mars college. He is in an accelerated business program from where he's expected to be in class from 6am - 2pm. This is to instill in him a sense of work ethic as the professors know how hard it is to make it in business. So they like their students to get up early and go at it hard for the beginning part of the day. He adores the smart mirror in his class because it always hold the relevent information he needs to know at a glance. Especially so early in the morning and throughout the day he likes to be able to look up at the "Currently working on" table to let him know what his objective </p>
-
+        <h3>Profession: Head Professor</h3>
+        <p>Jack Burns is a Tenured professor at Mars college. He runs an accelerated business program where students learn and work in all day. He believes hard work and consistincy are the keys to victory in business and that's what business students need to master. J. Burns also belives technology should be used everywhere possible to make work flow better and more effiecient. He fights to always have the best tech for his students to learn on and work with.
         <h3>Technology: </h3>
-        <p> </p>
+        <p> Jack Burns is an android user when it comes to his phone, he loves the ability to customize his UI experience. For his computer he cares less, as he needs a less customized expeirence with a laptop. Therefore he has a mac because it was the most convientent to buy at the time. However, for his classroom he finds the best deals on tech possible. He is a businessman after all.  </p>
         <h3>Attitudes and Behaviors: </h3>
-        <p> </p>
+        <p> J. Burns is very laid back and casual however, always dressed in slacks and a button up, many times in a full suit. He enjoys the contrast of looking sharp and clean cut but not needing to be too high strong to get things done. In his time running businesses and teaching it, he's learned that most of the things he does don't matter, and so it's best to reserve effort for where he knows he can get the most output for his input. He loves the 80/20 rule and uses his experience to hunt down the 20% ruthlessly and will give him 80% or more of the results. </p>
         <h3>Frustration and Needs: </h3>
-        <p> </p>
-        <h3>Goals: </h3>
+        <p> Of all things J. Burns is typically frustrated by technolgy. It never seems quite perfect for what he wants. Technology often promises to be 80/20 but usually is more like 50/50. Especially in the classroom. He finds it difficult find technology that enhances both the student's ability to learn and his ability to teach and manage at the same time. His main frustration is just sharing information that everyone needs to or would want to know throughout the day without having to tell everyone individually or taking up class time to pass on house keeping information. He believes there should be a way to 99/1 this but has yet to find it. </p>
+        <h3>Goals: Easily mass share logistical information, announcements and reminders. </h3>
         <ol>
-            <li> goal #1</li>
-            <li> goal #2</li>
+            <li> goal #1: Display anouncements in a static way all day. </li>
+            <li> goal #2: Have a place for open questions that are relevent to many. </li>
+            <li> goal #3: Easily mass share minuate, housekeeping and reminders. </li>
         </ol>
 
     </main>
