@@ -1,11 +1,12 @@
 <<!DOCTYPE html>
 <html>
 	<head>
-
+		<meta charset="utf-8">
+		<title>Purpose, Audience, and Goals</title>
 	</head>
 	<body>
 		<main>
-			<h2>Purpose, Audience, and Goal</h2>
+			<h2>Purpose, Audience, and Goals</h2>
 			<p></p>
 			<h3>Purpose:</h3>
 			<p>This IoT project is intended to create an elegant and intuitive daily smart mirror that allows users to view important information, such as weather, indoor air quality, calendar, reminders, notes, and email. This can also integrate with home automation and security systems. In educational usage, this smart mirror enables students easy access to potentially high impact low urgency information.</p>
