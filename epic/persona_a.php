@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<header>
-			<h1>PERSONA</h1>
+			<h1>PERSONA A</h1>
 		</header>
 		<main>
 			<h3>Name: Blair</h3>
