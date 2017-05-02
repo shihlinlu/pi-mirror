@@ -23,8 +23,8 @@
 		<p>John feels a bit frustrated at times because because doing his job well is made difficult by not having a security clearance. Some of the other employee's were saying it takes months to get all the paperwork together before a badge is even printed. He needs an electronic copy of the companies schedule. His boss gave him a copy of last weeks schedule but he quickly learned that day-to-day meetings change times and locations constantly. He feels an very strong sense of impostor syndrome and like he knows nothing.</p>
 		<h3>Goals:</h3>
 		<ol>
-			<li>To see an electronic version of his team's schedule</li>
-			<li>Access to it without special security clearance</li>
+			<li>xxxxxxxxx</li>
+			<li>xxxxxxxxx</li>
 		</ol>
 	</main>
 	</body>

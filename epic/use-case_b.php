@@ -16,9 +16,9 @@
 				<li>Goes to break room and faces Smart Mirror</li>
 				<li>Waves his right hand in front of the screen from his right to left</li>
 				<li>Smart mirror turns on</li>
-				<li>John opens the calender feature</li>
-				<li>See's that there is a meeting set for today at 8am in the upstairs conference room</li>
-				<li>Checks clock on mirror and see's that the meeting starts in two minutes</li>
+				<li>John opens the XXXXXXX feature</li>
+				<li>xxxxxxxxx</li>
+				<li>xxxxxxxxxx</li>
 				<li>Mirrors turns off after a few minutes of inactivity</li>
 		</main>
 	</body>
