@@ -5,7 +5,9 @@
 		<title>CONCEPTUAL MODEL</title>
 	</head>
 	<body>
-		<header>CONCEPTUAL MODEL</header>
+		<header>
+			<h1>CONCEPTUAL MODEL</h1>
+		</header>
 
 		<main>
 			<h2>Entities and Attributes</h2>
