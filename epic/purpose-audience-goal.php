@@ -18,7 +18,7 @@
 				<li>Display a variety of information on the smart mirror</li>
 				<li>Gesture control to navigate through different information modules</li>
 				<li>Web application control through a desktop or mobile device</li>
-				<li>Enable notifications to display on the mirror and sent to the mobile web application</li>
+				<li>Enable notifications to display on the mirror and send to the mobile web application</li>
 				<li>For educational users: Make sharing and gathering information about things nobody wants to talk about so easy we never have to talk about them.</li>
 			</ul>
 
