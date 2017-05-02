@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>Purpose, Audience, and Goals</title>
 	</head>
 	<body>
 		<header>
@@ -20,8 +20,8 @@
 				<li>Web application control through a desktop or mobile device</li>
 				<li>Enable notifications to display on the mirror and sent to the mobile web application</li>
 				<li>For educational users: Make sharing and gathering information about things nobody wants to talk about so easy we never have to talk about them.</li>
-				<li>For commercial business users: </li>
 			</ul>
+
 		</main>
 	</body>
 </html>
