@@ -2,27 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>PERSONA</title>
+		<title>Residential Persona</title>
 	</head>
 	<body>
 		<header>
-			<h1>PERSONA A</h1>
+			<h1>PERSONA A - Residential</h1>
 		</header>
 		<main>
-			<h2>Purpose, Audience, and Goal</h2>
-			<p></p>
-			<h3>Purpose:</h3>
-			<p>This IoT project is intended to create an elegant and intuitive daily smart mirror that allows users to view important information, such as weather, indoor air quality, calendar, reminders, notes, and email. This can also integrate with home automation and security systems.</p>
-			<h3>Audience:</h3>
-			<p>Primary users of this smart mirror are typically technology enthusiasts. Users who have software development knowledge can also customize the smart mirror to add more functionality with the open-source code.</p>
-			<h3>Goal:</h3>
-			<ul>
-				<li>Display a variety of information on the smart mirror</li>
-				<li>Gesture control to navigate through different information modules</li>
-				<li>Web application control through a desktop or mobile device</li>
-				<li>Enable notifications to display on the mirror and sent to the mobile web application</li>
-			</ul>
-
 			<h2>Persona</h2>
 			<h3>Name: Blair</h3>
 			<h3>Age: 29</h3>

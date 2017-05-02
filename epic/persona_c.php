@@ -10,9 +10,6 @@
         <h1> Class </h1>
     </header>
     <main>
-
-        <p> <strong>Purpose:</strong> <br> To give students easy access to potentially high impact low urgency information.</p>
-        <p> <strong>Goal: </strong> <br> Make sharing and gathering information about things nobody wants to talk about so easy we never have to talk about them.</p>
         <p> <strong>Audience:</strong> <br> Students, teachers, and faculty or educational institutions. </p>
         <h3>Name: Jon</h3>
         <h3>Age: 20 </h3>
