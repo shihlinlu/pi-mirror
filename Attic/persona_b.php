@@ -8,7 +8,7 @@
 		<header>
 		<h1>Persona B: Business/ Commercial</h1>
 	</header>
-	<main>
+	<!--<main>
 		<h3>Name: John Snow</h3>
 		<h3>Age: 25</h3>
 		<h3>Job: Intern at Sandia Labs</h3>
@@ -26,6 +26,7 @@
 			<li>xxxxxxxxx</li>
 			<li>xxxxxxxxx</li>
 		</ol>
-	</main>
+	</main>-->
+
 	</body>
 </html>
