@@ -23,7 +23,14 @@
 			<h3>Attitudes and Behaviors</h3>
 			<p>Piper is has been working long hours as the assistant chef in a local restaurant called Quake. Piper wanted to leave the restaurant business and start a career she loves. She has always been very intrigued about the field of computer science and has been working long hours for the past year to save up for tuition and expenses for the 2.5 months of schooling. She is tired and worn out now she has a large amount of pre-work to do.</p>
 			<h3>Frustrations and Needs</h3>
-			<p>Piper has finished the pre-work and since quitting her job two weeks ago she is stressed. Concerned about money, wondering if she can succeed in this field, did she work enough on the prework to be a successful student?</p>
+			<p>Piper has finished the pre-work and since quitting her job two weeks ago she is stressed. Concerned about money, wondering if she can succeed in this field, did she work enough on the prework to be a successful student? She also desperately needs to fix her hair if only there was a mirror near by.</p>
+			<h3>Goals:</h3>
+			<ol>
+				<li>Got to CNM Stemulus center and ger mysql set up</li>
+				<li>ponder her life decisions</li>
+				<li>Piper hopes to find reassurance that choosing the Deep dive bootcamp was worth it</li>
+				<li>fix hair</li>
+			</ol>
 		</main>
 	</body>
 </html>
