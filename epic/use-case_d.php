@@ -11,14 +11,17 @@
 			<h3>Interaction Flow</h3>
 			<ul>
 				<li>Piper walks up to mirror</li>
-				<li>Motion sensors detect movement 2-3 feet in front</li>
+				<li>Motion/Distance sensors detect movement 2-3 feet in front</li>
 				<li>Sensors sends volts to wake up raspberry pi from sleep mode</li>
 				<li>Raspberry pi3 turns on display monitor</li>
 				<li>Raspberry pi displays web page</li>
 				<li>Web page pulls clock information from raspberry pi and displays the time</li>
 				<li>Web page uses weather underground api for Albuquerque, NM</li>
 				<li>Web page displays weather as 82 degrees</li>
-				<li>Piper exclaims "Dam its hot!"</li>
+				<li>Piper exclaims "Dam it's hot!"</li>
+				<li>Piper walks away from mirror</li>
+				<li>Motion/ distance sensor does not detect movement or anything in front for over 1 minute signal sent to raspberry pi</li>
+				<li>Pi turns off display and goes to sleep mode</li>
 			</ul>
 			<p>After Seeing the coolest mirror ever she begins to have a more positive outlook on life and her choice to join the Deep Dive Bootcamp because of the pi-o-mirrors.</p>
 		</main>
