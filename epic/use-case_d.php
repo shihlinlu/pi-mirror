@@ -23,7 +23,7 @@
 				<li>Motion/ distance sensor does not detect movement or anything in front for over 1 minute signal sent to raspberry pi</li>
 				<li>Pi turns off display and goes to sleep mode</li>
 			</ul>
-			<p>After Seeing the coolest mirror ever she begins to have a more positive outlook on life and her choice to join the Deep Dive Bootcamp because of the pi-o-mirrors.</p>
+			<p>After Seeing the coolest mirror ever (and fixing her hair) She begins to have a more positive outlook on life and her choice to join the Deep Dive Bootcamp because of the magic mirror and the charming pi-o-mirrors.</p>
 		</main>
 	</body>
 </html>
