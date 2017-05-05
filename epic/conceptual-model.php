@@ -11,11 +11,15 @@
 
 		<main>
 			<h2>Entities and Attributes</h2>
-			<h3>Entities</h3>
+			<h3>environmental</h3>
 			<ul>
-				<li>entity 1</li>
-				<li>entity 2</li>
-				<li>entity n</li>
+				<li>environmentallID</li>
+				<li>DataId</li>
+				<li>environmentalDescription</li>
+                <li>environmentalName</li>
+                <li>environmentalTemp</li>
+                <li>environmentalHumidity</li>
+                <li>environmentalAirQuality</li>
 			</ul>
 			<p>Subject: </p>
 			<p>Verb: </p>

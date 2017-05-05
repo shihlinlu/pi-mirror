@@ -18,7 +18,7 @@
 		<p>John has an iPhone5 and his computer is a Macbook pro both about two years old.</p>
 		<br>
 		<h2>Attitudes and behaviors:</h2>
-		<p>John is optimistic about his new job, he has wanted to be a professional ethical hacker for Sandia LAbs. for a few years now. He moved to Albuquerque from his small hometown just for this internship despite the fact that his apartment rent is more than his monthly paycheck. Still John feels content in his journey moving forward and hopeful towards the future.</p>
+		<p>John is optimistic about his new job, he has wanted to be a professional ethical hacker for Sandia Labs. for a few years now. He moved to Albuquerque from his small hometown just for this internship despite the fact that his apartment rent is more than his monthly paycheck. Still John feels content in his journey moving forward and hopeful towards the future.</p>
 		<h2>Frustration and Needs:</h2>
 		<p>John feels a bit frustrated at times because because doing his job well is made difficult by not having a security clearance. Some of the other employee's were saying it takes months to get all the paperwork together before a badge is even printed. He needs an electronic copy of the companies schedule. His boss gave him a copy of last weeks schedule but he quickly learned that day-to-day meetings change times and locations constantly. He feels an very strong sense of impostor syndrome and like he knows nothing.</p>
 		<h3>Goals:</h3>
