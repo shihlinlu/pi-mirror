@@ -11,15 +11,15 @@
 
 		<main>
 			<h2>Entities and Attributes</h2>
-			<h3>environmental</h3>
+			<h3>Environmental</h3>
 			<ul>
-				<li>environmentalID</li>
-				<li>DataId</li>
-				<li>environmentalDescription</li>
-                <li>environmentalName</li>
-                <li>environmentalTemp</li>
-                <li>environmentalHumidity</li>
-                <li>environmentalAirQuality</li>
+				<li>environmentId</li>
+				<li>dataId</li>
+				<li>environmentDescription</li>
+                <li>environmentName</li>
+                <li>environmentTemp</li>
+                <li>environmentHumidity</li>
+                <li>environmentAirQuality</li>
 			</ul>
 
             <img src="images/piOMirrorsERD.svg" alt="piOMirrors" />
