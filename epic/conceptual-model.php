@@ -8,7 +8,6 @@
 		<header>
 			<h1>CONCEPTUAL MODEL</h1>
 		</header>
-
 		<main>
 			<h2>Entities and Attributes</h2>
 			<h3>Environmental</h3>
@@ -21,7 +20,6 @@
                 <li>environmentHumidity</li>
                 <li>environmentAirQuality</li>
 			</ul>
-
             <img src="images/piOMirrorsERD.svg" alt="piOMirrors" />
 		</main>
 	</body>
