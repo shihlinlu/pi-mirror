@@ -10,8 +10,8 @@
 		</header>
 		<main>
 			<h2>Summary</h2>
-			// sample wireframe prototype
-			<iframe width="377" height="667" src="https://xd.adobe.com/embed/700da203-cc66-4b96-bccb-6a8bcb3415e4/" frameborder="0" allowfullscreen></iframe>
+
+			<iframe width="377" height="667" src="https://xd.adobe.com/embed/7c0c5e61-933e-47a6-99aa-bae1e7e9e1d8/" frameborder="0" allowfullscreen></iframe>
 
 		</main>
 	</body>
