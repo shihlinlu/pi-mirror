@@ -1,0 +1,7 @@
+/** custom CSS for wireframes file **/
+
+/* welcome screen section */
+img[alt="welcome screen"] {
+	width: 300px;
+	margin-left: 2rem;
+}

@@ -12,6 +12,12 @@
 			<h2>Summary</h2>
 
 			<iframe width="377" height="667" src="https://xd.adobe.com/embed/7c0c5e61-933e-47a6-99aa-bae1e7e9e1d8/" frameborder="0" allowfullscreen></iframe>
+			<h3>Home Screen</h3>
+			<!-- SECTION 2 -->
+			<section>
+				<img src="wireframe-images/welcomeScreen1.svg" alt="welcome screen" />
+			</section>
+
 
 		</main>
 	</body>
