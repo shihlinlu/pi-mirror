@@ -13,7 +13,7 @@
 			<p>The initial wireframes are based on the standard features that the group collectively decided on, which includes temperature, time, current date, reminders, indoor air quality, and other user-input feeds (i.e., Slack, News). The user can navigate individually to each section; for instance, navigating to the indoor air quality will provide more information such as individual levels of gasses and charts. Further research is needed for user flow and arrangement of modules.</p>
 			<!-- SECTION 2 -->
 			<section>
-				<img src="wireframe-images/wireframes.png" alt="home screen" />
+				<img src="wireframe-images/wireframes_v1.png" alt="home screen" />
 
 
 
