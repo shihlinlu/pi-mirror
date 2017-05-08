@@ -10,12 +10,13 @@
 		</header>
 		<main>
 			<h2>Summary</h2>
-
-			<iframe width="377" height="667" src="https://xd.adobe.com/embed/7c0c5e61-933e-47a6-99aa-bae1e7e9e1d8/" frameborder="0" allowfullscreen></iframe>
-			<h3>Home Screen</h3>
+			<p>The initial wireframes are based on the standard features that the group collectively decided on, which includes temperature, time, current date, reminders, indoor air quality, and other user-input feeds (i.e., Slack, News). The user can navigate individually to each section; for instance, navigating to the indoor air quality will provide more information such as individual levels of gasses and charts. Further research is needed for user flow and arrangement of modules.</p>
 			<!-- SECTION 2 -->
 			<section>
-				<img src="wireframe-images/welcomeScreen1.svg" alt="welcome screen" />
+				<img src="wireframe-images/wireframes.png" alt="home screen" />
+
+
+
 			</section>
 
 
