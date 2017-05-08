@@ -1,7 +1,7 @@
 /** custom CSS for wireframes file **/
 
 /* welcome screen section */
-img[alt="welcome screen"] {
-	width: 300px;
+img[src="epic/wirefram-images/welcomeScreen1.svg"] {
+	width: 39em;
 	margin-left: 2rem;
 }
