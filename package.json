@@ -1,9 +1,9 @@
 {
-	"name": "ng4-example",
+	"name": "pi-mirror",
 	"version": "1.0.0",
 	"license": "Apache-2.0",
 	"author": {
-		"name": "Sabastian Jackson",
+		"name": "piOmirrors",
 		"email": "sjackson37@cnm.edu",
 		"url": "https://bootcamp-coders.cnm.edu/screencasts/getting-started-with-angular2/"
 	},
