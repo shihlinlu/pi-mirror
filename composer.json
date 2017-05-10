@@ -1,0 +1,6 @@
+//Used for guzzle
+{
+  "require": {
+    "guzzlehttp/guzzle": "~6.0"
+  }
+}
