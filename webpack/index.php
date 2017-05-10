@@ -14,6 +14,6 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 		<title>Ang 4 Example</title>
 	</head>
 	<body>
-		<ng4-example>Loading&hellip;</ng4-example>
+		<pi-mirror>Loading&hellip;</pi-mirror>
 	</body>
 </html>
