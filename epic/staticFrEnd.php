@@ -17,7 +17,7 @@
         <img src="images/conditions.jpeg">
 
         <div class="notif">
-        <p>Notification about air</p>
+        <p>(Notification about air)</p>
         <img src="images/notification.jpeg">
         </div>
 

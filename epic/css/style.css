@@ -2,9 +2,19 @@
 
 /* home screen section */
 
+.container{
+	padding: 0 10em;
+	border: 1em solid black;
+}
+
+em{
+	font-size: 4em;
+
+}
+
 img[src="images/clock.jpeg"] {
 	width: 10em;
-	padding-bottom: 30em;
+
 }
 
 img[src="images/conditions.jpeg"]{
@@ -15,11 +25,14 @@ img[src="images/notifications.jpeg"] {
 
 }
 
-img [src="images/todolist.jpeg"] {
+.feed{
+	padding-left: 7em;
+}
+img[src="images/todolist.jpeg"] {
     width: 18em;
 
 }
-img [src="images/slack.jpeg"] {
+img[src="images/slack.jpeg"] {
     height: 19em;
 
 }
