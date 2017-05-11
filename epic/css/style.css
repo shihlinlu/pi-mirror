@@ -1,0 +1,16 @@
+/** custom CSS for wireframes file **/
+
+/* home screen section */
+
+img[src="images/clock.jpeg"] {
+	width: 10em;
+	padding-bottom: 30em;
+}
+
+img[src="images/conditions"]{
+	float: right;
+}
+
+img[src="images/notifications"] {
+
+}
