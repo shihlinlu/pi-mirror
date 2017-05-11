@@ -1,4 +1,4 @@
--- primary data stored in SQL is indoor air quality from Sensly HAT
+––-- primary data stored in SQL is indoor air quality from Sensly HAT
 DROP TABLE IF EXISTS environment;
 
 CREATE TABLE environment (
