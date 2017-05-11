@@ -18,5 +18,4 @@ CREATE TABLE reading (
 	INDEX (readingSensorId),
 	FOREIGN KEY (readingSensorId) REFERENCES sensor(sensorId),
 	PRIMARY KEY(readingId)
-
 );
