@@ -25,8 +25,10 @@
             <em> Good Morning Pi Group</em>
         </div>
 
+        <div class="feed">
         <img src="images/todolist.jpeg">
         <img src="images/slack.jpeg">
+        </div>
 
     </main>
     </div>
