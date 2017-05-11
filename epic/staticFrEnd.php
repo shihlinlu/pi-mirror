@@ -15,10 +15,19 @@
 
         <img src="images/clock.jpeg">
         <img src="images/conditions.jpeg">
+
+        <div class="notif">
+        <p>(Notification about air)</p>
         <img src="images/notification.jpeg">
+        </div>
 
         <div class="greeting">
             <em> Good Morning Pi Group</em>
+        </div>
+
+        <div class="feed">
+        <img src="images/todolist.jpeg">
+        <img src="images/slack.jpeg">
         </div>
 
     </main>
