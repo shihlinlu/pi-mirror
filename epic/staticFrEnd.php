@@ -18,14 +18,16 @@
         Static Front end
     </title>
 <body>
+	<!-- container for the page -->
 	<div class="container">
+		<div class="row"
 		<div class="col-lg-8 text-center">
 
 		</div>
 
 		<div class="col-lg-12 text-offset">
 		<h1>Demo</h1>
-
+			</div>
 		<main>
 
 		<div class="col-lg-1 text-offset">
@@ -49,6 +51,7 @@
         </div>
 
     </main>
+		</div>
     </div>
 </body>
 </html>
