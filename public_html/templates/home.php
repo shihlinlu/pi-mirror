@@ -1,12 +1,1 @@
-
-<main class="bg-info">
-
-	<div class="container-fluid">
-		<div class="row">
-
-			<div class="container center-splash">
-				this is a template
-			</div>
-		</div>
-	</div>
-</main>
+<h1>Home Template</h1>
