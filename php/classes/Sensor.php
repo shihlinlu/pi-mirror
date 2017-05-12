@@ -146,6 +146,87 @@ class Sensor implements \JsonSerializable {
 		$this->sensorDescription = $newSensorDescription;
 	}
 
+	/**
+	 * inserts this Sensor into mySQL
+	 *
+	 * @param \PDO $pdo PDO connection obejct
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function insert(\PDO $pdo) : void {
+		// enforce the sensorId is null (i.e., don't insert a sensor that already exists)
+		if($this->sensorId !== null) {
+			throw(new \PDOException("not a new sensor"));
+		}
+
+		//create query template
+		$query = "INSERT INTO sensor(sensorId, sensorUnit, sensorDescription) VALUES(:sensorId, :sensorUnit, :sensorDescription)";
+		$statement = $pdo->prepare($query);
+
+		// bind the member variables to the place holders in the template
+		$parameters = ["sensorId" => $this->sensorId, "sensorUnit" => $this->sensorUnit, "sensorDescription" => $this->sensorDescription];
+		$statement->execute($parameters);
+
+		// update the null sensorId with mySQL just gave us
+		$this->sensorId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this Sensor from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+	public function delete(\PDO $pdo) : void {
+		// enforce the sensorId is not null (i.e., don't delete a sensor that hasn't been inserted)
+		if($this->sensorId === null) {
+			throw(new \PDOException("unable to delete a sensor that does not exist"));
+		}
+
+		//create query template
+		$query = "DELETE FROM sensor WHERE sensorId = :sensorId";
+		$statement = $pdo->prepare($query);
+
+		// bind the member variables to the place holder in the template
+		$parameters = ["sensorId" => $this->sensorId];
+		$statement->execute($parameters);
+	}
+
+	/**
+	 * updates this Sensor in mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function update(\PDO $pdo) : void {
+		// enforce the sensorId is not null (i.e., don't update a sensor that hasn't been inserted)
+		if($this->sensorId === null) {
+			throw(new \PDOException("unable to update a sensor that does not exist"));
+		}
+
+		// create query template
+		$query = "UPDATE sensor SET sensorUnit = :sensorUnit, sensorDescription = :sensorDescription WHERE sensorId = :sensorId";
+		$statement = $pdo->prepare($query);
+
+		// bind the member variables to the place holders in the template
+		$parameters = ["sensorUnit" => $this->sensorUnit, "sensorDescription" => $this->sensorDescription];
+		$statement->execute($parameters);
+	}
+
+	/**
+	 * get Sensor by sensor id
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $sensorId sensor id to search for
+	 * @return Sensor|null Sensor or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+
+
 
 
 
