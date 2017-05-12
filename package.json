@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"license": "Apache-2.0",
 	"author": {
-		"name": "piOmirrors",
+		"name": "piomirrors",
 		"email": "sjackson37@cnm.edu",
-		"url": "https://bootcamp-coders.cnm.edu/screencasts/getting-started-with-angular2/"
+		"url": "https://bootcamp-coders.cnm.edu/pi-mirror"
 	},
 	"contributors": [
 
@@ -23,7 +23,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/GKephart/ng4-example"
+		"url": "https://github.com/shihlinlu/pi-mirror"
 	},
 	"dependencies": {
 		"@angular/common": "~4.1.1",
