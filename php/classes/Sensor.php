@@ -53,7 +53,9 @@ class Sensor implements \JsonSerializable {
 	 *
 	 * @return int|null value of sensor id
 	 */
-
+	public function getSensorId(): ?int {
+		return($this->sensorId);
+	}
 	/**
 	 * mutator method for sensor id
 	 *
@@ -61,13 +63,29 @@ class Sensor implements \JsonSerializable {
 	 * @throws \RangeException if $newSensorId is not positive
 	 * @throws \TypeError if $newSensorId is not an integer
 	 **/
+	public function setSensorId(?int $newSensorId): void {
+		// if sensor id is null immediately return it
+		if($newSensorId === null) {
+			$this->sensorId = null;
+			return;
+		}
 
+		// verify the profile id is positive
+		if($newSensorId <= 0) {
+			throw(new \RangeException("sensor id is not positive"));
+		}
+
+		// convert and store the sensor id
+		$this->sensorId = $newSensorId;
+	}
 	/**
 	 * accessor method for sensor unit
 	 *
 	 * @return string value of sensor unit--this is the measurement (e.g., PPM, %, celsius)
 	 */
-
+	public function getSensorUnit(): string {
+		return($this->sensorUnit);
+	}
 	/**
 	 * mutator method for sensor unit
 	 *
@@ -76,13 +94,33 @@ class Sensor implements \JsonSerializable {
 	 * @throws \RangeException if $newSensorUnit is not exactly 8 characters
 	 * @throws \TypeError if $newSensorUnit is not a string
 	 **/
+	public function setSensorUnit(string $newSensorUnit): void {
+		// verify that the sensor unit is secure
+		$newSensorUnit = trim($newSensorUnit);
+		/**
+		 * need to ensure that the following is the correct filter (only filter that allows %)
+		 */
+		$newSensorUnit = filter_var($newSensorUnit, FILTER_SANITIZE_URL);
+		if(empty($newSensorUnit) === true) {
+			throw(new \InvalidArgumentException("unit is empty or insecure"));
+		}
 
+		// verify the sensor unit will fit in the database
+		if(strlen($newSensorUnit) > 8) {
+			throw(new \RangeException("sensor unit is too large"));
+		}
+
+		// store the sensor unit
+		$this->sensorUnit = $newSensorUnit;
+	}
 	/**
 	 * accessor method for sensor description
 	 *
 	 * @return string value of sensor description
 	 **/
-
+	public function getSensorDescription() : string {
+		return($this->sensorDescription);
+	}
 	/**
 	 * mutator method for sensor description
 	 *
@@ -91,6 +129,22 @@ class Sensor implements \JsonSerializable {
 	 * @throws \RangeException if $newSensorDescription is not exactly 32 characters
 	 * @throws \TypeError if $newSensorDescription is not a string
 	 **/
+	public function setSensorDescription(string $newSensorDescription): void {
+		// verify that the sensor description is secure
+		$newSensorDescription = trim($newSensorDescription);
+		$newSensorDescription = filter_var($newSensorDescription, FILTER_SANTIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newSensorDescription) === true) {
+			throw(new \InvalidArgumentException("description is empty or insecure"));
+		}
+
+		// verify that the sensor description will fit in the database
+		if(strlen($newSensorDescription) > 32) {
+			throw(new \RangeException("sensor description is too large"));
+		}
+
+		// store the sensor description
+		$this->sensorDescription = $newSensorDescription;
+	}
 
 
 
