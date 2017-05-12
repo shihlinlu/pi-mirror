@@ -18,14 +18,21 @@
         Static Front end
     </title>
 <body>
-    <div class="container" >
-        <h1>Demo</h1>
-    <main>
+	<div class="container" >
+		<div class="col-lg-8 text-center">
+
+		</div>
+
+		<div class="col-lg-12 text-center">
+		<h1>Demo</h1>
+		</div>
+		<main>
+
 
         <img src="images/clock.jpeg" alt="clock">
         <img src="images/conditions.jpeg" alt="conditions">
 
-        <div class="notif">
+        <div class="notif" >
         <p>(Notification about air)</p>
         <img src="images/notification.jpeg" alt="notifications">
         </div>
