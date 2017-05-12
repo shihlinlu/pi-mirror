@@ -224,14 +224,70 @@ class Sensor implements \JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 */
+	public static function getSensorBySensorId(\PDO $pdo, int $sensorId) :
+	?Sensor {
+		// sanitize the sensor id before searching
+		if($sensorId <= 0) {
+			throw(new \PDOException("sensor id is not positive"));
+		}
 
+		// create query template
+		$query = "SELECT sensorId, sensorUnit, sensorDescription FROM sensor WHERE sensorId = :sensorId";
+		$statement = $pdo->prepare($query);
 
+		// bind the sensor id to the place holder in the template
+		$parameters = ["sensorId" => $sensorId];
+		$statement->execute($parameters);
 
+		// grab the Sensor from my SQL
+		try {
+			$sensor = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$sensor = new Sensor($row["sensorId"], $row["sensorUnit"], $row["sensorDescription"]);
+			}
+		} catch (\Exception $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($sensor);
+	}
 
+	/**
+	 * gets all Sensors
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @return \SplFixedArray of all sensors found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+	public static function getAllSensors(\PDO $pdo) : \SplFixedArray {
+		// create query template
+		$query = "SELECT sensorId, sensorUnit, sensorDescription FROM sensor";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
 
+		// build an array of all sensors
+		$sensors = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$sensor = new Sensor($row["sensorId"], $row["sensorUnit"], $row["sensorDescription"]);
+				$sensors[$sensors->fetch()] = $sensor;
+				$sensors->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($sensors);
+	}
 
-
-
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables
+	 */
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return($fields);
