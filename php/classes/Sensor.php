@@ -132,7 +132,7 @@ class Sensor implements \JsonSerializable {
 	public function setSensorDescription(string $newSensorDescription): void {
 		// verify that the sensor description is secure
 		$newSensorDescription = trim($newSensorDescription);
-		$newSensorDescription = filter_var($newSensorDescription, FILTER_SANTIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newSensorDescription = filter_var($newSensorDescription, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($newSensorDescription) === true) {
 			throw(new \InvalidArgumentException("description is empty or insecure"));
 		}
