@@ -273,7 +273,7 @@ class Sensor implements \JsonSerializable {
 		while(($row = $statement->fetch()) !== false) {
 			try {
 				$sensor = new Sensor($row["sensorId"], $row["sensorUnit"], $row["sensorDescription"]);
-				$sensors[$sensors->fetch()] = $sensor;
+				$sensors[$sensors->key()] = $sensor;
 				$sensors->next();
 			} catch(\Exception $exception) {
 				// if the row couldn't be converted, rethrow it
