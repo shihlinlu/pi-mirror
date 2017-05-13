@@ -35,11 +35,12 @@
 			</div>
 			<main>
 
-				<div class="col-lg-1 text-offset">
+				<div class="row">
+				<div class = col-lg-1 text-offset">
 					<img src="images/clock.jpeg" alt="clock">
 				</div>
 			<div class="row">
-				<div class="col-lg-1 text-offset">
+				<div class="col-lg-1">
 					<img src="images/conditions.jpeg" alt="conditions">
 			</div>
 				<div class="notif">
