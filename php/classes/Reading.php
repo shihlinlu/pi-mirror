@@ -63,6 +63,57 @@ class Reading implements \JsonSerializable {
 			}
 		}
 
+	/**
+	 * accessor method for reading id
+	 *
+	 * @return int|null value of reading id
+	 **/
+	public function getReadingId(): ?int {
+		return($this->sensorId);
+	}
+
+	/**
+	 * Mutator method for reading id
+	 *
+	 * @param int|null value of reading id
+	 * @throws \RangeException if $newReadingId is not positive
+	 * @throws \TypeError if $newReadingId is not an integer
+	 **/
+	public function setReadingId(?int $newReadingId): void {
+		//if reading is null return immediately
+		if($newReadingId === null) {
+			$this->sensorId = null;
+			return;
+		}
+		//verify the reading id is positive
+		if($newReadingId <=0) {
+			throw(new \RangeException("reading id is not positive"));
+		}
+		// convert and strong the reading id
+		$this->readingId = $newReadingId;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * formats the state variables for JSON serialization
