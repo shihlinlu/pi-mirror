@@ -36,9 +36,16 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
-				<img src="images/todolist.jpeg" alt="to-do">
-			</div>
+            <div class="form-group">
+                <h1>To-Do <small>List</small></h1>
+                <form role="form">
+                    <input type="text" class="form-control" placeholder="Your Task" name="task">
+                </form>
+                <button type="button" class="btn btn btn-primary">Add</button>
+            </div>
+            <div>
+                <ul class="list-unstyled" id="todo"></ul>
+            </div>
 			<div class="col-md-6">
 				<img src="images/slack.jpeg">
 			</div>
@@ -60,16 +67,7 @@
 			</div>
 		</div>
 
-            <div class="form-group">
-                <h1>To-Do <small>List</small></h1>
-                <form role="form">
-                    <input type="text" class="form-control" placeholder="Your Task" name="task">
-                </form>
-                <button type="button" class="btn btn btn-primary">Add</button>
-            </div>
-            <div></div>
-            <ul class="list-unstyled" id="todo"></ul>
-		</div>
+
 
 
 
