@@ -105,13 +105,7 @@ abstract class PiMirrorTest extends TestCase {
 	 **/
 
 	public final function getPDO() {
-		return($this->getConnection()->getConnection);
+		return($this->getConnection()->getConnection());
 	}
 }
 
-
-/**
- * valid location y to use
- *
- * code: protected $VALID_SENSORVALUE = 123456789101112.123456
- */
