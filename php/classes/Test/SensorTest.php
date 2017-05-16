@@ -28,13 +28,9 @@ class SensorTest extends PiMirrorTest {
 	protected $VALID_SENSORDESCRIPTION = "Carbon Dioxide";
 
 	/**
-	 * run the default setup operation
+	 * no default setup operation
 	 *
 	 **/
-	public final function setUp() : void {
-		parent::setUp();
-
-	}
 
 	/**
 	 *
@@ -142,7 +138,7 @@ class SensorTest extends PiMirrorTest {
 		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
 		$sensor->insert($this->getPDO());
 
-		// grab the data from mySQL and enforce the fields match our expecations
+		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
 		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
