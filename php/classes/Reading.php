@@ -67,18 +67,18 @@ class Reading implements \JsonSerializable {
 	 * accessor method for reading id
 	 * @return int|null value of reading id
 	 **/
-	public function getReadingId(): int {
+	public function getReadingId(): ?int {
 		return($this->readingId);
 	}
 
 	/**
 	 * Mutator method for reading id
 	 *
-	 * @param int|null value of reading id
+	 * @param int|null $newReadingId value of reading id
 	 * @throws \RangeException if $newReadingId is not positive
 	 * @throws \TypeError if $newReadingId is not an integer
 	 **/
-	public function setReadingId(?int $newReadingId): void {
+	public function setReadingId(int $newReadingId): void {
 		//if reading is null return immediately
 		if($newReadingId === null) {
 			$this->readingId = null;
@@ -96,17 +96,23 @@ class Reading implements \JsonSerializable {
 	 * Accessor method for readingSensorId
 	 * @return int the sensor in which the reading came from
 	 **/
+
 	public function getReadingSensorId(): int {
 		return($this->readingSensorId);
 	}
 	/**
 	 * mutator method
 	 *
-	 * @param int|null value of the readingSensorId
+	 * @param int|null $newReadingSensorId value of the readingSensorId
 	 * @throws \RangeException if $newReadingSensorId is not positive
 	 * @throws \TypeError if $newReadingSensorId is not an integer
 	 **/
 public function setReadingSensorId(int $newReadingSensorId) : void {
+	//if reading sensor id is null return immediately
+	if($newReadingSensorId === null) {
+		$this->readingId = null;
+		return;
+	}
 	//verify the reading sensor id is positive
 	if($newReadingSensorId <= 0 ) {
 		throw(new \RangeException("reading sensor id is not positive"));
@@ -116,8 +122,39 @@ public function setReadingSensorId(int $newReadingSensorId) : void {
 	$this->readingSensorId = $newReadingSensorId;
 }
 
+	/**
+	 * accessor method for sensorValueId
+	 *
+	 * @return int the data value from the sensor's reading
+	 **/
+public function getSensorValue(int $newSensorValue) {
+	return($this->sensorValue);
+}
+	/**
+	 * mutator method for sensor reading
+	 *
+	 *@param int|null $sensorValue the value from the sensor's reading
+	 *@throws \RangeException if $newSensorValue is not positive
+	 *@throws \TypeError if $newSensorValue is not an integer
+	 **/
+
+	public function setSensorValue(int $newSensorValue) : void {
+//if reading is null return immediately (not sure if I need this because...
+		//if I use php function intval(null) will return 0)
+		//http://php.net/manual/en/function.intval.php
+		//if($newSensorValue === null) {
+			//$this->sensorValue = null;
+			//return;
+		//}
+
+		//verify the sensor value is a positive integer
+		//if($newSensorValue <= 0) {
+			//throw(new \RangeException("sensor value is not a positive integer"));
+		//}
 
 
+		$this->sensorValue = $sensorValue;
+	}
 
 
 
