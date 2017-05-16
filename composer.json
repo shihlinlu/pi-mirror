@@ -1,6 +1,13 @@
-//Used for guzzle
 {
   "require": {
-    "guzzlehttp/guzzle": "~6.0"
+    "guzzlehttp/guzzle": "@stable",
+    "phpdocumentor/phpdocumentor": "@stable",
+    "phpunit/dbunit": "@stable",
+    "phpunit/phpunit": "@stable"
+  },
+
+  "scripts":{
+    "phpdoc": "./vendor/bin/phpdoc -t doc -d ./php/classes",
+    "phpunit" : "./vendor/bin/phpunit -c ./php/classes/Test --coverage-html coverage"
   }
 }
