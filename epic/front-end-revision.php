@@ -30,15 +30,22 @@
 					Pi-Mirror
 				</h1>
 			</div>
-			<div class="col-md-6" >
+			<div class="col-md-6">
 				<p><h1>4:20</h1></p>
 				<p><h1>MAY 16, 2017</h1></p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
-				<img src="images/todolist.jpeg" alt="to-do">
-			</div>
+            <div class="form-group">
+                <h1>To-Do <small>List</small></h1>
+                <form role="form">
+                    <input type="text" class="form-control" placeholder="Your Task" name="task">
+                </form>
+                <button type="button" class="btn btn btn-primary">Add</button>
+            </div>
+            <div>
+                <ul class="list-unstyled" id="todo"></ul>
+            </div>
 			<div class="col-md-6">
 				<img src="images/slack.jpeg">
 			</div>
@@ -48,7 +55,7 @@
 				<h1>Sensor Reads</h1>
 			</div>
 			<div class="col-md-6">
-				<img src="images/notification.jpeg" class="img-circle">
+				<img src="images/notification.jpeg">
 			</div>
 		</div>
 		<div class="row">
@@ -60,15 +67,7 @@
 			</div>
 		</div>
 
-            <div class="form-group">
-                <h1>To-Do <small>List</small></h1>
-                <form role="form">
-                    <input type="text" class="form-control" placeholder="Your Task" name="task">
-                </form>
-                <button type="button" class="btn btn btn-primary">Add</button>
-            </div>
-            <ul class="list-unstyled" id="todo"></ul>
-		</div>
+
 
 
 
