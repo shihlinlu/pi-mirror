@@ -106,7 +106,7 @@ class Reading implements \JsonSerializable {
 	 * @throws \RangeException if $newReadingSensorId is not positive
 	 * @throws \TypeError if $newReadingSensorId is not an integer
 	 **/
-public function setReadingProfileId(int $newReadingSensorId) : void {
+public function setReadingSensorId(int $newReadingSensorId) : void {
 	//verify the reading sensor id is positive
 	if($newReadingSensorId <= 0 ) {
 		throw(new \RangeException("reading sensor id is not positive"));
