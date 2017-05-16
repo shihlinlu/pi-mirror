@@ -19,6 +19,7 @@
 	</head>
 	<body>
 		<!-- container for the page -->
+		<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 				<h1>
@@ -34,6 +35,26 @@
 			<div class="col-md-6">
 				<img src="images/todolist.jpeg" alt="to-do">
 			</div>
+			<div class="col-md-6">
+				<img src="images/slack.jpeg">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<h1>Sensor Reads</h1>
+			</div>
+			<div class="col-md-6">
+				<img src="images/notification.jpeg">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<img src="images/conditions.jpeg">
+			</div>
+			<div class="col-md-6">
+				<h1>Weather Data</h1>
+			</div>
+		</div>
 		</div>
 	</body>
 </html>
