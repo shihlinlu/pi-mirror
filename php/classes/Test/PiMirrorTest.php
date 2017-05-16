@@ -59,11 +59,56 @@ abstract class PiMirrorTest extends TestCase {
 		$dataset->addTable("reading");
 		return ($dataset);
 	}
+
 	/**
 	 * templates the setUp method that runs before each test; this method expunges the database before each run
 	 *
-	 *
+	 * @see https://phpunit.de/manual/current/en/fixtures.html#fixtures.more-setup-than-teardown PHPUnit Fixtures: setUp and tearDown
+	 * @see https://github.com/sebastianbergmann/dbunit/issues/37 TRUNCATE fails on tables which have foreign key constraints
+	 * @return Composite array containing delete and insert commands
 	 **/
+	public final function getSetUpOperation() {
+		return new Composite([
+			Factory::DELETE_ALL(),
+			Factory::INSERT()
+		]);
+	}
+
+	/**
+	 * templates tearDown method that runs after each test; this method expunges the database after each run
+	 *
+	 * @return Operation delete command for the database
+	 **/
+	public final function getTearDownOperation() {
+		return(Factory::DELETE_ALL);
+	}
+
+	/**
+	 * sets up the database connection and provides it in PHPUnit
+	 *
+	 * @see <https://phpunit.de/manual/current/en/database.html#database.configuration-of-a-phpunit-database-testcase>
+	 * @return Connection PHPUnit database connection interface
+	 **/
+	public final function getConnection() {
+		// if the connection hasn't been established, create it
+		if($this->connection === null) {
+			$config = readConfig("/etc/apache2/capstone-mysql/pimirror.ini");
+			$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/pimirror.ini");
+			$this->connection = $this->createDefaultDBConnection($pdo, $config["database"]);
+		}
+		return($this->connection);
+	}
+
+	/**
+	 * return the actual PDO object; this is a convenience method
+	 * @return \PDO active PDO object
+	 **/
+
+	public final function getPDO() {
+		return($this->getConnection()->getConnection);
+	}
+
+
 }
 
 
