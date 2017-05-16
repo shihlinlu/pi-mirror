@@ -25,11 +25,11 @@ img[src="images/notifications.jpeg"] {
 
 }
 
-img[src="images/29353722-Pressure-guage-dial-template-Stock-Vector.jpeg"] {
-img.resize{
-	width:540px; /* you can use % */
+.sensors {
+	width: 25%; /* you can use % */
 	height: auto;
 }
+
 
 .feed{
 	padding-left: 7em;
