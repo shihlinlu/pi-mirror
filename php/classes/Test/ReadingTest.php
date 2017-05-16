@@ -16,5 +16,63 @@ require_once(dirname(__DIR__) . "/autoload.php");
  **/
 class ReadingTest extends PiMirrorTest {
 
+    /**
+     * valid reading unit to use
+     * @var string $VALID_SENSORVALUE
+     **/
+    protected $VALID_SENSORVALUE = NULL;
+
+    /**
+     * valid reading DATETIME to use
+     * @var string $VALID_SENSORDATETIME
+     **/
+
+    protected $VALID_SENSORDATETIME;
+
+    /**
+     * leaving $VALID_SENSORVALUE FOR LATER
+     * -LUC
+     */
+
+    /**
+     * test grabbing a valid Tweet by sunset and sunrise date
+     *
+     *
+     * // grab the tweet from the database and see if it matches expectations
+    $results = Tweet::getTweetByTweetDate($this->getPDO(), $this->VALID_SUNRISEDATE, $this->VALID_SUNSETDATE);
+    $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tweet"));
+    $this->assertCount(1,$results);
+    //enforce that no other objects are bleeding into the test
+    $this->assertContainsOnlyInstancesOf("Edu\\Cnm\\DataDesign\\Tweet", $results);
+    //use the first result to make sure that the inserted tweet meets expectations
+    $pdoTweet = $results[0];
+    $this->assertEquals($pdoTweet->getTweetId(), $tweet->getTweetId());
+    $this->assertEquals($pdoTweet->getTweetProfileId(), $tweet->getTweetProfileId());
+    $this->assertEquals($pdoTweet->getTweetContent(), $tweet->getTweetContent());
+    $this->assertEquals($pdoTweet->getTweetDate()->getTimestamp(), $this->VALID_TWEETDATE->getTimestamp());
+    }
+     */
+
+    public function testGetValidSensorByDate(): void {
+        //count num of rows
+        $numRows= $this->getConnection()->getRowCount('reading');
+
+        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME)
+            $reading->insert($this->getPDO());
+
+        $results = Reading::getReadingByReadingDate($this->PDO(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
+        $this->assertCount(1, $results);
+
+        //enforce that no other objects are bleeding into the test
+        $this->assertContainsOnlyInstancesOf("Edu\\Cnm\\pi-mirrors\\Reading", $results);
+
+        //use the first result to make sure that the inserted meets expectations
+
+        $pdoReading = $results[0];
+        $this->assertEquals($pdoReading->getReadingId(), $reading-getReadingId());
+        $this->assertEquals($pdoReading->getSensorValue(), $reading-getSensorValue());
+        $this->assertEquals($pdoReading->getReadingDate()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+    }
 
 }
