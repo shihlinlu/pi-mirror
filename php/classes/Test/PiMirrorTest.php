@@ -107,8 +107,6 @@ abstract class PiMirrorTest extends TestCase {
 	public final function getPDO() {
 		return($this->getConnection()->getConnection);
 	}
-
-
 }
 
 
