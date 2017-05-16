@@ -30,7 +30,7 @@
 					Pi-Mirror
 				</h1>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6" >
 				<p><h1>4:20</h1></p>
 				<p><h1>MAY 16, 2017</h1></p>
 			</div>
@@ -48,7 +48,7 @@
 				<h1>Sensor Reads</h1>
 			</div>
 			<div class="col-md-6">
-				<img src="images/notification.jpeg">
+				<img src="images/notification.jpeg" class="img-circle">
 			</div>
 		</div>
 		<div class="row">
@@ -67,7 +67,6 @@
                 </form>
                 <button type="button" class="btn btn btn-primary">Add</button>
             </div>
-            <div></div>
             <ul class="list-unstyled" id="todo"></ul>
 		</div>
 
