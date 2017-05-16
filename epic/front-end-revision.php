@@ -35,14 +35,14 @@
 				<p><h1>MAY 16, 2017</h1></p>
 			</div>
 		</div>
-		<div class="row">
+		<!-- to do list code -->
             <div class="form-group">
                 <h1>To-Do <small>List</small></h1>
                 <form role="form">
                     <input type="text" class="form-control" placeholder="Your Task" name="task">
                 </form>
                 <button type="button" class="btn btn btn-primary">Add</button>
-            </div>
+                <!-- /to do list code -->
             <div>
                 <ul class="list-unstyled" id="todo"></ul>
             </div>
