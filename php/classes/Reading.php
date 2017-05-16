@@ -168,10 +168,16 @@ public function getSensorValue(int $newSensorValue) {
 	/**
 	 * Accessor method for timestamp
 	 *
-	 * @return
+	 * @return string $newTimeStamp when the reading was taken
 	 **/
-
-
+public function getSensorDateTime(): string {
+	return($this->sensorDateTime);
+}
+	/**
+	 * mutator method for timestamp
+	 *
+	 * @param \DateTime|string|null $newTimeStamp
+	 **/
 
 
 
