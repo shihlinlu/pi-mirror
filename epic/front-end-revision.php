@@ -52,7 +52,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<h1>Sensor Reads</h1>
+				<img src="images/29353722-Pressure-gauge-dial-template-Stock-Vector.jpg" class="img-circle">
 			</div>
 			<div class="col-md-6">
 				<img src="images/notification.jpeg">
