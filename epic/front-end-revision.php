@@ -35,7 +35,8 @@
 				<p><h1>MAY 16, 2017</h1></p>
 			</div>
 		</div>
-		<div class="row">
+		<!-- to do list code -->
+            <body>
             <div class="form-group">
                 <h1>To-Do <small>List</small></h1>
                 <form role="form">
@@ -43,6 +44,10 @@
                 </form>
                 <button type="button" class="btn btn btn-primary">Add</button>
             </div>
+            <div></div>
+            <ul class="list-unstyled" id="todo"></ul>
+            </body>
+                <!-- /to do list code -->
             <div>
                 <ul class="list-unstyled" id="todo"></ul>
             </div>
