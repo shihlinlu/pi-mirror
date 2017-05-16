@@ -65,11 +65,10 @@ class Reading implements \JsonSerializable {
 
 	/**
 	 * accessor method for reading id
-	 *
 	 * @return int|null value of reading id
 	 **/
-	public function getReadingId(): ?int {
-		return($this->sensorId);
+	public function getReadingId(): int {
+		return($this->readingId);
 	}
 
 	/**
@@ -82,7 +81,7 @@ class Reading implements \JsonSerializable {
 	public function setReadingId(?int $newReadingId): void {
 		//if reading is null return immediately
 		if($newReadingId === null) {
-			$this->sensorId = null;
+			$this->readingId = null;
 			return;
 		}
 		//verify the reading id is positive
@@ -93,9 +92,29 @@ class Reading implements \JsonSerializable {
 		$this->readingId = $newReadingId;
 	}
 
+	/**
+	 * Accessor method for readingSensorId
+	 * @return int the sensor in which the reading came from
+	 **/
+	public function getReadingSensorId(): int {
+		return($this->readingSensorId);
+	}
+	/**
+	 * mutator method
+	 *
+	 * @param int|null value of the readingSensorId
+	 * @throws \RangeException if $newReadingSensorId is not positive
+	 * @throws \TypeError if $newReadingSensorId is not an integer
+	 **/
+public function setReadingSensorId(int $newReadingSensorId) : void {
+	//verify the reading sensor id is positive
+	if($newReadingSensorId <= 0 ) {
+		throw(new \RangeException("reading sensor id is not positive"));
+	}
 
-
-
+	// convert and store the reading sensor id
+	$this->readingSensorId = $newReadingSensorId;
+}
 
 
 
