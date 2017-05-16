@@ -139,9 +139,11 @@ public function getSensorValue(int $newSensorValue) {
 	 **/
 
 	public function setSensorValue(int $newSensorValue) : void {
-//if reading is null return immediately (not sure if I need this because...
+//if reading is null return immediately
+//(not sure if I need this because...
 		//if I use php function intval(null) will return 0)
 		//http://php.net/manual/en/function.intval.php
+		//nevermind that was from 5 years ago before tha age of php 7
 		//if($newSensorValue === null) {
 			//$this->sensorValue = null;
 			//return;
@@ -151,12 +153,23 @@ public function getSensorValue(int $newSensorValue) {
 		//if($newSensorValue <= 0) {
 			//throw(new \RangeException("sensor value is not a positive integer"));
 		//}
+		// can environment sensors read negative values ?
 
+			// I'm just going to move on with my life
+			//this is a solution to keeping the data value raw very bloody raw
+		$newSensorValue = filter_var($newSensorValue, FILTER_VALIDATE_FLOAT);
+		if(empty($newSensorValue) === true) {
+			throw(new \InvalidArgumentException("the data does not exist!"));
+		}
 
-		$this->sensorValue = $sensorValue;
+		$this->sensorValue = $newSensorValue;
 	}
 
-
+	/**
+	 * Accessor method for timestamp
+	 *
+	 * @return
+	 **/
 
 
 
