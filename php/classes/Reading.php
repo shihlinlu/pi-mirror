@@ -232,7 +232,7 @@ public function insert(\PDO $pdo) : void {
 		}
 
 		//create query template
-		$query = " DELETE FROM tweet WHERE readingId = :reading id";
+		$query = " DELETE FROM reading WHERE readingId = :reading id";
 		$statement = $pdo->prepare($query);
 		//bind the member variables to te place holder in the template
 		$parameters = ["readingId" => $this->readingId];
@@ -309,7 +309,48 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?readi
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct dates are in the wrong format
 	 **/
-public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise)
+public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunriseReadingDate, \DateTime $sunsetReadingDate ) : \SplFixedArray {
+	//enforce both date are present
+	if((empty ($sunriseReadingDate) === true) || (empty($sunsetReadingDate) === true)) {
+		throw (new \InvalidArgumentException("dates are empty of insecure"));
+	}
+	//ensure both dates are in the correct format and are in the correct format and are secure
+	try{
+		$sunsetReadingDate = self::validateDateTime($sunriseReadingDate);
+		$sunriseReadingDate = self::validateDateTime($sunsetReadingDate);
+	} catch(\InvalidArgumentException | \RangeException $exception) {
+		$exceptionType = get_class($exception);
+		throw(new $exceptionType($exception->getMessage(), 0, $exception));
+	}
+	//create query template
+	$query = "SELECT readingId, sensorReadingId, sensorValue, sensorDateTime from reading WHERE sensorDateTime >= :sunriseReadingDate AND tweetDate <= :sunsetReadingDate";
+	$statement= $pdo->prepare($query);
+
+	//format the dates so that mySQL can use them
+	$formattedSunriseDate = $sunriseReadingDate->format("Y-m-d H:i:s.u");
+	$formattedSunsetDate = $sunsetReadingDate->format("Y-m-d H:i:s:u");
+
+	$parameters = ["sunriseReadingDate" => $formattedSunriseDate, "sunsetReadingDate" => $formattedSunsetDate];
+	$statement->execute($parameters);
+
+	//build an array of readings
+	$readings = new \SplFixedArray($statement->rowCount());
+	$statement->execute($parameters);
+
+	//build an array of readings
+	$readings = new \SplFixedArray($statement->rowCount());
+	$statement->setFetchMode(\PDO::FETCH_ASSOC);
+
+	while(($row = $statement->fetch()) !== false) {
+		try{
+			$reading = new Reading($row["readingId"], $row["readingSensorIdId"], $row["sensorValue"], $row["sensorDateTime"]);
+			$readings[$reading->key()] = $reading;
+		} catch(\Exception $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+	}
+	return($readings);
+}
 
 
 
