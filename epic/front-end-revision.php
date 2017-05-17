@@ -77,7 +77,7 @@
 					<li>
 						<ul>WINDY AS TITAN'S GAS</ul>
 						<ul>HOT AS HADES</ul>
-						<ul>CHANCE OF CATCHING ZEUS WRATHS</ul>
+						<ul>CHANCE OF CATCHING ZEUS' WRATHS</ul>
 					</li>
 				</div>
 			</div>
