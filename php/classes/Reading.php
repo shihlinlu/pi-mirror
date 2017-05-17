@@ -8,6 +8,7 @@ require_once("autoload.php");
  * @version 1.0
  **/
 class Reading implements \JsonSerializable {
+use ValidateDate;
 
 	/**
 	 * id for the sensor reading, primary key
@@ -182,9 +183,18 @@ public function getSensorDateTime(): string {
 	 * @throws \RangeException if $newSensorDateTime is a date that does nto exist
 	 **/
 public function setSensorDateTime($newSensorDateTime = null) : null {
-//
-
-
+// if the date is null, use the current date and time
+	if($newSensorDateTime === null) {
+		$this->sensorDateTime = new \DateTime();
+		return;
+	}
+// store the like date using the validateDate trait
+	try {
+		$newSensorDateTime = self::validateDateTime($newSensorDateTime);
+	} catch(\InvalidArgumentException | \RangeException $exception) {
+		$exceptionType = get_class($exception);
+		throw(new $exceptionType($exception->getMessage(), 0, $exception));
+	}
 	$this->sensorDateTime = $newSensorDateTime;
 }
 
@@ -208,6 +218,8 @@ public function setSensorDateTime($newSensorDateTime = null) : null {
 
 	public function jsonSerialize() {
 		$fields = get_objects_vars($this);
+		//format the date so that the front end can consume it
+		$fields["sensorDateTime"]= round(floatval($this->sensorDateTime->format("U.u"))* 1000);
 		return($fields);
 	}
 }
