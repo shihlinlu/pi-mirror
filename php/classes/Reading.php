@@ -298,7 +298,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?readi
 	}
 	return($reading);
 }
-
+ 
 
 
 
