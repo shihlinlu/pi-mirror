@@ -177,9 +177,16 @@ public function getSensorDateTime(): string {
 	/**
 	 * mutator method for timestamp
 	 *
-	 * @param \DateTime|string|null $newTimeStamp
+	 * @param \DateTime|string|null $newTimeStamp time stamp for when we got this sensor reading
+	 * @throws \InvalidArgumentException if $newSensorDateTime is not a valid object or string
+	 * @throws \RangeException if $newSensorDateTime is a date that does nto exist
 	 **/
+public function setSensorDateTime($newSensorDateTime = null) : null {
+//
 
+
+	$this->sensorDateTime = $newSensorDateTime;
+}
 
 
 
