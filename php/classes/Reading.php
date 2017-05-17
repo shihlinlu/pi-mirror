@@ -31,8 +31,8 @@ class Reading implements \JsonSerializable {
 
 	/**
 	 * timestamp of when the sensor's reading was recorded
-	 * made fo 6 digits
-	 * @var string $sensorDateTime
+	 * made for 6 digits
+	 * @var \DateTime $sensorDateTime
 	 **/
 	private $sensorDateTime;
 
@@ -40,9 +40,9 @@ class Reading implements \JsonSerializable {
 	 * constructor for this Reading
 	 *
 	 * @param int|null $readingId id of the reading or null if new reading
-	 * @param int|null $readingSensorId id of the sensor where the reading came from
-	 * @param int|null $sensorValue Decimal value of the sensor reading
-	 * @param string $sensorDateTime Timestamp when the reading was taken
+	 * @param int $readingSensorId id of the sensor where the reading came from
+	 * @param int $sensorValue Decimal value of the sensor reading
+	 * @param \DateTime $sensorDateTime Timestamp when the reading was taken
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds (e.g., string too long, negative integers, negative floats)
 	 * @throws \TypeError if data types violate type hints
@@ -50,13 +50,14 @@ class Reading implements \JsonSerializable {
 	 * @documentation https://php.net/manual/en/language.oop5.decon.php
 	 **/
 
-		public function __construct(?int $newReadingId, ?int $newReadingSensorId, ?int $sensorValue, string $sensorDateTime) {
+		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $sensorValue, string $sensorDateTime = null) {
 			try {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);
 				$this->setSensorValue($newSensorValue);
 				$this->sensorDateTime($newSensorDateTime);
 			}
+			//determine what exception type was thrown
 			catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception){
 				$exceptionType = get_class($exception);
 				throw(new $exceptionType($exception->getMessage(), 0, $exception));

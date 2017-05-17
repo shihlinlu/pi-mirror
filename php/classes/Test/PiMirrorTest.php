@@ -11,7 +11,7 @@ use PHPUnit\DbUnit\Operation\{Composite, Factory, Operation};
 
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 
-require_once(dirname(__DIR__) . "/vendor/autoload.php");
+require_once(dirname(__DIR__, 3) . "/vendor/autoload.php");
 
 /**
 * Abstract class containing universal and project specific mySQL parameters
@@ -26,7 +26,7 @@ require_once(dirname(__DIR__) . "/vendor/autoload.php");
  *
  * *NOTE*: Tables must be added in the order they were created in step (2).
  *
- * @authoer Shihlin Lu <slu5@cnm.edu>
+ * @author Shihlin Lu <slu5@cnm.edu>
  **/
 
 abstract class PiMirrorTest extends TestCase {
@@ -54,7 +54,7 @@ abstract class PiMirrorTest extends TestCase {
 		$dataset = new QueryDataSet($this->getConnection());
 
 		// add all the tables for the project here
-		// THESE TABLES *MUST* BE LISTED IN THE SAME ORDER THEY WERE CREATED!
+
 		$dataset->addTable("sensor");
 		$dataset->addTable("reading");
 		return ($dataset);
@@ -80,7 +80,7 @@ abstract class PiMirrorTest extends TestCase {
 	 * @return Operation delete command for the database
 	 **/
 	public final function getTearDownOperation() {
-		return(Factory::DELETE_ALL);
+		return(Factory::DELETE_ALL());
 	}
 
 	/**
@@ -92,8 +92,8 @@ abstract class PiMirrorTest extends TestCase {
 	public final function getConnection() {
 		// if the connection hasn't been established, create it
 		if($this->connection === null) {
-			$config = readConfig("/etc/apache2/capstone-mysql/pimirror.ini");
-			$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/pimirror.ini");
+			$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
+			$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
 			$this->connection = $this->createDefaultDBConnection($pdo, $config["database"]);
 		}
 		return($this->connection);

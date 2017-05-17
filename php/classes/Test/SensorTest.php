@@ -49,7 +49,7 @@ class SensorTest extends PiMirrorTest {
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
-		$this->assertsEquals($numRows +1, $this->getConnection()->getRowCount("sensor"));
+		$this->assertEquals($numRows +1, $this->getConnection()->getRowCount("sensor"));
 		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
 		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
 	}
@@ -79,8 +79,8 @@ class SensorTest extends PiMirrorTest {
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
-		$this->assertsEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
-		$this->assertsEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
+		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
 		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
 	}
 
