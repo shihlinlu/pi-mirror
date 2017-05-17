@@ -17,15 +17,15 @@ require_once(dirname(__DIR__) . "/autoload.php");
 class SensorTest extends PiMirrorTest {
 	/**
 	 * valid sensor unit to use
-	 * @var string $VALID_SENSORUNIT
+	 * @var string $VALID_SENSORVALUE
 	 **/
-	protected $VALID_SENSORUNIT = "PPM";
+	protected $VALID_SENSORVALUE = "PPM";
 
 	/**
 	 * valid sensor description to use
-	 * @var string $VALID_SENSORDESCRIPTION
+	 * @var string $VALID_SENSORDATETIME
 	 **/
-	protected $VALID_SENSORDESCRIPTION = "Carbon Dioxide";
+	protected $VALID_SENSORDATETIME = "Carbon Dioxide";
 
 	/**
 	 * no default setup operation
@@ -41,7 +41,7 @@ class SensorTest extends PiMirrorTest {
 		$numRows = $this->getConnection()->getRowCount("sensor");
 
 		// create a new Sensor and insert into mySQL
-		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 
 		// var_dump($sensor);
 
@@ -50,8 +50,8 @@ class SensorTest extends PiMirrorTest {
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
 		$this->assertEquals($numRows +1, $this->getConnection()->getRowCount("sensor"));
-		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
-		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
+		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORVALUE);
+		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDATETIME);
 	}
 
 	/**
@@ -62,7 +62,7 @@ class SensorTest extends PiMirrorTest {
 	 **/
 	public function testInsertInvalidSensor() : void {
 		// create a sensor with a non null sensorId and watch it fail
-		$sensor = new Sensor(PiMirrorTest::INVALID_KEY, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor = new Sensor(PiMirrorTest::INVALID_KEY, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$sensor->insert($this->getPDO());
 	}
 
@@ -74,14 +74,14 @@ class SensorTest extends PiMirrorTest {
 		$numRows = $this->getConnection()->getRowCount("sensor");
 
 		// create a new Sensor and insert into mySQL
-		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$sensor->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
-		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
-		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
+		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORVALUE);
+		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDATETIME);
 	}
 
 	/**
@@ -91,7 +91,7 @@ class SensorTest extends PiMirrorTest {
 	 **/
 	public function testUpdateInvalidSensor() {
 		// create a Sensor and try to update it without actually inserting it
-		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$sensor->update($this->getPDO());
 	}
 
@@ -103,7 +103,7 @@ class SensorTest extends PiMirrorTest {
 		$numRows = $this->getConnection()->getRowCount("sensor");
 
 		// create a new Sensor and insert into mySQL
-		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$sensor->insert($this->getPDO());
 
 		// delete the Sensor from mySQL
@@ -123,7 +123,7 @@ class SensorTest extends PiMirrorTest {
 	 **/
 	public function testDeleteInvalidSensor(): void {
 		// create a Sensor and try to delete it without acutally inserting it
-		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$sensor->delete($this->getPDO());
 	}
 
@@ -135,14 +135,14 @@ class SensorTest extends PiMirrorTest {
 		$numRows = $this->getConnection()->getRowCount("sensor");
 
 		// create a new Sensor and insert into mySQL
-		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$sensor->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
-		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
-		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
+		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORVALUE);
+		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDATETIME);
 	}
 
 	/**
