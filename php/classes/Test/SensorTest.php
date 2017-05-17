@@ -30,10 +30,9 @@ class SensorTest extends PiMirrorTest {
 	/**
 	 * default setup operation
 	 *
-	 **/
 	public final function setUp() : void {
 		parent::setUp();
-	}
+	} **/
 
 	/**
 	 *
