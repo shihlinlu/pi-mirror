@@ -83,7 +83,7 @@ class ReadingTest extends SensorTest {
         // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
-        // create a new Sensor and insert into mySQL
+        // create a new Reading and insert into mySQL
         $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATE);
         $reading->insert($this->getPDO());
 
@@ -100,7 +100,7 @@ class ReadingTest extends SensorTest {
      * @expectedException \PDOException
      **/
     public function testUpdateInvalidReading() {
-        // create a Sensor and try to update it without actually inserting it
+        // create a Reading and try to update it without actually inserting it
         $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->update($this->getPDO());
     }
@@ -112,11 +112,11 @@ class ReadingTest extends SensorTest {
         // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
-        // create a new Sensor and insert into mySQL
+        // create a new Reading and insert into mySQL
         $reading = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
-        // delete the Sensor from mySQL
+        // delete the Reading from mySQL
         $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
         $reading->insert($this->getPDO());
 
@@ -132,7 +132,7 @@ class ReadingTest extends SensorTest {
      * @expectedException \PDOException
      **/
     public function testDeleteInvalidReading(): void {
-        // create a Sensor and try to delete it without acutally inserting it
+        // create a reading and try to delete it without acutally inserting it
         $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->delete($this->getPDO());
     }
@@ -144,7 +144,7 @@ class ReadingTest extends SensorTest {
         // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
-        // create a new Sensor and insert into mySQL
+        // create a new reading and insert into mySQL
         $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
