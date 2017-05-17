@@ -179,7 +179,7 @@ public function getSensorDateTime(): string {
 	 *
 	 * @param \DateTime|string|null $newTimeStamp time stamp for when we got this sensor reading
 	 * @throws \InvalidArgumentException if $newSensorDateTime is not a valid object or string
-	 * @throws \RangeException if $newSensorDateTime is a date that does nto exist
+	 * @throws \RangeException if $newSensorDateTime is a date that does not exist
 	 **/
 public function setSensorDateTime($newSensorDateTime = null) : null {
 // if the date is null, use the current date and time
@@ -261,7 +261,90 @@ public function update(\PDO $pdo): void {
 	$statement->execute($parameters);
 }
 
+	/**
+	 * gets the reading by the readinId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $readingId reading id to search for
+	 * @return Reading|null Reading found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?reading {
+	//sanitize the readingId before searching
+	if($readingId <= 0) {
+		throw(new \PDOException("reading id is not positive"));
+	}
 
+	//create query template
+	$query = "select readingId, readingSensorId, sensorValue, sensorDateTime FROM reading WHERE readingId = :readingId";
+	$statement = $pdo->prepare($query);
+
+	//bind the reading id to the place holder in the template
+	$parameters = ["readingId" => $readingId];
+	$statement->execute($parameters);
+
+	//bind the reading from mySQL
+	try{
+		$reading = null;
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$row = $statement->fetch();
+		if($row !== false) {
+			$reading = new Reading($row["readingId"], $row["readingSensor"], $row["readingValue"], $row["sensorDateTime"]);
+		}
+	} catch(\Exception $exception){
+		// if the row could not be converted rethrow it
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+	}
+	return($reading);
+}
+
+	/**
+	 * gets an array of readings based on its data
+	 *
+	 * @param \PDO $pdo connection object
+	 * @param \DateTime $sunriseReadingDate beginning date to search for
+	 * @param \DateTime $sunsetReadingDate ending date to search for
+	 * @return \SplFixedArray of readings found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct dates are in the wrong format
+	 **/
+public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise)
+
+
+
+
+
+
+
+/**
+ * get all readings
+ * @param \PDO $pdo PDO connection object
+ * @return \SplFixedArray SplFixedArray of readings found or null if not found
+ * @throws \PDOException when mySQL related errors occur
+ * @throws \TypeError when variables are not the correct data type
+ */
+public static function getAllReadings(\PDO $pdo): \SPLFixedArray {
+	//create query template
+	$query = "SELECT readingId, sensorReadingId, SensorValue, sensorDateTime FROM reading";
+	$statement = $pdo->prepare($query);
+	$statement->execute();
+
+	//build an array of readings
+	$readings = new \SplFixedArray($statement->rowCount());
+	$statement->setFetchMode(\PDO::FETCH_ASSOC);
+	while(($row = $statement->fetch()) !== false) {
+		try{
+			$reading = new Reading($row["readingId"], $row["sensorReadingId"], $row["sensorValue"], $row["sensorDateTime"]);
+			$readings[$readings->key()] = $reading;
+			$readings->next();
+		} catch(\Exception $exception) {
+			// if the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+	}
+	return ($readings);
+}
 
 
 
@@ -271,8 +354,6 @@ public function update(\PDO $pdo): void {
 	 *
 	 * @return  array resulting state variables
 	 */
-
-
 
 	public function jsonSerialize() {
 		$fields = get_objects_vars($this);
