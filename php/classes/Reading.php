@@ -39,7 +39,7 @@ use ValidateDate;
 	/**
 	 * constructor for this Reading
 	 *
-	 * @param int|null $readingId id of the reading or null if new reading
+	 * @param ?int $newreadingId, id of the reading or null if new reading
 	 * @param int $readingSensorId id of the sensor where the reading came from
 	 * @param int $sensorValue Decimal value of the sensor reading
 	 * @param \DateTime $sensorDateTime Timestamp when the reading was taken
@@ -50,12 +50,12 @@ use ValidateDate;
 	 * @documentation https://php.net/manual/en/language.oop5.decon.php
 	 **/
 
-		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $sensorValue, string $sensorDateTime = null) {
+		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $newSensorValue, string $newSensorDateTime) {
 			try {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);
 				$this->setSensorValue($newSensorValue);
-				$this->sensorDateTime($newSensorDateTime);
+				$this->setsensorDateTime($newSensorDateTime);
 			}
 			//determine what exception type was thrown
 			catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception){
