@@ -134,13 +134,14 @@ public function getSensorValue() :int{
 	/**
 	 * mutator method for sensor reading
 	 *
-	 *@param int|null $sensorValue the value from the sensor's reading
+	 *@param int $sensorValue the value from the sensor's reading
+	 *@throws \InvalidArgumentException if $newSensorValue in not an integer or insecure
 	 *@throws \RangeException if $newSensorValue is not positive
 	 *@throws \TypeError if $newSensorValue is not an integer
 	 **/
 
 	public function setSensorValue(int $newSensorValue) : void {
-		//this a way to floate the reading data coming in
+		//this a way to float the reading data coming in
 		$newSensorValue = filter_var($newSensorValue, FILTER_VALIDATE_FLOAT);
 		if(empty($newSensorValue) === true) {
 			throw(new \InvalidArgumentException("the data does not exist!"));
