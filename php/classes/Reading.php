@@ -219,6 +219,27 @@ public function insert(\PDO $pdo) : void {
 }
 
 	/**
+	 * deletes this reading from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function delete(\PDO $pdo) : void {
+		//enforce the readingid is not null
+		if($this->readingId === null) {
+				throw(new \PDOException("unable to delete a reading that does not exist"));
+		}
+
+		//create query template
+		$query = " DELETE FROM tweet WHERE readingId = :reading id";
+		$statement = $pdo->prepare($query);
+		//bind the member variables to te place holder in the template
+		$parameters = ["readingId" => $this->readingId];
+		$statement->execute($parameters);
+	}
+
+	/**
 	 * updates this reading in mySQL
 	 *
 	 * @param \PDO $pdo PDO connection object
