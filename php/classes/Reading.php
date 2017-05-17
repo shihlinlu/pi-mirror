@@ -9,7 +9,6 @@ require_once("autoload.php");
  **/
 class Reading implements \JsonSerializable {
 use ValidateDate;
-
 	/**
 	 * id for the sensor reading, primary key
 	 * @var int $readingId;
