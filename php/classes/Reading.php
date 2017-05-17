@@ -218,8 +218,27 @@ public function insert(\PDO $pdo) : void {
 	$statement->execute($parameters);
 }
 
+	/**
+	 * updates this reading in mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+public function update(\PDO $pdo): void {
+	//enforce the readingId is not null (i.e., don't update reading that has not been inserted)
+	if($this->readingId === null){
+		throw(new \PDOException("unable to update a reading that does not exist"));
+	}
+	//create query template
+	$query = "UPDATE reading SET sensorReadingId = :sensorReadingId, sensorValue = :sensorValue, sensorDateTime = :sensorDateTime WHERE readingId = :readingId";
+	$statement = $pdo->prepare($query);
 
-
+	//bind the member variables to the place holders in the template
+	$formattedDate = $this->sensorDateTime->format("Y-m-d H:i:s");
+	$parameters = ["readingSensorId" => $this-> readingSensorId, "sensorValue" => $this->sensorValue, "sensorDateTime" => $this->sensorDateTime, "readingId" => $this->readingId];
+	$statement->execute($parameters);
+}
 
 
 
