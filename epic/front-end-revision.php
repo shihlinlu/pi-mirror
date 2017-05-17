@@ -19,18 +19,19 @@
 		<!-- container for the page -->
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 text-center">
 					<h1>
 						Pi-Mirror
 					</h1>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 text-center">
 					<p><h1>4:20</h1></p>
 					<p><h1>MAY 16, 2017</h1></p>
 				</div>
 			</div>
 			<!-- to do list code -->
-			<div class="form-group">
+			<div class="row pad-down">
+			<div class="form-group col-md-6">
 				<h1>To-Do
 					<small>List</small>
 				</h1>
@@ -39,20 +40,35 @@
 				</form>
 				<button type="button" class="btn btn btn-primary">Add</button>
 			</div>
-			<ul class="list-unstyled" id="todo"></ul>
-			<!-- /to do list code -->
-			<div>
-				<ul class="list-unstyled" id="todo"></ul>
-			</div>
-			<div class="row">
 				<div class="col-md-6">
-					<img src="images/29353722-Pressure-gauge-dial-template-Stock-Vector.jpg" class="img-circle img-responsive sensors" alt="Responsive image">
+					<p>Slack this</p>
+					<p>Slack that</p>
+					<p>Slack you</p>
+				</div>
+			</div>
+			<div class="row pad-down ">
+				<div class="col-md-6">
+					<p>This will be a list -  senors that go "DETECT DETECT DETECT"</p>
+					<table class="table table-hover">
+						<tr>
+							<th>oxygen</th>
+							<th>Humidty</th>
+						</tr>
+						<tr>
+							<td>EXAMPLE</td>
+							<td>EXAMPLE</td>
+						</tr>
+						<tr>
+							<td>EXAMPLE</td>
+							<td>EXAMPLE</td>
+						</tr>
+					</table>
 				</div>
 				<div class="col-md-6">
 					<img src="images/notification.jpeg">
 				</div>
 			</div>
-			<div class="row">
+			<div class="row pad-down	">
 				<div class="col-md-6">
 					<img src="images/conditions.jpeg">
 				</div>

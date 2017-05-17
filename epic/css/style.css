@@ -2,9 +2,20 @@
 
 /* home screen section */
 
+html {
+	height: 100%;
+
+}
+body {
+	height: 100%;
+}
+
 .container{
 	padding: 0 10em;
 	border: 1em solid black;
+	height: 100%;
+	width: 100% !important;
+
 }
 
 em{
@@ -15,21 +26,12 @@ em{
 img[src="images/clock.jpeg"] {
 	width: 10em;
 
-}
 
-img[src="images/conditions.jpeg"]{
-	float: right;
 }
 
 img[src="images/notifications.jpeg"] {
 
 }
-
-.sensors {
-	width: 25%; /* you can use % */
-	height: auto;
-}
-
 
 .feed{
 	padding-left: 7em;
@@ -57,4 +59,35 @@ form {
 
 a.close {
 	float: right;
+}
+.pad-down{
+	padding-top: 30%;
+}
+
+table {
+	table-layout: fixed;
+	width: 100%;
+	border: 1px solid black;
+	border-collapse: collapse;
+
+}
+
+thead th:nth-child(1) {
+	width: 30%;
+}
+
+thead th:nth-child(2) {
+	width: 20%;
+}
+
+thead th:nth-child(3) {
+	width: 15%;
+}
+
+thead th:nth-child(4) {
+	width: 35%;
+}
+
+th, td {
+	padding: 20px;
 }
