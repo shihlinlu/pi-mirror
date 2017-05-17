@@ -13,7 +13,6 @@ require_once(dirname(__DIR__) . "/autoload.php");
  *
  * @see Reading
  * @author Luc Flynn <lflynn7@cnm.edu>
- * @author Shihlin Lu <slu5@cnm.edu>
  **/
 class ReadingTest extends SensorTest {
 	/**
@@ -64,6 +63,13 @@ class ReadingTest extends SensorTest {
 		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
 	}
 
+	/**
+	 * test inserting a valid Reading that already exists
+	 * @expectedException \PDOException
+	 **/
+
+
+
     /**
      * test inserting a valid Valid_sennsordatetime
      */
@@ -73,8 +79,8 @@ class ReadingTest extends SensorTest {
 
         $numRows = $this->getConnection()->getRowCount("reading");
 
-        //grab the data from mySQL and enforce the fields math our expecations
-        $results = ReadingTest::getReadingBySensorValue($this->getPDO(), $reading->getSensorValue());
+        //grab the data from mySQL and enforce the fields math our expectations
+        $results = ReadingTest::getReadingBySensorValue($this->getPDO(),$reading->getSensorValue());
         $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
         $this->assertCount(1, $results);
 
