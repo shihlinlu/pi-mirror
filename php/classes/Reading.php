@@ -261,7 +261,43 @@ public function update(\PDO $pdo): void {
 	$statement->execute($parameters);
 }
 
+	/**
+	 * gets the reading by the readinId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $readingId reading id to search for
+	 * @return Reading|null Reading found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?reading {
+	//sanitize the readingId before searching
+	if($readingId <= 0) {
+		throw(new \PDOException("reading id is not positive"));
+	}
 
+	//create query template
+	$query = "select readingId, readingSensorId, sensorValue, sensorDateTime FROM reading WHERE readingId = :readingId";
+	$statement = $pdo->prepare($query);
+
+	//bind the reading id to the place holder in the template
+	$parameters = ["readingId" => $readingId];
+	$statement->execute($parameters);
+
+	//bind the reading from mySQL
+	try{
+		$reading = null;
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$row = $statement->fetch();
+		if($row !== false) {
+			$reading = new Reading($row["readingId"], $row["readingSensor"], $row["readingValue"], $row["sensorDateTime"]);
+		}
+	} catch(\Exception $exception){
+		// if the row could not be converted rethrow it
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+	}
+	return($reading);
+}
 
 
 
