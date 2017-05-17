@@ -25,8 +25,8 @@
 					</h1>
 				</div>
 				<div class="col-md-6 text-center">
-					<p><h1>4:20</h1></p>
-					<p><h1>MAY 16, 2017</h1></p>
+					<h1>4:20</h1>
+					<h1>MAY 16, 2017</h1>
 				</div>
 			</div>
 			<!-- to do list code -->
