@@ -28,9 +28,12 @@ class SensorTest extends PiMirrorTest {
 	protected $VALID_SENSORDATETIME = "Carbon Dioxide";
 
 	/**
-	 * no default setup operation
+	 * default setup operation
 	 *
 	 **/
+	public final function setUp() : void {
+		parent::setUp();
+	}
 
 	/**
 	 *
