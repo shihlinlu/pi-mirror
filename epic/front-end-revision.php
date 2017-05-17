@@ -74,11 +74,11 @@
 				</div>
 				<div class="col-md-6">
 					<h1>Weather Data</h1>
-					<li>
-						<ul>WINDY AS TITAN'S GAS</ul>
-						<ul>HOT AS HADES</ul>
-						<ul>CHANCE OF CATCHING ZEUS' WRATHS</ul>
-					</li>
+					<ul>
+						<li>WINDY AS TITAN'S GAS</li>
+						<li>HOT AS HADES</li>
+						<li>CHANCE OF CATCHING ZEUS' WRATHS</li>
+					</ul>
 				</div>
 			</div>
 	</body>
