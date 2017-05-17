@@ -68,52 +68,121 @@ class ReadingTest extends SensorTest {
      * test inserting a valid Valid_sennsordatetime
      */
 
-    public function testGetValidReadingBySensorValue() : void {
-        //count the number of rows and save it for later
-
+    public function testInsertValidReading(): void {
+        // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
-        //grab the data from mySQL and enforce the fields math our expecations
-        $results = ReadingTest::getReadingBySensorValue($this->getPDO(), $reading->getSensorValue());
-        $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-        $this->assertCount(1, $results);
+        // create a new Sensor and insert into mySQL
+        $reading = new reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 
-        //enforce no other objects are bleeding into the test
-        $this->assertContainsOnlyInstancesOf("Edu\\Cnm\\pi-mirror\\ReadingTest", $results);
+        // var_dump($sensor);
 
-        //grab the result from the array and validate it
-        $pdoReadingTest = $results(0);
-        $this->assertEquals($pdoReadingTest->getSensorValue(), $this->VALID_SENSORVALUE);
-        //format the date too seconds since the beginning of time to avoid round off error
-        $this->assertEquals($pdoReadingTest->getSensorDateTime()->getTimeStamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+        $reading->insert($this->getPDO());
 
+        // grab the data from mySQL and enforce the fields match our expectations
+        $pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
+        $this->assertEquals($numRows +1, $this->getConnection()->getRowCount("sensor"));
+        $this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
+        $this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
     }
 
     /**
-     * test grabbing a valid Tweet by sunset and sunrise date
      *
-     */
-
-    public function testGetValidSensorByDate(): void {
-        //count num of rows
-        $numRows= $this->getConnection()->getRowCount('reading');
-
-        $reading = new ReadingTest(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
-            $reading->insert($this->getPDO());
-
-        $results = ReadingTest::getReadingByReadingDate($this->PDO(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
-        $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-        $this->assertCount(1, $results);
-
-        //enforce that no other objects are bleeding into the test
-        $this->assertContainsOnlyInstancesOf("Edu\\Cnm\\pi-mirrors\\Reading", $results);
-
-        //use the first result to make sure that the inserted meets expectations
-
-        $pdoReading = $results[0];
-        $this->assertEquals($pdoReading->getReadingId(), $reading->getReadingTestId());
-        $this->assertEquals($pdoReading->getSensorValue(), $reading->getSensorValue());
-        $this->assertEquals($pdoReading->getReadingDate()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+     * test inserting a Sensor that already exists
+     *
+     * @expectedException \PDOException
+     **/
+    public function testInsertInvalidSensor() : void {
+        // create a sensor with a non null sensorId and watch it fail
+        $sensor = new Sensor(PiMirrorTest::INVALID_KEY, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+        $sensor->insert($this->getPDO());
     }
 
+    /**
+     * test insert a Sensor, editing it, and then updating it
+     **/
+    public function testUpdateValidSensor() {
+        // count the number of rows and save it for later
+        $numRows = $this->getConnection()->getRowCount("sensor");
+
+        // create a new Sensor and insert into mySQL
+        $sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+        $sensor->insert($this->getPDO());
+
+        // grab the data from mySQL and enforce the fields match our expectations
+        $pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
+        $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
+        $this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
+        $this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
+    }
+
+    /**
+     * test updating a Sensor that does not exist
+     *
+     * @expectedException \PDOException
+     **/
+    public function testUpdateInvalidSensor() {
+        // create a Sensor and try to update it without actually inserting it
+        $sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+        $sensor->update($this->getPDO());
+    }
+
+    /**
+     * test creating a Sensor and then deleting it
+     **/
+    public function testDeleteValidSensor() : void {
+        // count the number of rows and save it for later
+        $numRows = $this->getConnection()->getRowCount("sensor");
+
+        // create a new Sensor and insert into mySQL
+        $sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+        $sensor->insert($this->getPDO());
+
+        // delete the Sensor from mySQL
+        $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
+        $sensor->insert($this->getPDO());
+
+        // grab the data from mySQL and enforce the Sensor does not exist
+        $pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
+        $this->assertNull($pdoSensor);
+        $this->assertEquals($numRows, $this->getConnection()->getRowCount("sensor"));
+    }
+
+    /**
+     * test deleting a Sensor that does not exist
+     *
+     * @expectedException \PDOException
+     **/
+    public function testDeleteInvalidSensor(): void {
+        // create a Sensor and try to delete it without acutally inserting it
+        $sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+        $sensor->delete($this->getPDO());
+    }
+
+    /**
+     * test inserting a Sensor and regrabbing it from mySQL
+     **/
+    public function testGetValidSensorBySensorId() : void {
+        // count the number of rows and save it for later
+        $numRows = $this->getConnection()->getRowCount("sensor");
+
+        // create a new Sensor and insert into mySQL
+        $sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+        $sensor->insert($this->getPDO());
+
+        // grab the data from mySQL and enforce the fields match our expectations
+        $pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
+        $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
+        $this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
+        $this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
+    }
+
+    /**
+     * test grabbing a Sensor that does not exist
+     **/
+    public function testGetInvalidSensorBySensorId() : void {
+        // grab a sensor id that exceeds the maximum allowable sensor id
+        $sensor = Sensor::getSensorBySensorId($this->getPDO(), PiMirrorTest::INVALID_KEY);
+        $this->assertNull($sensor);
+    }
 }
