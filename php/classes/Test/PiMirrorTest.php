@@ -3,7 +3,7 @@ namespace Edu\Cnm\PiMirror\Test;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;
-use PHPUnit\DbUnit\Dataset\QueryDataSet;
+use PHPUnit\DbUnit\DataSet\QueryDataSet;
 use PHPUnit\DbUnit\Database\Connection;
 use PHPUnit\DbUnit\Operation\{Composite, Factory, Operation};
 
@@ -50,7 +50,7 @@ abstract class PiMirrorTest extends TestCase {
 	 * assembles the table from the schema and provides it to PHPUnit
 	 *
 	 * @return QueryDataSet assembled schema for PHPUnit
-
+	 **/
 	public final function getDataSet() {
 		$dataset = new QueryDataSet($this->getConnection());
 
@@ -60,7 +60,6 @@ abstract class PiMirrorTest extends TestCase {
 		$dataset->addTable("reading");
 		return ($dataset);
 	}
-	 **/
 
 	/**
 	 * templates the setUp method that runs before each test; this method expunges the database before each run
