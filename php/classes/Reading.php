@@ -50,7 +50,7 @@ use ValidateDate;
 	 * @documentation https://php.net/manual/en/language.oop5.decon.php
 	 **/
 
-		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $newSensorValue, string $newSensorDateTime) {
+		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $newSensorValue, string $newSensorDateTime = null) {
 			try {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);
@@ -216,7 +216,7 @@ public function insert(\PDO $pdo) : void {
 		}
 
 		//create query template
-		$query = " DELETE FROM reading WHERE readingId = :reading id";
+		$query = "DELETE FROM reading WHERE readingId = :readingid";
 		$statement = $pdo->prepare($query);
 		//bind the member variables to te place holder in the template
 		$parameters = ["readingId" => $this->readingId];
