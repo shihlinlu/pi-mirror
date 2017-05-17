@@ -59,14 +59,14 @@ class ReadingTest extends SensorTest {
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-		$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getReadingSensorId());
+		$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->geSensorId());
 		$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
 		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
 	}
 
     /**
      *
-     * test inserting a Sensor that already exists
+     * test inserting a Reading that already exists
      *
      * @expectedException \PDOException
      **/
@@ -77,7 +77,7 @@ class ReadingTest extends SensorTest {
     }
 
     /**
-     * test insert a Sensor, editing it, and then updating it
+     * test insert a Reading, editing it, and then updating it
      **/
     public function testUpdateValidReading() {
         // count the number of rows and save it for later
@@ -95,7 +95,7 @@ class ReadingTest extends SensorTest {
     }
 
     /**
-     * test updating a Sensor that does not exist
+     * test updating a Reading that does not exist
      *
      * @expectedException \PDOException
      **/
@@ -106,7 +106,7 @@ class ReadingTest extends SensorTest {
     }
 
     /**
-     * test creating a Sensor and then deleting it
+     * test creating a Reading and then deleting it
      **/
     public function testDeleteValidReading() : void {
         // count the number of rows and save it for later
@@ -127,7 +127,7 @@ class ReadingTest extends SensorTest {
     }
 
     /**
-     * test deleting a Sensor that does not exist
+     * test deleting a Reading that does not exist
      *
      * @expectedException \PDOException
      **/
@@ -138,7 +138,7 @@ class ReadingTest extends SensorTest {
     }
 
     /**
-     * test inserting a Sensor and regrabbing it from mySQL
+     * test inserting a reading and regrabbing it from mySQL
      **/
     public function testGetValidReadingByReadingId() : void {
         // count the number of rows and save it for later
@@ -156,7 +156,7 @@ class ReadingTest extends SensorTest {
     }
 
     /**
-     * test grabbing a Sensor that does not exist
+     * test grabbing a Reading that does not exist
      **/
     public function testGetInvalidReadingByReadingId() : void {
         // grab a sensor id that exceeds the maximum allowable sensor id
