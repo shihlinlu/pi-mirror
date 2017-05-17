@@ -197,7 +197,26 @@ public function setSensorDateTime($newSensorDateTime = null) : null {
 	$this->sensorDateTime = $newSensorDateTime;
 }
 
+	/**
+	 * inserts this new sensor reading data from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors object
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+public function insert(\PDO $pdo) : void {
+	//enforce the readingId is null (i.e., don't insert a tweet that already exists)
+	if($this->readingId !== null) {
+		throw(new \PDOException("not a new reading"));
+	}
+	//create query template
+	$query = "DELETE FROM reading WHERE readingId = :readingId";
+	$statement = $pdo->prepare($query);
 
+	//bind the member variables to the place holder in the template
+	$parameters = ["readingId" => $this->readingId];
+	$statement->execute($parameters);
+}
 
 
 
