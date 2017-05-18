@@ -35,6 +35,7 @@
 		<title>Front End- Static</title>
 	</head>
 	<body>
+
 		<!-- container for the page -->
 		<div class="container">
 			<div class="row">
@@ -48,6 +49,7 @@
 					<img src="images/time.png" alt="time">
 				</div>
 			</div>
+
 			<!-- to do list code -->
 			<div class="row pad-down">
 			<div class="form-group col-md-6">
@@ -100,5 +102,6 @@
 					</ul>
 				</div>
 			</div>
+
 	</body>
 </html>
