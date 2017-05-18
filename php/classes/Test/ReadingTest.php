@@ -15,7 +15,7 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @author Luc Flynn <lflynn7@cnm.edu>
  * @author Shihlin Lu <slu5@cnm.edu>
  **/
-class ReadingTest extends SensorTest {
+class ReadingTest extends SensorTest  {
 	/**
 	 * Sensor that created the Reading; this is for foreign key relations
 	 * @var reading
