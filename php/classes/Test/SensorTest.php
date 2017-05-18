@@ -110,7 +110,7 @@ class SensorTest extends PiMirrorTest {
 
 		// delete the Sensor from mySQL
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
-		$sensor->insert($this->getPDO());
+		$sensor->delete($this->getPDO());
 
 		// grab the data from mySQL and enforce the Sensor does not exist
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
