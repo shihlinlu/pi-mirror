@@ -18,7 +18,7 @@ require_once(dirname(__DIR__) . "/autoload.php");
 class ReadingTest extends SensorTest {
 	/**
 	 * Sensor that created the Reading; this is for foreign key relations
-	 * @var Sensor sensor
+	 * @var reading
 	 **/
 	protected $sensor = null;
 
@@ -44,7 +44,7 @@ class ReadingTest extends SensorTest {
 		$numRows = $this->getConnection()->getRowCount("reading");
 
 		// create a new Reading and insert it into mySQL
-		$reading = new Reading(null, $this->readingId->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+		$reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$this->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
