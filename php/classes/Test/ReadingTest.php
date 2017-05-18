@@ -84,7 +84,7 @@ class ReadingTest extends SensorTest {
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new Reading and insert into mySQL
-        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATE);
+        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
         // grab the data from mySQL and enforce the fields match our expectations
