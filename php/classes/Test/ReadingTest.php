@@ -20,7 +20,7 @@ class ReadingTest extends PiMirrorTest {
 	 * Sensor that created the Reading; this is for foreign key relations
 	 * @var reading
 	 **/
-	protected $reading = "hello";
+	protected $reading;
 
     /**
      * valid reading unit to use
@@ -53,7 +53,7 @@ class ReadingTest extends PiMirrorTest {
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
 		$this->assertEquals($pdoReading->getReadingSensorId(), $this->reading->getReadingId());
 		$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
-		$this->assertEquals($pdoReading->getSensorDateTime()->getTimeStamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+		$this->assertEquals($pdoReading->getSensorDateTime(), $this->VALID_SENSORDATETIME->getTimestamp());
 	}
 
     /**
