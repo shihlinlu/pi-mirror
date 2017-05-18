@@ -48,7 +48,7 @@ class Reading implements \JsonSerializable {
 	 * @documentation https://php.net/manual/en/language.oop5.decon.php
 	 **/
 
-		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $newSensorValue, string $newSensorDateTime = null) {
+		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $newSensorValue, string $newSensorDateTime) {
 			try {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);

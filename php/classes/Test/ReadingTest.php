@@ -20,39 +20,40 @@ class ReadingTest extends SensorTest {
 	 * Sensor that created the Reading; this is for foreign key relations
 	 * @var reading
 	 **/
-	protected $sensor = null;
+	protected $reading = "hello";
 
     /**
      * valid reading unit to use
      * @var int $VALID_SENSORVALUE
      **/
-    protected $VALID_SENSORVALUE = 123456789101112.123456;
+    protected $VALID_SENSORVALUE = '123456789101112.123456';
 
     /**
      * timestamp of the Reading; this starts as null and is assigned later
      * @var \DateTime $VALID_SENSORDATETIME
      **/
 
-    protected $VALID_SENSORDATETIME = null;
+    protected $VALID_SENSORDATETIME;
 
 
 	/**
 	 * test inserting a valid Reading and verify that the actual mySQL data matches
 	 */
-	public function testInsertValidReading() : void {
+	public function testInsertValidReading(): void {
 		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("reading");
 
 		// create a new Reading and insert it into mySQL
 		$reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
-		$this->insert($this->getPDO());
+
+		$reading->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-		$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->geSensorId());
+		$this->assertEquals($pdoReading->getReadingSensorId(), $this->reading->getReadingId());
 		$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
-		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+		$this->assertEquals($pdoReading->getSensorDateTime()->getTimeStamp(), $this->VALID_SENSORDATETIME->getTimestamp());
 	}
 
     /**
@@ -63,7 +64,8 @@ class ReadingTest extends SensorTest {
      **/
     public function testInsertInvalidReading() : void {
         // create a reading with a non null sensorId and watch it fail
-        $reading = new ReadingTest(PiMirrorTest::INVALID_KEY, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(SensorTest::INVALID_KEY, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+
         $reading->insert($this->getPDO());
     }
 
