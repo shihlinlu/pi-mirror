@@ -1,7 +1,7 @@
 <?php
 namespace Edu\Cnm\PiMirror\Test;
 
-use Edu\Cnm\PiMirror\{Sensor, Reading};
+use Edu\Cnm\PiMirror\Reading;
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/autoload.php");
