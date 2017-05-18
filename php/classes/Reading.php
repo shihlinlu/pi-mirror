@@ -14,7 +14,6 @@ use ValidateDate;
 	 * @var int $readingId;
 	 **/
 	private $readingId;
-
 	/**
 	 * the sensor from which the reading came from
 	 * @var int $readingSensorId
@@ -179,6 +178,7 @@ public function setSensorDateTime($newSensorDateTime = null) : void {
 		throw(new $exceptionType($exception->getMessage(), 0, $exception));
 	}
 	$this->sensorDateTime = $newSensorDateTime;
+	return;
 }
 
 	/**
@@ -194,7 +194,7 @@ public function insert(\PDO $pdo) : void {
 		throw(new \PDOException("not a new reading"));
 	}
 	//create query template
-	$query = "DELETE FROM reading WHERE readingId = :readingId";
+	$query = "DELETE FROM reading WHERE readingId =: readingId";
 	$statement = $pdo->prepare($query);
 
 	//bind the member variables to the place holder in the template
@@ -210,7 +210,7 @@ public function insert(\PDO $pdo) : void {
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
 	public function delete(\PDO $pdo) : void {
-		//enforce the readingid is not null
+		//enforce the readingId is not null
 		if($this->readingId === null) {
 				throw(new \PDOException("unable to delete a reading that does not exist"));
 		}
