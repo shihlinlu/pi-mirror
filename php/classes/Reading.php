@@ -165,7 +165,7 @@ public function getSensorDateTime(): string {
 	 * @throws \InvalidArgumentException if $newSensorDateTime is not a valid object or string
 	 * @throws \RangeException if $newSensorDateTime is a date that does not exist
 	 **/
-public function setSensorDateTime($newSensorDateTime = null) : null {
+public function setSensorDateTime($newSensorDateTime = null) : void {
 // if the date is null, use the current date and time
 	if($newSensorDateTime === null) {
 		$this->sensorDateTime = new \DateTime();
