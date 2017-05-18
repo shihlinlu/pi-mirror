@@ -103,7 +103,6 @@ class SensorTest extends PiMirrorTest {
 	public function testDeleteValidSensor() : void {
 		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("sensor");
-
 		// create a new Sensor and insert into mySQL
 		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
 		$sensor->insert($this->getPDO());

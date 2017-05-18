@@ -2,7 +2,7 @@
 	<testsuites>
 		<testsuite name="Pi Mirror">
 			<file>SensorTest.php</file>
-			<!-- <file>ReadingTest.php</file> -->
+			<file>ReadingTest.php</file>
 		</testsuite>
 	</testsuites>
 	<filter>
