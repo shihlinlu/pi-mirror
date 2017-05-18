@@ -381,7 +381,7 @@ public static function getAllReadings(\PDO $pdo): \SPLFixedArray {
 	 */
 
 	public function jsonSerialize() {
-		$fields = get_objects_vars($this);
+		$fields = get_object_vars($this);
 		//format the date so that the front end can consume it
 		$fields["sensorDateTime"]= round(floatval($this->sensorDateTime->format("U.u"))* 1000);
 		return($fields);
