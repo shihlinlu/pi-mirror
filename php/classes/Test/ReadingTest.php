@@ -35,15 +35,6 @@ class ReadingTest extends SensorTest {
 
     protected $VALID_SENSORDATETIME = null;
 
-	/**
-	 * valid timestamp to use as sunriseReadingDate
-	 */
-	protected $VALID_SUNRISEDATE = null;
-
-	/**
-	 * valid timestamp to use as sunsetReadingDate
-	 **/
-	protected $VALID_SUNSETDATE = null;
 
 	/**
 	 * test inserting a valid Reading and verify that the actual mySQL data matches
@@ -53,7 +44,7 @@ class ReadingTest extends SensorTest {
 		$numRows = $this->getConnection()->getRowCount("reading");
 
 		// create a new Reading and insert it into mySQL
-		$reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+		$reading = new Reading(null, $this->readingId->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$this->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
@@ -88,7 +79,7 @@ class ReadingTest extends SensorTest {
         $reading->insert($this->getPDO());
 
         // grab the data from mySQL and enforce the fields match our expectations
-        $pdoReading = Sensor::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
+        $pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
         $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
         $this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
         $this->assertEquals($pdoReading->getSensorDateTime(), $this->VALID_SENSORDATETIME);
@@ -113,7 +104,7 @@ class ReadingTest extends SensorTest {
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new Reading and insert into mySQL
-        $reading = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
         // delete the Reading from mySQL
