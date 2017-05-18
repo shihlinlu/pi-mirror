@@ -123,7 +123,7 @@ class ReadingTest extends PiMirrorTest {
      *
      * @expectedException \PDOException
      **/
-    public function testDeleteInvalidReading(): void {
+    public function testDeleteInvalidReading() : void {
         // create a reading and try to delete it without acutally inserting it
         $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->delete($this->getPDO());
