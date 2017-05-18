@@ -15,7 +15,7 @@ require_once(dirname(__DIR__) . "/autoload.php");
  * @author Luc Flynn <lflynn7@cnm.edu>
  * @author Shihlin Lu <slu5@cnm.edu>
  **/
-class ReadingTest extends SensorTest {
+class ReadingTest extends PiMirrorTest {
 	/**
 	 * Sensor that created the Reading; this is for foreign key relations
 	 * @var reading
@@ -63,10 +63,9 @@ class ReadingTest extends SensorTest {
      * @expectedException \PDOException
      **/
     public function testInsertInvalidReading() : void {
-        // create a reading with a non null sensorId and watch it fail
-        $reading = new Reading(SensorTest::INVALID_KEY, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
-
-        $reading->insert($this->getPDO());
+        // create a sensor with a non null sensorId and watch it fail
+        $sensor = new Reading(PiMirrorTest::INVALID_KEY, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $sensor->insert($this->getPDO());
     }
 
     /**
@@ -77,7 +76,7 @@ class ReadingTest extends SensorTest {
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new Reading and insert into mySQL
-        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
         // grab the data from mySQL and enforce the fields match our expectations
@@ -94,7 +93,7 @@ class ReadingTest extends SensorTest {
      **/
     public function testUpdateInvalidReading() {
         // create a Reading and try to update it without actually inserting it
-        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->update($this->getPDO());
     }
 
@@ -106,7 +105,7 @@ class ReadingTest extends SensorTest {
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new Reading and insert into mySQL
-        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null,$this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
         // delete the Reading from mySQL
@@ -126,7 +125,7 @@ class ReadingTest extends SensorTest {
      **/
     public function testDeleteInvalidReading(): void {
         // create a reading and try to delete it without acutally inserting it
-        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->delete($this->getPDO());
     }
 
@@ -138,7 +137,7 @@ class ReadingTest extends SensorTest {
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new reading and insert into mySQL
-        $reading = new Reading(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
         // grab the data from mySQL and enforce the fields match our expectations
