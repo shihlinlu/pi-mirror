@@ -194,7 +194,7 @@ public function insert(\PDO $pdo) : void {
 		throw(new \PDOException("not a new reading"));
 	}
 	//create query template
-	$query = "DELETE FROM reading WHERE readingId =: readingId";
+	$query = "DELETE FROM reading WHERE readingId = :readingId";
 	$statement = $pdo->prepare($query);
 
 	//bind the member variables to the place holder in the template
