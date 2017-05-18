@@ -17,15 +17,15 @@ require_once(dirname(__DIR__) . "/autoload.php");
 class SensorTest extends PiMirrorTest {
 	/**
 	 * valid sensor unit to use
-	 * @var string $VALID_SENSORVALUE
+	 * @var string $VALID_SENSORUNIT
 	 **/
-	protected $VALID_SENSORVALUE = "PPM";
+	protected $VALID_SENSORUNIT = "PPM";
 
 	/**
 	 * valid sensor description to use
-	 * @var string $VALID_SENSORDATETIME
+	 * @var string $VALID_SENSORDESCRIPTION
 	 **/
-	protected $VALID_SENSORDATETIME = "Carbon Dioxide";
+	protected $VALID_SENSORDESCRIPTION = "Carbon Dioxide";
 
 	/**
 	 * default setup operation
@@ -43,7 +43,7 @@ class SensorTest extends PiMirrorTest {
 		$numRows = $this->getConnection()->getRowCount("sensor");
 
 		// create a new Sensor and insert into mySQL
-		$sensor = new Sensor(null, $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
 
 		// var_dump($sensor);
 
@@ -52,8 +52,8 @@ class SensorTest extends PiMirrorTest {
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoSensor = Sensor::getSensorBySensorId($this->getPDO(), $sensor->getSensorId());
 		$this->assertEquals($numRows +1, $this->getConnection()->getRowCount("sensor"));
-		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORVALUE);
-		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDATETIME);
+		$this->assertEquals($pdoSensor->getSensorUnit(), $this->VALID_SENSORUNIT);
+		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
 	}
 
 	/**
