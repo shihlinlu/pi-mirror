@@ -123,7 +123,7 @@ class SensorTest extends PiMirrorTest {
 	 * @expectedException \PDOException
 	 **/
 	public function testDeleteInvalidSensor(): void {
-		// create a Sensor and try to delete it without acutally inserting it
+		// create a Sensor and try to delete it without actually inserting it
 		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
 		$sensor->delete($this->getPDO());
 	}
@@ -154,5 +154,29 @@ class SensorTest extends PiMirrorTest {
 		$sensor = Sensor::getSensorBySensorId($this->getPDO(), PiMirrorTest::INVALID_KEY);
 		$this->assertNull($sensor);
 	}
+
+	/**
+	 * test grabbing all sensors
+	 **/
+	public function testGetAllValidSensors() : void {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("sensors");
+
+		// create a new Sensor and insert it into mySQL
+		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
+		$sensor->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$results = Sensor::getAllSensors($this->getPDO());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensors"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\DataDesign\\Sensor", $results);
+
+		// grab the result from the array and validate it
+		$pdoSensor = $results[0];
+		$this->assertEquals($pdoSensor->getsensorUnit(), $this->VALID_SENSORUNIT);
+		$this->assertEquals($pdoSensor->getSensorDescription(), $this->VALID_SENSORDESCRIPTION);
+	}
+
 }
 
