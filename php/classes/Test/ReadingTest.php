@@ -170,4 +170,29 @@ class ReadingTest extends SensorTest  {
         $reading = Sensor::getReadingByReadingId($this->getPDO(), PiMirrorTest::INVALID_KEY);
         $this->assertNull($reading);
     }
+
+    /**
+     * test grabbing all Readings
+     **/
+    public function testGetAllValidReadings() : void {
+    	// count the number of rows and save it for later
+		 $numRows = $this->getConnection()->getRowCount("reading");
+
+		 // create a new Reading and insert it into my SQL
+		 $reading = new reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+		 $reading->insert($this->getPDO());
+
+		 // grab the data from mySQL and enforce the fields match our expectations
+		 $results = Reading::getAllReadings($this->getPDO());
+		 $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
+		 $this->assertCount(1, $results);
+		 $this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
+
+		 // grab the result from the array and validate it
+		 $pdoReading= $results[0];
+		 $this->assertEquals($pdoReading->getReadingSensorId(), $this->reading->getReadingId());
+		 $this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
+		 //format the date too seconds since the beginning of time to avoid round off error
+		 $this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+	 }
 }
