@@ -15,6 +15,7 @@ CREATE TABLE reading (
 	readingSensorId INT UNSIGNED NOT NULL,
 	sensorValue DECIMAL(12,6) NOT NULL,
 	sensorDateTime TIMESTAMP(6) NOT NULL,
+
 	INDEX (readingSensorId),
 	FOREIGN KEY (readingSensorId) REFERENCES sensor(sensorId),
 	PRIMARY KEY(readingId)

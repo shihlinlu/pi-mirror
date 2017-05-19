@@ -8,6 +8,7 @@ require_once("autoload.php");
  * @version 1.0
  **/
 class Reading implements \JsonSerializable {
+	use ValidateDate;
 	/**
 	 * id for the sensor reading, primary key
 	 * @var int $readingId;
@@ -235,12 +236,12 @@ public function update(\PDO $pdo): void {
 		throw(new \PDOException("unable to update a reading that does not exist"));
 	}
 	//create query template
-	$query = "UPDATE reading SET sensorReadingId = :sensorReadingId, sensorValue = :sensorValue, sensorDateTime = :sensorDateTime WHERE readingId = :readingId";
+	$query = "UPDATE reading SET readingSensorId = :sensorReadingId, sensorValue = :sensorValue, sensorDateTime = :sensorDateTime WHERE readingId = :readingId";
 	$statement = $pdo->prepare($query);
 
 	//bind the member variables to the place holders in the template
-	$formattedDate = $this->sensorDateTime->format("Y-m-d H:i:s");
-	$parameters = ["readingSensorId" => $this-> readingSensorId, "sensorValue" => $this->sensorValue, "sensorDateTime" => $this->sensorDateTime, "readingId" => $this->readingId];
+	$formattedDate = $this->sensorDateTime->format("Y-m-d H:i:s.u");
+	$parameters = ["readingSensorId" => $this-> readingSensorId, "sensorValue" => $this->sensorValue, "sensorDateTime" => $formattedDate, "readingId" => $this->readingId];
 	$statement->execute($parameters);
 }
 
@@ -306,7 +307,7 @@ public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise
 		throw(new $exceptionType($exception->getMessage(), 0, $exception));
 	}
 	//create query template
-	$query = "SELECT readingId, sensorReadingId, sensorValue, sensorDateTime from reading WHERE sensorDateTime >= :sunriseReadingDate AND tweetDate <= :sunsetReadingDate";
+	$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime from reading WHERE sensorDateTime >= :sunriseReadingDate AND sensorDateTime <= :sunsetReadingDate";
 	$statement= $pdo->prepare($query);
 
 	//format the dates so that mySQL can use them
@@ -318,16 +319,12 @@ public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise
 
 	//build an array of readings
 	$readings = new \SplFixedArray($statement->rowCount());
-	$statement->execute($parameters);
-
-	//build an array of readings
-	$readings = new \SplFixedArray($statement->rowCount());
 	$statement->setFetchMode(\PDO::FETCH_ASSOC);
 
 	while(($row = $statement->fetch()) !== false) {
 		try{
 			$reading = new Reading($row["readingId"], $row["readingSensorIdId"], $row["sensorValue"], $row["sensorDateTime"]);
-			$readings[$reading->key()] = $reading;
+			$readings[$readings->key()] = $reading;
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
@@ -350,7 +347,7 @@ public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise
  */
 public static function getAllReadings(\PDO $pdo): \SPLFixedArray {
 	//create query template
-	$query = "SELECT readingId, sensorReadingId, SensorValue, sensorDateTime FROM reading";
+	$query = "SELECT readingId, readingSensorId, SensorValue, sensorDateTime FROM reading";
 	$statement = $pdo->prepare($query);
 	$statement->execute();
 
