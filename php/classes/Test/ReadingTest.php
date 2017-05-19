@@ -2,6 +2,7 @@
 namespace Edu\Cnm\PiMirror\Test;
 
 use Edu\Cnm\PiMirror\Reading;
+use Edu\Cnm\PiMirror\Sensor;
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/autoload.php");
@@ -34,6 +35,20 @@ class ReadingTest extends SensorTest  {
      **/
 
     protected $VALID_SENSORDATETIME;
+
+	/**
+	 * create dependent objects before running each test
+	 */
+	public final function setUp() : void {
+		//run the default  setUp() method first
+		parent::setUp();
+		//create and insert a Sensor to own the test Reading
+		$this->sensor = new Sensor(null, "data", "test");
+		$this->sensor->insert($this->getPDO());
+
+		//calculate the date (just use the time the unit test was setup...)
+		$this->VALID_SENSORDATETIME = new \DateTime();
+	}
 
 
 	/**
