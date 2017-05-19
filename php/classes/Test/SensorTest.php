@@ -160,7 +160,7 @@ class SensorTest extends PiMirrorTest {
 	 **/
 	public function testGetAllValidSensors() : void {
 		// count the number of rows and save it for later
-		$numRows = $this->getConnection()->getRowCount("sensors");
+		$numRows = $this->getConnection()->getRowCount("sensor");
 
 		// create a new Sensor and insert it into mySQL
 		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
@@ -168,9 +168,9 @@ class SensorTest extends PiMirrorTest {
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$results = Sensor::getAllSensors($this->getPDO());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensors"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("sensor"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\DataDesign\\Sensor", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Sensor", $results);
 
 		// grab the result from the array and validate it
 		$pdoSensor = $results[0];
