@@ -87,17 +87,6 @@ class SensorTest extends PiMirrorTest {
 	}
 
 	/**
-	 * test updating a Sensor that does not exist
-	 *
-	 * @expectedException \PDOException
-	 **/
-	public function testUpdateInvalidSensor() {
-		// create a Sensor and try to update it without actually inserting it
-		$sensor = new Sensor(null, $this->VALID_SENSORUNIT, $this->VALID_SENSORDESCRIPTION);
-		$sensor->update($this->getPDO());
-	}
-
-	/**
 	 * test creating a Sensor and then deleting it
 	 **/
 	public function testDeleteValidSensor() : void {

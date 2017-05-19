@@ -194,28 +194,6 @@ class Sensor implements \JsonSerializable {
 	}
 
 	/**
-	 * updates this Sensor in mySQL
-	 *
-	 * @param \PDO $pdo PDO connection object
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throws \TypeError if $pdo is not a PDO connection object
-	 */
-	public function update(\PDO $pdo) : void {
-		// enforce the sensorId is not null (i.e., don't update a sensor that hasn't been inserted)
-		if($this->sensorId === null) {
-			throw(new \PDOException("unable to update a sensor that does not exist"));
-		}
-
-		// create query template
-		$query = "UPDATE sensor SET sensorUnit = :sensorUnit, sensorDescription = :sensorDescription WHERE sensorId = :sensorId";
-		$statement = $pdo->prepare($query);
-
-		// bind the member variables to the place holders in the template
-		$parameters = ["sensorUnit" => $this->sensorUnit, "sensorDescription" => $this->sensorDescription];
-		$statement->execute($parameters);
-	}
-
-	/**
 	 * get Sensor by sensor id
 	 *
 	 * @param \PDO $pdo PDO connection object
