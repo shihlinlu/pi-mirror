@@ -43,7 +43,7 @@
 						Pi-Mirror
 					</h1>
 				</div>
-				<div class="col-md-6 text-center">
+				<div class="col-md-6 text-right">
 					<img src="images/date.png" alt="date">
 					<img src="images/time.png" alt="time">
 				</div>
@@ -89,7 +89,7 @@
 			</div>
 			<div class="row pad-down">
 				<div class="col-md-6">
-					<img src="images/conditions.jpeg">
+					<img src="images/gusty.png">
 				</div>
 				<div class="col-md-6">
 					<h1>Weather Data</h1>
