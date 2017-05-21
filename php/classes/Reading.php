@@ -170,7 +170,7 @@ public function setSensorDateTime($newSensorDateTime = null) : void {
 		$this->sensorDateTime = new \DateTime();
 		return;
 	}
-// store the like date using the validateDate trait
+// store the sensor reading date using the ValidateDate trait
 	try {
 		$newSensorDateTime = self::validateDateTime($newSensorDateTime);
 	} catch(\InvalidArgumentException | \RangeException $exception) {
@@ -189,17 +189,21 @@ public function setSensorDateTime($newSensorDateTime = null) : void {
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 **/
 public function insert(\PDO $pdo) : void {
-	//enforce the readingId is null (i.e., don't insert a tweet that already exists)
+	//enforce the readingId is null (i.e., don't insert a reading that already exists)
 	if($this->readingId !== null) {
 		throw(new \PDOException("not a new reading"));
 	}
 	//create query template
-	$query = "DELETE FROM reading WHERE readingId = :readingId";
+	$query = "INSERT INTO reading(readingSensorId, sensorValue, sensorDateTime) VALUES(:readingSensorId, :readingValue, :readingDateTime)";
 	$statement = $pdo->prepare($query);
 
 	//bind the member variables to the place holder in the template
-	$parameters = ["readingId" => $this->readingId];
+	$formattedDate = $this->readingDateTime->format("Y-m-d H:i:s:u");
+	$parameters = ["readingSensorId" => $this->readingSensorId, "readingValue" => $this->readingValue, "readingDateTime" => $formattedDate];
 	$statement->execute($parameters);
+
+	// update the null readingId with what mySQL gave us
+	$this->readingId = intval($pdo->lastInsertId());
 }
 
 	/**
