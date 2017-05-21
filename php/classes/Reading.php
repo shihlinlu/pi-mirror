@@ -67,18 +67,18 @@ class Reading implements \JsonSerializable {
 	 * accessor method for reading id
 	 * @return int|null value of reading id
 	 **/
-	public function getReadingId(): ?int {
+	public function getReadingId(): int {
 		return($this->readingId);
 	}
 
 	/**
-	 * Mutator method for reading id
+	 * mutator method for reading id
 	 *
 	 * @param int|null $newReadingId value of reading id
 	 * @throws \RangeException if $newReadingId is not positive
 	 * @throws \TypeError if $newReadingId is not an integer
 	 **/
-	public function setReadingId(int $newReadingId): void {
+	public function setReadingId(?int $newReadingId): void {
 		//if reading is null return immediately
 		if($newReadingId === null) {
 			$this->readingId = null;
@@ -93,7 +93,7 @@ class Reading implements \JsonSerializable {
 	}
 
 	/**
-	 * Accessor method for readingSensorId
+	 * accessor method for reading sensor id
 	 * @return int the sensor in which the reading came from
 	 **/
 
@@ -101,9 +101,9 @@ class Reading implements \JsonSerializable {
 		return($this->readingSensorId);
 	}
 	/**
-	 * mutator method
+	 * mutator method for reading sensor id
 	 *
-	 * @param int|null $newReadingSensorId value of the readingSensorId
+	 * @param int $newReadingSensorId value of the readingSensorId
 	 * @throws \RangeException if $newReadingSensorId is not positive
 	 * @throws \TypeError if $newReadingSensorId is not an integer
 	 **/
@@ -123,17 +123,17 @@ public function setReadingSensorId(int $newReadingSensorId) : void {
 }
 
 	/**
-	 * accessor method for sensorValueId
+	 * accessor method for sensor value
 	 *
 	 * @return int the data value from the sensor's reading
 	 **/
-public function getSensorValue() :int{
+public function getSensorValue() :int {
 	return($this->sensorValue);
 }
 	/**
-	 * mutator method for sensor reading
+	 * mutator method for sensor value
 	 *
-	 *@param int $sensorValue the value from the sensor's reading
+	 *@param int $newSensorValue the value from the sensor's reading
 	 *@throws \InvalidArgumentException if $newSensorValue in not an integer or insecure
 	 *@throws \RangeException if $newSensorValue is not positive
 	 *@throws \TypeError if $newSensorValue is not an integer
@@ -150,7 +150,7 @@ public function getSensorValue() :int{
 	}
 
 	/**
-	 * Accessor method for timestamp
+	 * accessor method for timestamp
 	 *
 	 * @return string $newTimeStamp when the reading was taken
 	 **/
@@ -160,7 +160,7 @@ public function getSensorDateTime(): string {
 	/**
 	 * mutator method for timestamp
 	 *
-	 * @param \DateTime|string|null $newTimeStamp time stamp for when we got this sensor reading
+	 * @param \DateTime|string|null $newSensorDateTime sensor date as a DateTime object or string (or null to load current time) for when we got this sensor reading
 	 * @throws \InvalidArgumentException if $newSensorDateTime is not a valid object or string
 	 * @throws \RangeException if $newSensorDateTime is a date that does not exist
 	 **/
