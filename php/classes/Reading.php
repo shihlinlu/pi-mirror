@@ -198,8 +198,8 @@ public function insert(\PDO $pdo) : void {
 	$statement = $pdo->prepare($query);
 
 	//bind the member variables to the place holder in the template
-	$formattedDate = $this->readingDateTime->format("Y-m-d H:i:s:u");
-	$parameters = ["readingSensorId" => $this->readingSensorId, "readingValue" => $this->readingValue, "readingDateTime" => $formattedDate];
+	$formattedDate = $this->sensorDateTime->format("Y-m-d H:i:s.u");
+	$parameters = ["readingSensorId" => $this->readingSensorId, "readingValue" => $this->sensorValue, "readingDateTime" => $formattedDate];
 	$statement->execute($parameters);
 
 	// update the null readingId with what mySQL gave us
@@ -222,6 +222,7 @@ public function insert(\PDO $pdo) : void {
 		//create query template
 		$query = "DELETE FROM reading WHERE readingId = :readingid";
 		$statement = $pdo->prepare($query);
+
 		//bind the member variables to te place holder in the template
 		$parameters = ["readingId" => $this->readingId];
 		$statement->execute($parameters);
@@ -245,12 +246,12 @@ public function update(\PDO $pdo): void {
 
 	//bind the member variables to the place holders in the template
 	$formattedDate = $this->sensorDateTime->format("Y-m-d H:i:s.u");
-	$parameters = ["readingSensorId" => $this-> readingSensorId, "sensorValue" => $this->sensorValue, "sensorDateTime" => $formattedDate, "readingId" => $this->readingId];
+	$parameters = ["readingSensorId" => $this->readingSensorId, "sensorValue" => $this->sensorValue, "sensorDateTime" => $formattedDate, "readingId" => $this->readingId];
 	$statement->execute($parameters);
 }
 
 	/**
-	 * gets the reading by the readinId
+	 * gets the reading by the readingId
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param int $readingId reading id to search for
@@ -278,7 +279,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?readi
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		$row = $statement->fetch();
 		if($row !== false) {
-			$reading = new Reading($row["readingId"], $row["readingSensor"], $row["readingValue"], $row["sensorDateTime"]);
+			$reading = new Reading($row["readingId"], $row["readingSensorId"], $row["readingValue"], $row["sensorDateTime"]);
 		}
 	} catch(\Exception $exception){
 		// if the row could not be converted rethrow it
@@ -296,16 +297,18 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?readi
 	 * @return \SplFixedArray of readings found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct dates are in the wrong format
+	 * @throws \InvalidArgumentException if either sun dates are in the wrong format
 	 **/
-public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunriseReadingDate, \DateTime $sunsetReadingDate ) : \SplFixedArray {
+public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDate, $sunsetReadingDate ) : \SplFixedArray {
 	//enforce both date are present
 	if((empty ($sunriseReadingDate) === true) || (empty($sunsetReadingDate) === true)) {
 		throw (new \InvalidArgumentException("dates are empty of insecure"));
 	}
 	//ensure both dates are in the correct format and are in the correct format and are secure
 	try{
-		$sunsetReadingDate = self::validateDateTime($sunriseReadingDate);
 		$sunriseReadingDate = self::validateDateTime($sunsetReadingDate);
+		$sunsetReadingDate = self::validateDateTime($sunriseReadingDate);
+
 	} catch(\InvalidArgumentException | \RangeException $exception) {
 		$exceptionType = get_class($exception);
 		throw(new $exceptionType($exception->getMessage(), 0, $exception));
@@ -316,7 +319,7 @@ public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise
 
 	//format the dates so that mySQL can use them
 	$formattedSunriseDate = $sunriseReadingDate->format("Y-m-d H:i:s.u");
-	$formattedSunsetDate = $sunsetReadingDate->format("Y-m-d H:i:s:u");
+	$formattedSunsetDate = $sunsetReadingDate->format("Y-m-d H:i:s.u");
 
 	$parameters = ["sunriseReadingDate" => $formattedSunriseDate, "sunsetReadingDate" => $formattedSunsetDate];
 	$statement->execute($parameters);
@@ -327,7 +330,7 @@ public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise
 
 	while(($row = $statement->fetch()) !== false) {
 		try{
-			$reading = new Reading($row["readingId"], $row["readingSensorIdId"], $row["sensorValue"], $row["sensorDateTime"]);
+			$reading = new Reading($row["readingId"], $row["readingSensorId"], $row["sensorValue"], $row["sensorDateTime"]);
 			$readings[$readings->key()] = $reading;
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
@@ -335,15 +338,8 @@ public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise
 	}
 	return($readings);
 }
-
-
-
-
-
-
-
-/**
- * get all readings
+	/**
+ * get all Readings
  * @param \PDO $pdo PDO connection object
  * @return \SplFixedArray SplFixedArray of readings found or null if not found
  * @throws \PDOException when mySQL related errors occur
@@ -351,7 +347,7 @@ public static function getReadingBySensorDateTime (\PDO $pdo, \DateTime $sunrise
  */
 public static function getAllReadings(\PDO $pdo): \SPLFixedArray {
 	//create query template
-	$query = "SELECT readingId, readingSensorId, SensorValue, sensorDateTime FROM reading";
+	$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime FROM reading";
 	$statement = $pdo->prepare($query);
 	$statement->execute();
 
@@ -360,7 +356,7 @@ public static function getAllReadings(\PDO $pdo): \SPLFixedArray {
 	$statement->setFetchMode(\PDO::FETCH_ASSOC);
 	while(($row = $statement->fetch()) !== false) {
 		try{
-			$reading = new Reading($row["readingId"], $row["sensorReadingId"], $row["sensorValue"], $row["sensorDateTime"]);
+			$reading = new Reading($row["readingId"], $row["readingSensorId"], $row["sensorValue"], $row["sensorDateTime"]);
 			$readings[$readings->key()] = $reading;
 			$readings->next();
 		} catch(\Exception $exception) {
@@ -370,14 +366,10 @@ public static function getAllReadings(\PDO $pdo): \SPLFixedArray {
 	}
 	return ($readings);
 }
-
-
-
-
 	/**
 	 * formats the state variables for JSON serialization
 	 *
-	 * @return  array resulting state variables
+	 * @return array resulting state variables to serialize
 	 */
 
 	public function jsonSerialize() {
