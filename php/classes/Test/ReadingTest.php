@@ -77,16 +77,16 @@ class ReadingTest extends SensorTest  {
 		$numRows = $this->getConnection()->getRowCount("reading");
 
 		// create a new Reading and insert it into mySQL
-		$reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
-
+		$reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$reading->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-		$this->assertEquals($pdoReading->getReadingSensorId(), $this->reading->getReadingId());
+		$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getSensorId());
 		$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
-		$this->assertEquals($pdoReading->getSensorDateTime(), $this->VALID_SENSORDATETIME->getTimestamp());
+		// format the date to seconds since the beginning of time to avoid round off error
+		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestampe());
 	}
 
     /**
