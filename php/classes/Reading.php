@@ -38,10 +38,10 @@ class Reading implements \JsonSerializable {
 	/**
 	 * constructor for this Reading
 	 *
-	 * @param ?int $newreadingId, id of the reading or null if new reading
-	 * @param int $readingSensorId id of the sensor where the reading came from
-	 * @param int $sensorValue Decimal value of the sensor reading
-	 * @param \DateTime $sensorDateTime Timestamp when the reading was taken
+	 * @param int|null $newReadingId id of the reading or null if new reading
+	 * @param int $newReadingSensorId id of the sensor where the reading came from
+	 * @param int $newSensorValue Decimal value of the sensor reading
+	 * @param \DateTime|string|null $newSensorDateTime timestamp when the reading was taken
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds (e.g., string too long, negative integers, negative floats)
 	 * @throws \TypeError if data types violate type hints
