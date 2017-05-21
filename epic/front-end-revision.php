@@ -40,19 +40,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 text-center">
-					<h1>
+					<h1 align="left">
 						Pi-Mirror
 					</h1>
 				</div>
-				<div class="col-md-6 text-right">
-					<img src="images/date.png" alt="date">
-					<img src="images/time.png" alt="time">
+				<div class="col-md-6">
+					<img src="images/date.png" align="right" alt="date">
 				</div>
+				<div>
+					<img src="images/time.png" align="right" alt="time">
+				</div>s
 			</div>
 
 			<!-- to do list code -->
 			<div class="row pad-down">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-6" align="left">
 				<h1>To-Do
 					<small>List</small>
 				</h1>
@@ -91,7 +93,7 @@
 			</div>
 			<div class="row pad-down">
 				<div class="col-md-6">
-					<img src="images/gusty.png">
+					<img src="images/gusty.png" width="200" height="200">
 				</div>
 				<div class="col-md-6">
 					<h1>Weather Data</h1>
