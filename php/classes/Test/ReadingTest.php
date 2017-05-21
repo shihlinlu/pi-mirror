@@ -1,8 +1,7 @@
 <?php
 namespace Edu\Cnm\PiMirror\Test;
 
-use Edu\Cnm\PiMirror\Reading;
-use Edu\Cnm\PiMirror\Sensor;
+use Edu\Cnm\PiMirror\{Sensor, Reading};
 
 // grab the class under scrutiny
 require_once(dirname(__DIR__) . "/autoload.php");
@@ -19,9 +18,9 @@ require_once(dirname(__DIR__) . "/autoload.php");
 class ReadingTest extends SensorTest  {
 	/**
 	 * Sensor that created the Reading; this is for foreign key relations
-	 * @var reading
+	 * @var Sensor sensor
 	 **/
-	protected $reading;
+	protected $sensor = null;
 
     /**
      * valid reading unit to use
@@ -34,7 +33,17 @@ class ReadingTest extends SensorTest  {
      * @var \DateTime $VALID_SENSORDATETIME
      **/
 
-    protected $VALID_SENSORDATETIME;
+    protected $VALID_SENSORDATETIME = null;
+
+	/**
+	 * Valid timestamp to use as sunriseReadingDate
+	 */
+	protected $VALID_SUNRISEDATE = null;
+
+	/**
+	 * Valid timestamp to use as sunsetReadingDate
+	 */
+	protected $VALID_SUNSETDATE =null;
 
 	/**
 	 * create dependent objects before running each test
@@ -42,12 +51,21 @@ class ReadingTest extends SensorTest  {
 	public final function setUp() : void {
 		//run the default  setUp() method first
 		parent::setUp();
+
 		//create and insert a Sensor to own the test Reading
-		$this->sensor = new Sensor(null, "data", "test");
+		$this->sensor = new Sensor(null, "PPM", "Carbon Dioxide sensor");
 		$this->sensor->insert($this->getPDO());
 
-		//calculate the date (just use the time the unit test was setup...)
+		//calculate the date (just use the time the unit test was setup)
 		$this->VALID_SENSORDATETIME = new \DateTime();
+
+		//format the sunrise date to use for testing
+		$this->VALID_SUNRISEDATE = new \DateTime();
+		$this->VALID_SUNRISEDATE->sub(new \DateInterval("P10D"));
+
+		//format the sunset date to use for testing
+		$this->VALID_SUNSETDATE = new \DateTime();
+		$this->VALID_SUNSETDATE->add(new \DateInterval("P10D"));
 	}
 
 

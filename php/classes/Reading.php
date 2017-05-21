@@ -5,6 +5,7 @@ require_once("autoload.php");
  * Pi Mirror Reading profile
  *
  * @author dmartin61 <dmartin61@cnm.edu>
+ * Edited by Shihlin Lu, Luc Flynn, and Tucker Logan
  * @version 1.0
  **/
 class Reading implements \JsonSerializable {
