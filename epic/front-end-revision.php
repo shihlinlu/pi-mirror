@@ -44,8 +44,8 @@
 					</h1>
 				</div>
 				<div class="col-md-6 text-center">
-					<h1>4:20</h1>
-					<h1>MAY 16, 2017</h1>
+					<img src="images/date.png" alt="date">
+					<img src="images/time.png" alt="time">
 				</div>
 			</div>
 			<!-- to do list code -->
