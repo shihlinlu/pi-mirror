@@ -54,7 +54,7 @@ class Reading implements \JsonSerializable {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);
 				$this->setSensorValue($newSensorValue);
-				$this->setsensorDateTime($newSensorDateTime);
+				$this->setSensorDateTime($newSensorDateTime);
 			}
 			//determine what exception type was thrown
 			catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception){
