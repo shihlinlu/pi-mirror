@@ -142,7 +142,7 @@ public function getSensorValue() :int {
 
 	public function setSensorValue(float $newSensorValue) : void {
 		//this a way to float the reading data coming in
-		$newSensorValue = filter_var($newSensorValue, FILTER_VALIDATE_FLOAT);
+		$newSensorValue = filter_var($newSensorValue, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
 		if(empty($newSensorValue) === true) {
 			throw(new \InvalidArgumentException("the data does not exist!"));
 		}
