@@ -35,75 +35,41 @@
 		<title>Front End- Static</title>
 	</head>
 	<body>
-
 		<!-- container for the page -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 text-center">
-					<h1 align="left">
-						Pi-Mirror
-					</h1>
-				</div>
-				<div class="col-md-6">
-					<img src="images/date.png" align="right" alt="date">
-				</div>
-				<div>
-					<img src="images/time.png" align="right" alt="time">
-				</div>s
-			</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-3">
+								<img src="images/notification.png">
+							</div>
+							<div class="col-md-4 text-right">
+								<h1>
+									Pi-Mirror
+								</h1>
+							</div>
+							<div class="col-md-3 col-md-offset-2 col-xs-4 col-xs-offset-4">
+								<img src="images/date.png"  alt="date width="200" height="200">
+								<img src="images/time.png" class="float-right"  alt="time" width="200" height="200">
+								<img src="images/gusty.png" width="200" height="200">
+							</div>
+						</div>
+						<!-- to do list code -->
+						<div class="row pad-down">
+							<div class="form-group col-md-6 col-md-offset-6">
+								<h1>To-Do
+									<small>List</small>
+								</h1>
+								<form role="form">
+									<input type="text" class="form-control" placeholder="Your Task" name="task">
+								</form>
+								<button type="button" class="btn btn btn-primary">Add</button>
+							</div>
+							<div class="col-md-6 col-md-offset-6 text-right">
+								<p>Slack this</p>
+								<p>Slack that</p>
+								<p>Slack you</p>
+							</div>
+						</div>
 
-			<!-- to do list code -->
-			<div class="row pad-down">
-			<div class="form-group col-md-6" align="left">
-				<h1>To-Do
-					<small>List</small>
-				</h1>
-				<form role="form">
-					<input type="text" class="form-control" placeholder="Your Task" name="task">
-				</form>
-				<button type="button" class="btn btn btn-primary">Add</button>
-			</div>
-				<div class="col-md-6">
-					<p>Slack this</p>
-					<p>Slack that</p>
-					<p>Slack you</p>
-				</div>
-			</div>
-			<div class="row pad-down ">
-				<div class="col-md-6">
-					<p>This will be a list -  senors that go "DETECT DETECT DETECT"</p>
-					<table class="table table-hover">
-						<tr>
-							<th>oxygen</th>
-							<th>Humidity</th>
-						</tr>
-						<tr>
-							<td>EXAMPLE</td>
-							<td>EXAMPLE</td>
-						</tr>
-						<tr>
-							<td>EXAMPLE</td>
-							<td>EXAMPLE</td>
-						</tr>
-					</table>
-				</div>
-				<div class="col-md-6">
-					<img src="images/notification.jpeg">
-				</div>
-			</div>
-			<div class="row pad-down">
-				<div class="col-md-6">
-					<img src="images/gusty.png" width="200" height="200">
-				</div>
-				<div class="col-md-6">
-					<h1>Weather Data</h1>
-					<ul>
-						<li>WINDY AS TITAN'S GAS</li>
-						<li>HOT AS HADES</li>
-						<li>CHANCE OF CATCHING ZEUS' WRATHS</li>
-					</ul>
-				</div>
-			</div>
-
+					</div>
 	</body>
 </html>

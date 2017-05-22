@@ -11,11 +11,26 @@ body {
 }
 
 .container{
-    padding: 0 10em;
+    padding: 30px 10em;
     border: 1em solid black;
     height: 100%;
     width: 100% !important;
 
+}
+// Classes
+	.pull-left {
+		float: left !important;
+	}
+.pull-right {
+	float: right !important;
+}
+
+// Usage as mixins
+	.element {
+	.pull-left();
+	}
+.another-element {
+.pull-right();
 }
 
 em{
@@ -23,8 +38,7 @@ em{
 
 }
 
-img[src="images/clock.jpeg"] {
-    width: 10em;
+img[src="images/time.png"] {
 
 
 }
