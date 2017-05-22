@@ -134,7 +134,7 @@ class ReadingTest extends PiMirrorTest  {
      *
      * @expectedException \PDOException
      **/
-    public function testUpdateInvalidReading() {
+    public function testUpdateInvalidReading() : void {
         // create a Reading with a non null reading id and watch it fail
         $reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->update($this->getPDO());
@@ -184,7 +184,7 @@ class ReadingTest extends PiMirrorTest  {
     /**
      * test inserting a reading and regrabbing it from mySQL
      **/
-    public function testGetValidReadingByReadingSensorId() : void {
+    public function testGetValidReadingByReadingSensorId() {
         // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
