@@ -38,10 +38,15 @@ try {
 		if(empty($requestObject->userLocation) === true) {
 			throw(new \InvalidArgumentException("Currently disconnected", 401));
 		} else {
-			$userLocation = filter_var($requestObject->userLocation,FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
+			if(filter_var($requestObject->userLocation, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND) == false) {
+				throw(new \InvalidArgumentException("Invalid geo location format", 401));
+			} else (
+			$userLocation = filter_var($requestObject->userLocation, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND)
+			);
 		}
-		//can be removed after unit testing. Used to make sure that geo location is correct float format
-		var_dump($userLocation)
+	}
+		//can be removed after testing. Used to make sure that geo location is correct float format
+		var_dump($userLocation);
 
 		/*
 		//grab the profile from the database by the email provided
