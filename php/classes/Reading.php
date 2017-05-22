@@ -126,9 +126,9 @@ public function setReadingSensorId(int $newReadingSensorId) : void {
 	/**
 	 * accessor method for sensor value
 	 *
-	 * @return int the data value from the sensor's reading
+	 * @return float the data value from the sensor's reading
 	 **/
-public function getSensorValue() :int {
+public function getSensorValue() : float {
 	return($this->sensorValue);
 }
 	/**
@@ -204,7 +204,7 @@ public function insert(\PDO $pdo) : void {
 	$statement->execute($parameters);
 
 	// update the null readingId with what mySQL gave us
-	$this->readingId = intval($pdo->lastInsertId());
+	$this->readingId = floatval($pdo->lastInsertId());
 }
 
 	/**
@@ -286,7 +286,6 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 		// if the row could not be converted rethrow it
 		throw(new \PDOException($exception->getMessage(), 0, $exception));
 	}
-	return($reading);
 }
 	/**
 	 * gets the Reading by sensor id
