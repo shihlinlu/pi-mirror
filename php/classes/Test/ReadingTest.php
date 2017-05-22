@@ -173,7 +173,7 @@ class ReadingTest extends SensorTest  {
     }
 
 	/**
-	 * test grabbing a Reading that does not exist
+	 * test grabbing a Reading by reading id that does not exist
 	 */
 	public function testGetInvalidReadingByReadingId() : void {
 		// grab a sensor id that exceeds the maximum allowable sensor id
@@ -207,13 +207,39 @@ class ReadingTest extends SensorTest  {
     }
 
     /**
-     * test grabbing a Reading that does not exist
+     * test grabbing a Reading by sensor id that does not exist
      **/
     public function testGetInvalidReadingByReadingSensorId() : void {
         // grab a sensor id that exceeds the maximum allowable sensor id
-        $reading = Sensor::getReadingByReadingId($this->getPDO(), PiMirrorTest::INVALID_KEY);
+        $reading = Reading::getReadingByReadingSensorId($this->getPDO(), PiMirrorTest::INVALID_KEY);
         $this->assertNull($reading);
     }
+	/**
+	 * test grabbing a valid Reading by sunset and sunrise date
+	 **/
+	public function testGetValidReadingBySunDate() : void {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("reading");
+
+		// create a new Reading and insert it into the database
+		$reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+		$reading->insert($this->getPDO());
+
+		// grab the reading from the database and see if it matches expectations
+		$results = Reading::getReadingBySensorDateTime($this->getPDO(), $this->VALID_SUNRISEDATE, $this->VALID_SUNSETDATE);
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
+		$this->assertCount(1,$results);
+
+		// enforce that no other objects are bleeding into the test
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
+
+		// use the first result to make sure that the inserted reading meets expectations
+		$pdoReading = $results[0];
+		$this->assertEquals($pdoReading->getReadingId(), $reading->getReadingId());
+		$this->assertEquals($pdoReading->getReadinSensorId(), $reading->getReadingSensorId());
+		$this->assertEquals($pdoReading->getSensorValue(), $reading->getSensorValue());
+		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+	}
 
     /**
      * test grabbing all Readings
