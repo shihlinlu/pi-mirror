@@ -244,7 +244,7 @@ class ReadingTest extends PiMirrorTest  {
 		/**
 		 * Need to change expected count 0 to 1 once data is actually stored in MySQL
 		 **/
-		$this->assertCount(0, $results);
+		$this->assertCount(1, $results);
 
 		// enforce that no other objects are bleeding into the test
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
