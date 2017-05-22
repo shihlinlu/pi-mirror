@@ -228,6 +228,9 @@ class ReadingTest extends PiMirrorTest  {
 		// grab the reading from the database and see if it matches expectations
 		$results = Reading::getReadingBySensorDateTime($this->getPDO(), $this->VALID_SUNRISEDATE, $this->VALID_SUNSETDATE);
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
+		/**
+		 * Need to change expected count 0 to 1 once data is actually stored in MySQL
+		 **/
 		$this->assertCount(0, $results);
 
 		// enforce that no other objects are bleeding into the test
