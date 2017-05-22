@@ -6,8 +6,8 @@ html {
     height: 100%;
 	background-color: black;
 	color: white;
-
 }
+
 body {
     height: 100%;
 }
@@ -19,7 +19,12 @@ body {
     width: 100% !important;
 
 }
-// Classes
+
+.inverted {
+	filter: invert(1);
+}
+
+/* Classes
 	.pull-left {
 		float: left !important;
 	}
@@ -34,6 +39,7 @@ body {
 .another-element {
 .pull-right();
 }
+*/
 
 em{
     font-size: 4em;
@@ -78,32 +84,4 @@ a.close {
 }
 .pad-down{
     padding-top: 30%;
-}
-
-table {
-    table-layout: fixed;
-    width: 100%;
-    border: 1px solid black;
-    border-collapse: collapse;
-
-}
-
-thead th:nth-child(1) {
-    width: 30%;
-}
-
-thead th:nth-child(2) {
-    width: 20%;
-}
-
-thead th:nth-child(3) {
-    width: 15%;
-}
-
-thead th:nth-child(4) {
-    width: 35%;
-}
-
-th, td {
-    padding: 20px;
 }
