@@ -33,21 +33,17 @@ try {
 		$requestContent = file_get_contents("php://input");
 		$requestObject = json_decode($requestContent);
 
-		//check to make sure the lat & long is not empty.s
-		/*Angular populates a javascript variable called userLocation with the user's geo location, provided by their browser. userLocation is plopped into php and then decoded with json_decode. If it returns empty, user must be offline. If data, verifies and converts to float*/
-		if(empty($requestObject->userLocation) === true) {
+		//Latitude provided vy user's browser
+		$userLocationX = filter_var($requestObject->userLocationX, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
+		if(empty($requestObject->userLocationX) === true) {
 			throw(new \InvalidArgumentException("Currently disconnected", 401));
-		} else {
-			if(filter_var($requestObject->userLocation, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND) == false) {
-				throw(new \InvalidArgumentException("Invalid geo location format", 401));
-			} else (
-			$userLocation = filter_var($requestObject->userLocation, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND)
-			);
 		}
 	}
-		//can be removed after testing. Used to make sure that geo location is correct float format
-		var_dump($userLocation);
-
+		//Longitude provided by user's browser
+		$userLocationY = filter_var($requestObject->userLocationY, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
+		if(empty($requestObject->userLocationY) === true) {
+			throw(new \InvalidArgumentException("Currently disconnected", 401));
+	}
 		/*
 		//grab the profile from the database by the email provided
 		$profile = Profile::getProfileByProfileEmail($pdo, $profileEmail);
