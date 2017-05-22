@@ -195,12 +195,12 @@ public function insert(\PDO $pdo) : void {
 		throw(new \PDOException("not a new reading"));
 	}
 	//create query template
-	$query = "INSERT INTO reading(readingSensorId, sensorValue, sensorDateTime) VALUES(:readingSensorId, :sensorValue, :readingDateTime)";
+	$query = "INSERT INTO reading(readingSensorId, sensorValue, sensorDateTime) VALUES(:readingSensorId, :sensorValue, :sensorDateTime)";
 	$statement = $pdo->prepare($query);
 
 	//bind the member variables to the place holder in the template
 	$formattedDate = $this->sensorDateTime->format("Y-m-d H:i:s.u");
-	$parameters = ["readingSensorId" => $this->readingSensorId, "sensorValue" => $this->sensorValue, "readingDateTime" => $formattedDate];
+	$parameters = ["readingSensorId" => $this->readingSensorId, "sensorValue" => $this->sensorValue, "sensorDateTime" => $formattedDate];
 	$statement->execute($parameters);
 
 	// update the null readingId with what mySQL gave us
