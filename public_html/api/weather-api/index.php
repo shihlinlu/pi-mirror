@@ -34,7 +34,7 @@ try {
 		$requestObject = json_decode($requestContent);
 
 		//check to make sure the lat & long is not empty.s
-		/*Angular populates a javascript variable called userLocation. userLocation is then decoded with json_decode providing php usable geo location information from the user's browser. If it returns empty,  user must be offline*/
+		/*Angular populates a javascript variable called userLocation with the user's geo location, provided by their browser. userLocation is plopped into php and then decoded with json_decode. If it returns empty,  user must be offline*/
 		if(empty($requestObject->userLocation) === true) {
 			throw(new \InvalidArgumentException("Currently disconnected", 401));
 		} else {
