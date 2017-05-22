@@ -6,7 +6,7 @@ require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
 /**
  * api for current weather
  *
- * @author Gkephart & Reztuck (Github)
+ * @author Tucker (Github)
  **/
 
 //prepare an empty reply
@@ -33,17 +33,12 @@ try {
 		$requestContent = file_get_contents("php://input");
 		$requestObject = json_decode($requestContent);
 
-		//check to make sure the password and email field is not empty.s
-		if(empty($requestObject->profileEmail) === true) {
-			throw(new \InvalidArgumentException("Wrong email address.", 401));
+		//check to make sure the lat & long is not empty.s
+		/*Angular populates a javascript variable called userLocation. userLocation is then decoded with json_decode providing php usable geo location information from the user's browser. If it returns empty,  user must be offline*/
+		if(empty($requestObject->userLocation) === true) {
+			throw(new \InvalidArgumentException("Currently disconnected", 401));
 		} else {
 			$profileEmail = filter_var($requestObject->profileEmail, FILTER_SANITIZE_EMAIL);
-		}
-
-		if(empty($requestObject->profilePassword) === true) {
-			throw(new \InvalidArgumentException("Must enter a password.", 401));
-		} else {
-			$profilePassword = $requestObject->profilePassword;
 		}
 
 		/*
