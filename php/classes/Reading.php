@@ -238,7 +238,7 @@ public function insert(\PDO $pdo) : void {
 	 **/
 public function update(\PDO $pdo): void {
 	//enforce the readingId is not null (i.e., don't update reading that has not been inserted)
-	if($this->readingId === null){
+	if($this->readingId === null) {
 		throw(new \PDOException("unable to update a reading that does not exist"));
 	}
 	//create query template
@@ -367,7 +367,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 	}
 
 	/**
-	 * gets an array of readings based on its data
+	 * gets an array of readings based on its date
 	 *
 	 * @param \PDO $pdo connection object
 	 * @param \DateTime $sunriseReadingDate beginning date to search for
