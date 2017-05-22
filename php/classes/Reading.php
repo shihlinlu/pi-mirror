@@ -30,7 +30,7 @@ class Reading implements \JsonSerializable {
 	private $sensorValue;
 
 	/**
-	 * timestamp of when the sensor's reading was recorded
+	 * date and time of when the sensor's reading was recorded
 	 * made for 6 digits
 	 * @var \DateTime $sensorDateTime
 	 **/
@@ -42,7 +42,7 @@ class Reading implements \JsonSerializable {
 	 * @param int|null $newReadingId id of the reading or null if new reading
 	 * @param int $newReadingSensorId id of the sensor where the reading came from
 	 * @param float $newSensorValue Decimal value of the sensor reading
-	 * @param \DateTime|string|null $newSensorDateTime timestamp when the reading was taken
+	 * @param \DateTime|string|null $newSensorDateTime date and time when the reading was taken
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds (e.g., string too long, negative integers, negative floats)
 	 * @throws \TypeError if data types violate type hints
@@ -267,7 +267,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?readi
 	}
 
 	//create query template
-	$query = "select readingId, readingSensorId, sensorValue, sensorDateTime FROM reading WHERE readingId = :readingId";
+	$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime FROM reading WHERE readingId = :readingId";
 	$statement = $pdo->prepare($query);
 
 	//bind the reading id to the place holder in the template

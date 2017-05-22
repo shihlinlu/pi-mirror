@@ -48,7 +48,7 @@ class ReadingTest extends PiMirrorTest  {
 	/**
 	 * Valid timestamp to use as sunsetReadingDate
 	 */
-	protected $VALID_SUNSETDATE =null;
+	protected $VALID_SUNSETDATE = null;
 
 	/**
 	 * create dependent objects before running each test
@@ -85,6 +85,7 @@ class ReadingTest extends PiMirrorTest  {
 		$reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$reading->insert($this->getPDO());
 
+		/** var_dump($reading); */
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
@@ -214,6 +215,14 @@ class ReadingTest extends PiMirrorTest  {
         $reading = Reading::getReadingByReadingSensorId($this->getPDO(), PiMirrorTest::INVALID_KEY);
         $this->assertCount(0, $reading);
     }
+	/**
+	 * test grabbing a Reading by a value that does not exist
+	 **/
+	public function testGetInvalidReadingBySensorValue() : void {
+		// grab a reading by a value that does not exist
+		$reading = Reading::getReadingBySensorValue($this->getPDO(), "There is no value here");
+		$this->assertCount(0, $reading);
+	}
 	/**
 	 * test grabbing a valid Reading by sunset and sunrise date
 	 **/
