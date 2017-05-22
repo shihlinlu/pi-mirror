@@ -26,7 +26,7 @@ class ReadingTest extends PiMirrorTest  {
      * data content value of sensor
      * @var int $VALID_SENSORVALUE
      **/
-    protected $VALID_SENSORVALUE = '101010101010.123456';
+    protected $VALID_SENSORVALUE = '101010101011.123456';
 
 	/**
 	 * data content of updated Reading
