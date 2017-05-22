@@ -43,7 +43,7 @@
 							</div>
 							<div class="col-md-4 text-right">
 								<h1>
-									Pi-Mirror
+									Good Evening
 								</h1>
 							</div>
 							<div class="col-md-3 col-md-offset-2 col-xs-4 col-xs-offset-4">
@@ -54,7 +54,7 @@
 						</div>
 						<!-- to do list code -->
 						<div class="row pad-down">
-							<div class="form-group col-md-6 col-md-offset-6">
+							<div class="form-group col-md-3 col-md-offset-9">
 								<h1>To-Do
 									<small>List</small>
 								</h1>
