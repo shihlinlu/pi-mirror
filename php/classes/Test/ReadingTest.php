@@ -135,8 +135,8 @@ class ReadingTest extends SensorTest  {
      * @expectedException \PDOException
      **/
     public function testUpdateInvalidReading() {
-        // create a Reading and try to update it without actually inserting it
-        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        // create a Reading with a non null reading id and watch it fail
+        $reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->update($this->getPDO());
     }
 
@@ -148,14 +148,14 @@ class ReadingTest extends SensorTest  {
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new Reading and insert into mySQL
-        $reading = new Reading(null,$this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null,$this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
         // delete the Reading from mySQL
         $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-        $reading->insert($this->getPDO());
+        $reading->delete($this->getPDO());
 
-        // grab the data from mySQL and enforce the Sensor does not exist
+        // grab the data from mySQL and enforce the Reading does not exist
         $pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
         $this->assertNull($pdoReading);
         $this->assertEquals($numRows, $this->getConnection()->getRowCount("reading"));
@@ -167,10 +167,19 @@ class ReadingTest extends SensorTest  {
      * @expectedException \PDOException
      **/
     public function testDeleteInvalidReading() : void {
-        // create a reading and try to delete it without acutally inserting it
-        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        // create a reading and try to delete it without actually inserting it
+        $reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->delete($this->getPDO());
     }
+
+	/**
+	 * test grabbing a Reading that does not exist
+	 */
+	public function testGetInvalidReadingByReadingId() : void {
+		// grab a sensor id that exceeds the maximum allowable sensor id
+		$reading = Reading::getReadingByReadingId($this->getPDO(), PiMirrorTest::INVALID_KEY);
+		$this->assertNull($reading);
+	}
 
     /**
      * test inserting a reading and regrabbing it from mySQL
