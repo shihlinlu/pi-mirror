@@ -280,7 +280,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?readi
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		$row = $statement->fetch();
 		if($row !== false) {
-			$reading = new Reading($row["readingId"], $row["readingSensorId"], $row["readingValue"], $row["sensorDateTime"]);
+			$reading = new Reading($row["readingId"], $row["readingSensorId"], $row["sensorValue"], $row["sensorDateTime"]);
 		}
 	} catch(\Exception $exception){
 		// if the row could not be converted rethrow it
