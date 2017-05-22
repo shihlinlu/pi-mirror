@@ -380,7 +380,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDate, $sunsetReadingDate) : \SplFixedArray {
 	//enforce both date are present
 	if((empty ($sunriseReadingDate) === true) || (empty($sunsetReadingDate) === true)) {
-		throw (new \InvalidArgumentException("dates are empty of insecure"));
+		throw (new \InvalidArgumentException("dates are empty or insecure"));
 	}
 	//ensure both dates are in the correct format and are in the correct format and are secure
 	try{
@@ -410,6 +410,7 @@ public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDat
 		try{
 			$reading = new Reading($row["readingId"], $row["readingSensorId"], $row["sensorValue"], $row["sensorDateTime"]);
 			$readings[$readings->key()] = $reading;
+			$readings->next();
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
