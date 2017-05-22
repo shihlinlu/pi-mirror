@@ -228,6 +228,35 @@ class ReadingTest extends PiMirrorTest  {
 		$this->assertCount(0, $reading);
 	}
 	/**
+	 * test grabbing a Reading by value
+	 **/
+	public function testGetValidReadingBySensorValue() : void {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("reading");
+
+		// create a new Tweet and insert to into mySQL
+		$reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+		$reading->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$results = Reading::getReadingBySensorValue($this->getPDO(), $tweet->getSensorValue());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
+		$this->assertCount(1, $results);
+
+		// enforce no other objects are bleeding into the test
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
+
+		// grab the result from the array and validate it
+		$pdoTweet = $results[0];
+		$this->assertEquals($pdoTweet->getReadingSensorId(), $this->sensor->getSensorId());
+		$this->assertEquals($pdoTweet->getSensorValue(), $this->VALID_SENSORVALUE);
+
+		//format the date too seconds since the beginning of time to avoid round off error
+		$this->assertEquals($pdoTweet->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+
+	}
+
+	/**
 	 * test grabbing a valid Reading by sunset and sunrise date
 	 **/
 	public function testGetValidReadingBySunDate() : void {
