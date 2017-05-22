@@ -1,6 +1,6 @@
 <?php
-require_once dirname(__DIR__, 3) . "/php/classes/autoload.php";
-require_once dirname(__DIR__, 3) . "/php/lib/xsrf.php";
+require_once dirname(__DIR__, 3) . "../../php/classes/autoload.php";
+//require_once dirname(__DIR__, 3) . "../../php/lib/xsrf.php";
 require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
 
 /**
@@ -46,21 +46,24 @@ try {
 			$profilePassword = $requestObject->profilePassword;
 		}
 
+		/*
 		//grab the profile from the database by the email provided
 		$profile = Profile::getProfileByProfileEmail($pdo, $profileEmail);
 		if(empty($profile) === true) {
 			throw(new \InvalidArgumentException("Invalid Email", 401));
 		}
-
+		*/
+		/*
 		//if the profile activation is not null throw an error
 		if($profile->getProfileActivationToken() !== null){
 			throw (new \InvalidArgumentException ("you are not allowed to sign in unless you have activated your account", 403));
 		} else {
 		throw(new \InvalidArgumentException("Invalid HTTP method request."));
 	}
+		*/
 
 	// if an exception is thrown update the
-} catch(Exception $exception) {
+} catch(\Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
 } catch(TypeError $typeError) {
