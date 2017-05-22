@@ -34,12 +34,14 @@ try {
 		$requestObject = json_decode($requestContent);
 
 		//check to make sure the lat & long is not empty.s
-		/*Angular populates a javascript variable called userLocation with the user's geo location, provided by their browser. userLocation is plopped into php and then decoded with json_decode. If it returns empty,  user must be offline*/
+		/*Angular populates a javascript variable called userLocation with the user's geo location, provided by their browser. userLocation is plopped into php and then decoded with json_decode. If it returns empty, user must be offline. If data, verifies and converts to float*/
 		if(empty($requestObject->userLocation) === true) {
 			throw(new \InvalidArgumentException("Currently disconnected", 401));
 		} else {
-			$profileEmail = filter_var($requestObject->profileEmail, FILTER_SANITIZE_EMAIL);
+			$userLocation = filter_var($requestObject->userLocation,FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
 		}
+		//can be removed after unit testing. Used to make sure that geo location is correct float format
+		var_dump($userLocation)
 
 		/*
 		//grab the profile from the database by the email provided
