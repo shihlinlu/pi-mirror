@@ -26,12 +26,12 @@ class ReadingTest extends PiMirrorTest  {
      * data content value of sensor
      * @var int $VALID_SENSORVALUE
      **/
-    protected $VALID_SENSORVALUE = '123456789101112.123456';
+    protected $VALID_SENSORVALUE = '101010101010.123456';
 
 	/**
 	 * data content of updated Reading
 	 */
-	protected $VALID_SENSORVALUE2 = '121110987654321.654321';
+	protected $VALID_SENSORVALUE2 = '212121212121.654321';
 
     /**
      * timestamp of the Reading; this starts as null and is assigned later
@@ -212,7 +212,7 @@ class ReadingTest extends PiMirrorTest  {
     public function testGetInvalidReadingByReadingSensorId() : void {
         // grab a sensor id that exceeds the maximum allowable sensor id
         $reading = Reading::getReadingByReadingSensorId($this->getPDO(), PiMirrorTest::INVALID_KEY);
-        $this->assertNull($reading);
+        $this->assertCount(0, $reading);
     }
 	/**
 	 * test grabbing a valid Reading by sunset and sunrise date
