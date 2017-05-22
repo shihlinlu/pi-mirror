@@ -41,7 +41,7 @@ class Reading implements \JsonSerializable {
 	 *
 	 * @param int|null $newReadingId id of the reading or null if new reading
 	 * @param int $newReadingSensorId id of the sensor where the reading came from
-	 * @param int $newSensorValue Decimal value of the sensor reading
+	 * @param float $newSensorValue Decimal value of the sensor reading
 	 * @param \DateTime|string|null $newSensorDateTime timestamp when the reading was taken
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds (e.g., string too long, negative integers, negative floats)
@@ -50,7 +50,7 @@ class Reading implements \JsonSerializable {
 	 * @documentation https://php.net/manual/en/language.oop5.decon.php
 	 **/
 
-		public function __construct(?int $newReadingId, int $newReadingSensorId, ?int $newSensorValue, $newSensorDateTime = null) {
+		public function __construct(?int $newReadingId, int $newReadingSensorId, float $newSensorValue, $newSensorDateTime = null) {
 			try {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);
@@ -134,13 +134,13 @@ public function getSensorValue() :int {
 	/**
 	 * mutator method for sensor value
 	 *
-	 *@param int $newSensorValue the value from the sensor's reading
+	 *@param float $newSensorValue the value from the sensor's reading
 	 *@throws \InvalidArgumentException if $newSensorValue in not an integer or insecure
 	 *@throws \RangeException if $newSensorValue is not positive
 	 *@throws \TypeError if $newSensorValue is not an integer
 	 **/
 
-	public function setSensorValue(int $newSensorValue) : void {
+	public function setSensorValue(float $newSensorValue) : void {
 		//this a way to float the reading data coming in
 		$newSensorValue = filter_var($newSensorValue, FILTER_VALIDATE_FLOAT);
 		if(empty($newSensorValue) === true) {
