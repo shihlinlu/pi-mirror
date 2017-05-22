@@ -221,7 +221,7 @@ public function insert(\PDO $pdo) : void {
 		}
 
 		//create query template
-		$query = "DELETE FROM reading WHERE readingId = :readingid";
+		$query = "DELETE FROM reading WHERE readingId = :readingId";
 		$statement = $pdo->prepare($query);
 
 		//bind the member variables to te place holder in the template

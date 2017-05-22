@@ -85,7 +85,10 @@ class ReadingTest extends PiMirrorTest  {
 		$reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		$reading->insert($this->getPDO());
 
-		/** var_dump($reading); */
+		/**
+		 * put var_dump for now
+		 */
+		var_dump($reading);
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
@@ -220,7 +223,7 @@ class ReadingTest extends PiMirrorTest  {
 	 **/
 	public function testGetInvalidReadingBySensorValue() : void {
 		// grab a reading by a value that does not exist
-		$reading = Reading::getReadingBySensorValue($this->getPDO(), "There is no value here");
+		$reading = Reading::getReadingBySensorValue($this->getPDO(), '212121.653');
 		$this->assertCount(0, $reading);
 	}
 	/**
