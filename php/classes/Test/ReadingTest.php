@@ -87,8 +87,9 @@ class ReadingTest extends PiMirrorTest  {
 
 		/**
 		 * put var_dump for now
+		 * var_dump($reading);
 		 */
-		var_dump($reading);
+
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));

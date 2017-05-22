@@ -260,7 +260,7 @@ public function update(\PDO $pdo): void {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
-public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?reading {
+public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Reading {
 	//sanitize the readingId before searching
 	if($readingId <= 0) {
 		throw(new \PDOException("reading id is not positive"));
