@@ -86,7 +86,7 @@ class ReadingTest extends SensorTest  {
 		$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getSensorId());
 		$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
 		// format the date to seconds since the beginning of time to avoid round off error
-		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestampe());
+		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
 	}
 
     /**

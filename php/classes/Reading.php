@@ -151,15 +151,15 @@ public function getSensorValue() :int {
 	}
 
 	/**
-	 * accessor method for timestamp
+	 * accessor method for sensor date time
 	 *
-	 * @return string $newTimeStamp when the reading was taken
+	 * @return \DateTime value of sensorDateTime
 	 **/
-public function getSensorDateTime(): string {
+public function getSensorDateTime(): \DateTime {
 	return($this->sensorDateTime);
 }
 	/**
-	 * mutator method for timestamp
+	 * mutator method for sensor date time
 	 *
 	 * @param \DateTime|string|null $newSensorDateTime sensor date as a DateTime object or string (or null to load current time) for when we got this sensor reading
 	 * @throws \InvalidArgumentException if $newSensorDateTime is not a valid object or string
