@@ -184,25 +184,32 @@ class ReadingTest extends SensorTest  {
     /**
      * test inserting a reading and regrabbing it from mySQL
      **/
-    public function testGetValidReadingByReadingId() : void {
+    public function testGetValidReadingByReadingSensorId() : void {
         // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new reading and insert into mySQL
-        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
         // grab the data from mySQL and enforce the fields match our expectations
-        $pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
+        $results = Reading::getReadingByReadingSensorId($this->getPDO(), $reading->getReadingSensorId());
         $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-        $this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
-        $this->assertEquals($pdoReading->getSensorDateTime(), $this->VALID_SENSORDATETIME);
+        $this->assertCount(1, $results);
+        $this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
+
+        // grab the result from the array and validate it
+		 $pdoReading = $results[0];
+		 $this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getSensorId());
+		 $this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
+		 // format the date to seconds since the beginning of time to avoid round off error
+		 $this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
     }
 
     /**
      * test grabbing a Reading that does not exist
      **/
-    public function testGetInvalidReadingByReadingId() : void {
+    public function testGetInvalidReadingByReadingSensorId() : void {
         // grab a sensor id that exceeds the maximum allowable sensor id
         $reading = Sensor::getReadingByReadingId($this->getPDO(), PiMirrorTest::INVALID_KEY);
         $this->assertNull($reading);
