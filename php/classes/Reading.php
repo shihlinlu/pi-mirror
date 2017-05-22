@@ -274,7 +274,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 	$parameters = ["readingId" => $readingId];
 	$statement->execute($parameters);
 
-	//bind the reading from mySQL
+	//grab the reading from mySQL
 	try{
 		$reading = null;
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
