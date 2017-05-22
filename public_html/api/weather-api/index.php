@@ -26,7 +26,7 @@ try {
 
 	//If method is post handle the sign in logic
 	if($method === "POST") {
-		//make sure the XSRF Token is valid
+		//make sure the XSRF Token is valid.
 		verifyXsrf();
 
 		//process the request content and decode the json object into a php object
