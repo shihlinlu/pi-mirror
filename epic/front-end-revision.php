@@ -39,7 +39,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-3">
-								<img src="images/notification.png">
+								<img src="images/notification.png" class="inverted">
 							</div>
 							<div class="col-md-4 text-right">
 								<h1>
@@ -47,9 +47,9 @@
 								</h1>
 							</div>
 							<div class="col-md-3 col-md-offset-2 col-xs-4 col-xs-offset-4">
-								<img src="images/date.png"  alt="date width="200" height="200">
-								<img src="images/time.png" class="float-right"  alt="time" width="200" height="200">
-								<img src="images/gusty.png" width="200" height="200">
+								<img src="images/date.png"  alt="date" width="200" height="200" class="inverted">
+								<img src="images/time.png" class="float-right"  alt="time" width="200" height="200" class="inverted">
+								<img src="images/gusty.png" width="200" height="200" class="inverted">
 							</div>
 						</div>
 						<!-- to do list code -->
