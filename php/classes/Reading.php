@@ -377,7 +377,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 	 * @throws \TypeError when variables are not the correct dates are in the wrong format
 	 * @throws \InvalidArgumentException if either sun dates are in the wrong format
 	 **/
-public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDate, $sunsetReadingDate ) : \SplFixedArray {
+public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDate, $sunsetReadingDate) : \SplFixedArray {
 	//enforce both date are present
 	if((empty ($sunriseReadingDate) === true) || (empty($sunsetReadingDate) === true)) {
 		throw (new \InvalidArgumentException("dates are empty of insecure"));

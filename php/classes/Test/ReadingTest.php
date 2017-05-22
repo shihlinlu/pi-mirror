@@ -265,7 +265,7 @@ class ReadingTest extends PiMirrorTest  {
 		 $numRows = $this->getConnection()->getRowCount("reading");
 
 		 // create a new Reading and insert it into my SQL
-		 $reading = new reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+		 $reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
 		 $reading->insert($this->getPDO());
 
 		 // grab the data from mySQL and enforce the fields match our expectations
