@@ -228,7 +228,7 @@ class ReadingTest extends PiMirrorTest  {
 		// grab the reading from the database and see if it matches expectations
 		$results = Reading::getReadingBySensorDateTime($this->getPDO(), $this->VALID_SUNRISEDATE, $this->VALID_SUNSETDATE);
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-		$this->assertCount(1, $results);
+		$this->assertCount(0, $results);
 
 		// enforce that no other objects are bleeding into the test
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
