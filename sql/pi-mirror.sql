@@ -13,7 +13,7 @@ CREATE TABLE sensor (
 CREATE TABLE reading (
 	readingId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	readingSensorId INT UNSIGNED NOT NULL,
-	sensorValue DECIMAL(12,6) NOT NULL,
+	sensorValue DECIMAL(12,6) UNSIGNED NOT NULL,
 	sensorDateTime TIMESTAMP(6) NOT NULL,
 
 	INDEX (readingSensorId),

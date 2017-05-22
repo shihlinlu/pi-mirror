@@ -25,7 +25,7 @@ class Reading implements \JsonSerializable {
 	 * the value of the reading from the sensor
 	 * 12 digits before the decimal
 	 * and 6 digits after the decimal
-	 * @var int $sensorValue
+	 * @var float $sensorValue
 	 **/
 	private $sensorValue;
 
