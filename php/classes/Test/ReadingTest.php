@@ -239,7 +239,7 @@ class ReadingTest extends PiMirrorTest  {
 		$reading->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
-		$results = Reading::getReadingBySensorValue($this->getPDO(), $tweet->getSensorValue());
+		$results = Reading::getReadingBySensorValue($this->getPDO(), $reading->getSensorValue());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
 		$this->assertCount(1, $results);
 
@@ -247,12 +247,12 @@ class ReadingTest extends PiMirrorTest  {
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
 
 		// grab the result from the array and validate it
-		$pdoTweet = $results[0];
-		$this->assertEquals($pdoTweet->getReadingSensorId(), $this->sensor->getSensorId());
-		$this->assertEquals($pdoTweet->getSensorValue(), $this->VALID_SENSORVALUE);
+		$pdoReading = $results[0];
+		$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getSensorId());
+		$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
 
 		//format the date too seconds since the beginning of time to avoid round off error
-		$this->assertEquals($pdoTweet->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
+		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
 
 	}
 
