@@ -23,7 +23,7 @@ trait ValidateDate {
 	 * @throws \RangeException if the date is not a Gregorian date
 	 * @throws \TypeError when type hints fail
 	 **/
-	private function validateDate($newDate) : \DateTime {
+	private static function validateDate($newDate) : \DateTime {
 		// base case: if the date is a DateTime object, there's no work to be done
 		if(is_object($newDate) === true && get_class($newDate) === "DateTime") {
 			return ($newDate);
