@@ -23,10 +23,15 @@ class ReadingTest extends SensorTest  {
 	protected $sensor = null;
 
     /**
-     * valid reading unit to use
+     * data content value of sensor
      * @var int $VALID_SENSORVALUE
      **/
     protected $VALID_SENSORVALUE = '123456789101112.123456';
+
+	/**
+	 * data content of updated Reading
+	 */
+	protected $VALID_SENSORVALUE2 = '121110987654321.654321';
 
     /**
      * timestamp of the Reading; this starts as null and is assigned later
@@ -96,27 +101,32 @@ class ReadingTest extends SensorTest  {
      * @expectedException \PDOException
      **/
     public function testInsertInvalidReading() : void {
-        // create a sensor with a non null sensorId and watch it fail
-        $sensor = new Reading(PiMirrorTest::INVALID_KEY, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        // create a Sensor with a non null sensorId and watch it fail
+        $sensor = new Reading(PiMirrorTest::INVALID_KEY, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $sensor->insert($this->getPDO());
     }
 
     /**
      * test insert a Reading, editing it, and then updating it
      **/
-    public function testUpdateValidReading() {
+    public function testUpdateValidReading(): void {
         // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
         // create a new Reading and insert into mySQL
-        $reading = new Reading(null, $this->reading->getReadingId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+        $reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
+
+        // edit the Reading and update it in mySQL
+		 $reading->setSensorValue($this->VALID_SENSORVALUE2);
+		 $reading->update($this->getPDO());
 
         // grab the data from mySQL and enforce the fields match our expectations
         $pdoReading = Reading::getReadingByReadingId($this->getPDO(), $reading->getReadingId());
         $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-        $this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
-        $this->assertEquals($pdoReading->getSensorDateTime(), $this->VALID_SENSORDATETIME);
+        $this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getSensorId());
+        $this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE2);
+        $this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
     }
 
     /**
