@@ -286,6 +286,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 		// if the row could not be converted rethrow it
 		throw(new \PDOException($exception->getMessage(), 0, $exception));
 	}
+	return($reading);
 }
 	/**
 	 * gets the Reading by sensor id
