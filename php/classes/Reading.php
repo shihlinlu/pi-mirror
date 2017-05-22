@@ -327,6 +327,46 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?readi
 	}
 
 	/**
+	 * gets a reading by sensor value
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param float $sensorValue reading value to search for
+	 * @return \SplFixedArray SplFixedArray of readings found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+	public static function getReadingBySensorValue(\PDO $pdo, float $sensorValue) : \SplFixedArray {
+		// sanitize the value before searching
+		$sensorValue = filter_var($sensorValue, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
+		if(empty($sensorValue) === true) {
+			throw(new \PDOException("value is invalid"));
+		}
+
+		// create query template
+		$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime FROM reading WHERE sensorValue = :sensorValue";
+		$statement = $pdo->prepare($query);
+
+		// bind the reading value to the place holder in the template
+		$parameters = ["sensorValue" => $sensorValue];
+		$statement->execute($parameters);
+
+		// build an array of readings
+		$readings = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$reading = new Reading($row["readingId"], $row["readingSensorId"], $row["sensorValue"], $row["sensorDateTime"]);
+				$readings[$readings->key()] = $reading;
+				$readings->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($readings);
+	}
+
+	/**
 	 * gets an array of readings based on its data
 	 *
 	 * @param \PDO $pdo connection object
