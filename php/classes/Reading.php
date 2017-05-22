@@ -242,7 +242,7 @@ public function update(\PDO $pdo): void {
 		throw(new \PDOException("unable to update a reading that does not exist"));
 	}
 	//create query template
-	$query = "UPDATE reading SET readingSensorId = :sensorReadingId, sensorValue = :sensorValue, sensorDateTime = :sensorDateTime WHERE readingId = :readingId";
+	$query = "UPDATE reading SET readingSensorId = :readingSensorId, sensorValue = :sensorValue, sensorDateTime = :sensorDateTime WHERE readingId = :readingId";
 	$statement = $pdo->prepare($query);
 
 	//bind the member variables to the place holders in the template
