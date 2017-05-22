@@ -219,6 +219,9 @@ class ReadingTest extends PiMirrorTest  {
         $reading = Reading::getReadingByReadingSensorId($this->getPDO(), PiMirrorTest::INVALID_KEY);
         $this->assertCount(0, $reading);
     }
+	
+	
+	
 	/**
 	 * test grabbing a Reading by a value that does not exist (not included for MVP)
 	 * When added, add a range to search from.
@@ -232,32 +235,32 @@ class ReadingTest extends PiMirrorTest  {
 	/**
 	 * test grabbing a Reading by value (not included for MVP)
 	 * When added, add a range to search from.
-
-	public function testGetValidReadingBySensorValue() : void {
-		// count the number of rows and save it for later
-		$numRows = $this->getConnection()->getRowCount("reading");
-
-		// create a new Tweet and insert to into mySQL
-		$reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
-		$reading->insert($this->getPDO());
-
-		// grab the data from mySQL and enforce the fields match our expectations
-		$results = Reading::getReadingBySensorValue($this->getPDO(), $reading->getSensorValue());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
-		$this->assertCount(1, $results);
-
-		// enforce no other objects are bleeding into the test
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
-
-		// grab the result from the array and validate it
-		$pdoReading = $results[0];
-		$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getSensorId());
-		$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
-
-		//format the date too seconds since the beginning of time to avoid round off error
-		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
-
-	}
+	 
+	 *public function testGetValidReadingBySensorValue() : void {
+	 *	// count the number of rows and save it for later
+	 *	$numRows = $this->getConnection()->getRowCount("reading");
+	 *
+	 *	// create a new Tweet and insert to into mySQL
+	 *	$reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
+	 *	$reading->insert($this->getPDO());
+	 *
+	 *	// grab the data from mySQL and enforce the fields match our expectations
+	 *	$results = Reading::getReadingBySensorValue($this->getPDO(), $reading->getSensorValue());
+	 *	$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("reading"));
+	 *	$this->assertCount(0, $results);
+	 *
+	 *	// enforce no other objects are bleeding into the test
+	 *	$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\PiMirror\\Reading", $results);
+	 *
+	 *	// grab the result from the array and validate it
+	 *	$pdoReading = $results[0];
+	 *	$this->assertEquals($pdoReading->getReadingSensorId(), $this->sensor->getSensorId());
+	 *	$this->assertEquals($pdoReading->getSensorValue(), $this->VALID_SENSORVALUE);
+	 *
+	 *	//format the date too seconds since the beginning of time to avoid round off error
+	 *	$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp()*);
+	 *
+	 *} *
 	 **/
 
 	/**

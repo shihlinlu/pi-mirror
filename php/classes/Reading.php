@@ -50,7 +50,7 @@ class Reading implements \JsonSerializable {
 	 * @documentation https://php.net/manual/en/language.oop5.decon.php
 	 **/
 
-		public function __construct(?int $newReadingId, int $newReadingSensorId, float $newSensorValue, $newSensorDateTime = null) {
+		public function __construct(?int $newReadingId, int $newReadingSensorId, float $newSensorValue, $newSensorDateTime ) {
 			try {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);
@@ -284,7 +284,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 		}
 	} catch(\Exception $exception){
 		// if the row could not be converted rethrow it
-		throw(new \PDOException($exception->getMessage(), 0, $exception));
+		throw(new \PDOException($exception->getMessage(), 1, $exception));
 	}
 	return($reading);
 }
