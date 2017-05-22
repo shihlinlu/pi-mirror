@@ -327,14 +327,14 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 	}
 
 	/**
-	 * gets a reading by sensor value
+	 * gets a reading by sensor value (will not be used for MVP)
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param float $sensorValue reading value to search for
 	 * @return \SplFixedArray SplFixedArray of readings found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
-	 **/
+
 	public static function getReadingBySensorValue(\PDO $pdo, float $sensorValue) : \SplFixedArray {
 		// sanitize the value before searching
 		$sensorValue = filter_var($sensorValue, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
@@ -364,7 +364,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 			}
 		}
 		return($readings);
-	}
+	}**/
 
 	/**
 	 * gets an array of readings based on its date

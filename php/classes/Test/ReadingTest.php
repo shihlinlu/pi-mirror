@@ -220,16 +220,19 @@ class ReadingTest extends PiMirrorTest  {
         $this->assertCount(0, $reading);
     }
 	/**
-	 * test grabbing a Reading by a value that does not exist
-	 **/
+	 * test grabbing a Reading by a value that does not exist (not included for MVP)
+	 * When added, add a range to search from.
+
 	public function testGetInvalidReadingBySensorValue() : void {
 		// grab a reading by a value that does not exist
 		$reading = Reading::getReadingBySensorValue($this->getPDO(), '212121.653');
 		$this->assertCount(0, $reading);
-	}
+	}**/
+
 	/**
-	 * test grabbing a Reading by value
-	 **/
+	 * test grabbing a Reading by value (not included for MVP)
+	 * When added, add a range to search from.
+
 	public function testGetValidReadingBySensorValue() : void {
 		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("reading");
@@ -255,6 +258,7 @@ class ReadingTest extends PiMirrorTest  {
 		$this->assertEquals($pdoReading->getSensorDateTime()->getTimestamp(), $this->VALID_SENSORDATETIME->getTimestamp());
 
 	}
+	 **/
 
 	/**
 	 * test grabbing a valid Reading by sunset and sunrise date
