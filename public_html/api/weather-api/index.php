@@ -17,6 +17,8 @@ try {
 	//start session
 	if(session_status() !== PHP_SESSION_ACTIVE) {
 		session_start();
+		//initialize encrypted config variable
+		$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
 	}
 
 	//grab mySQL statement
@@ -38,11 +40,16 @@ try {
 		if(empty($requestObject->userLocationX) === true) {
 			throw(new \InvalidArgumentException("Currently disconnected", 401));
 		}
+
 		//Longitude provided by user's browser
 		$userLocationY = filter_var($requestObject->userLocationY, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
 		if(empty($requestObject->userLocationY) === true) {
 			throw(new \InvalidArgumentException("Currently disconnected", 401));
 		}
+
+		//TODO used only for testing latitude and longitude results. Remove prior to final deployment
+		var_dump($userLocationX);
+		var_dump($userLocationY);
 	}
 	/*
 	//grab the profile from the database by the email provided
