@@ -384,8 +384,8 @@ public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDat
 	}
 	//ensure both dates are in the correct format and are in the correct format and are secure
 	try{
-		$sunriseReadingDate = self::validateDateTime($sunsetReadingDate);
-		$sunsetReadingDate = self::validateDateTime($sunriseReadingDate);
+		$sunriseReadingDate = self::validateDateTime($sunriseReadingDate);
+		$sunsetReadingDate = self::validateDateTime($sunsetReadingDate);
 
 	} catch(\InvalidArgumentException | \RangeException $exception) {
 		$exceptionType = get_class($exception);
