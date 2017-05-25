@@ -11,6 +11,14 @@ require_once("autoload.php");
 class Reading implements \JsonSerializable {
 	use ValidateDate;
 	/**
+	 * pagination for Reading class dataset (can be adjusted later)
+	 * @var int $pageSize
+	 *
+	 * important: need to implement in all the get by methods
+	 **/
+	private static $pageSize = 250;
+
+	/**
 	 * id for the sensor reading, primary key
 	 * @var int $readingId;
 	 **/
@@ -50,7 +58,7 @@ class Reading implements \JsonSerializable {
 	 * @documentation https://php.net/manual/en/language.oop5.decon.php
 	 **/
 
-		public function __construct(?int $newReadingId, int $newReadingSensorId, float $newSensorValue, $newSensorDateTime = null) {
+		public function __construct(?int $newReadingId, int $newReadingSensorId, float $newSensorValue, $newSensorDateTime ) {
 			try {
 				$this->setReadingId($newReadingId);
 				$this->setReadingSensorId($newReadingSensorId);
@@ -284,7 +292,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 		}
 	} catch(\Exception $exception){
 		// if the row could not be converted rethrow it
-		throw(new \PDOException($exception->getMessage(), 0, $exception));
+		throw(new \PDOException($exception->getMessage(), 1, $exception));
 	}
 	return($reading);
 }
@@ -327,14 +335,14 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 	}
 
 	/**
-	 * gets a reading by sensor value
+	 * gets a reading by sensor value (will not be used for MVP)
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param float $sensorValue reading value to search for
 	 * @return \SplFixedArray SplFixedArray of readings found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
-	 **/
+
 	public static function getReadingBySensorValue(\PDO $pdo, float $sensorValue) : \SplFixedArray {
 		// sanitize the value before searching
 		$sensorValue = filter_var($sensorValue, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
@@ -364,7 +372,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 			}
 		}
 		return($readings);
-	}
+	}**/
 
 	/**
 	 * gets an array of readings based on its date
