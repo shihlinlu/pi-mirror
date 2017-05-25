@@ -193,7 +193,6 @@ class ReadingTest extends PiMirrorTest  {
         // count the number of rows and save it for later
         $numRows = $this->getConnection()->getRowCount("reading");
 
-        // create a new reading and insert into mySQL
         $reading = new Reading(null, $this->sensor->getSensorId(), $this->VALID_SENSORVALUE, $this->VALID_SENSORDATETIME);
         $reading->insert($this->getPDO());
 
