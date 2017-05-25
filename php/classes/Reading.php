@@ -11,6 +11,14 @@ require_once("autoload.php");
 class Reading implements \JsonSerializable {
 	use ValidateDate;
 	/**
+	 * pagination for Reading class dataset (can be adjusted later)
+	 * @var int $pageSize
+	 *
+	 * important: need to implement in all the get by methods
+	 **/
+	private static $pageSize = 250;
+
+	/**
 	 * id for the sensor reading, primary key
 	 * @var int $readingId;
 	 **/
