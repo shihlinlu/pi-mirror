@@ -1,7 +1,9 @@
 '''
-
 This is a pasted boiler plate for reference. It is best to use an IDE like PyCharm or VSCode to edit these documents.
 I added them to our project as boiler plates so that I would have offline access to study them.
+'''
+
+''' Erase this line to uncomment the code
 
 # Module that contains the functions necessary for the operation
 # of the Sensly HAT
