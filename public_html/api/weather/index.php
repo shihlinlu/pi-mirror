@@ -62,21 +62,6 @@ try {
 		var_dump($userLocationX);
 		var_dump($userLocationY);
 	}
-	/*
-	//grab the profile from the database by the email provided
-	$profile = Profile::getProfileByProfileEmail($pdo, $profileEmail);
-	if(empty($profile) === true) {
-		throw(new \InvalidArgumentException("Invalid Email", 401));
-	}
-	*/
-	/*
-	//if the profile activation is not null throw an error
-	if($profile->getProfileActivationToken() !== null){
-		throw (new \InvalidArgumentException ("you are not allowed to sign in unless you have activated your account", 403));
-	} else {
-	throw(new \InvalidArgumentException("Invalid HTTP method request."));
-}
-	*/
 
 	// if an exception is thrown update the
 } catch(\Exception $exception) {
