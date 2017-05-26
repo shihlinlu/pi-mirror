@@ -1,9 +1,12 @@
 <?php
-require_once dirname(__DIR__,3) . "/vendor/autoload.php";
-require_once dirname(__DIR__, 3) . "../../php/classes/autoload.php";
-require_once dirname(__DIR__, 3) . "../../php/lib/xsrf.php";
-require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
+require_once dirname(__DIR__, 3) . "/php/classes/autoload.php";
+require_once dirname(__DIR__, 3) . "/php/lib/xsrf.php";
+require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
+require_once (dirname(__DIR__, 3) . "/vendor/autoload.php");
 
+
+
+use Forecast\Forecast;
 /**
  * api for current weather
  *
@@ -27,6 +30,9 @@ try {
 	//grab mySQL statement
 	//pdo is reading and writing
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/pimirrors.ini");
+	
+	//variable that will house the API key for the Dark Sky API
+	$darkSky = $config["darkSky"];
 	//determine which HTTP method is being used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
