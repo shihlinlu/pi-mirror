@@ -13,7 +13,7 @@ View important information in your daily life, such as weather, meeting reminder
 - Stay tuned for updates on how you can build + install your own smart mirror! :D 
 
 ### Feature requests and Contact
-Do you have any features you'd like to see? While this Pi Mirror v. 1.0 has not officially launched yet, please don't hesitate to drop as a <a href="mailto:piomirrors@gmail.com">line.</a> 
+Do you have any features you'd like to see? While this Pi Mirror v1.0 has not officially launched yet, please don't hesitate to drop us a <a href="mailto:piomirrors@gmail.com">line.</a> 
 
 
 
