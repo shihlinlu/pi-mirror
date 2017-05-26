@@ -192,7 +192,7 @@ public function setSensorDateTime($newSensorDateTime = null) : void {
 
 	/**
 	 * inserts this new sensor reading data from mySQL
-	 *
+		 *
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors object
 	 * @throws \TypeError if $pdo is not a PDO connection object
