@@ -4,6 +4,7 @@
     "phpdocumentor/phpdocumentor": "@stable",
     "phpunit/dbunit": "@stable",
     "phpunit/phpunit": "@stable"
+    "guhelski/forecast-php":"@stable"
   },
 
   "scripts":{
