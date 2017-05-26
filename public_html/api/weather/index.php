@@ -20,8 +20,9 @@ try {
 		session_start();
 		//initialize encrypted config variable
 		//config is reading
-		$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
 		//although the name does not match the database this is correct per bridge's example
+		$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
+	
 	}
 
 	//grab mySQL statement
