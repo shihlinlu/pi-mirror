@@ -47,8 +47,12 @@ try {
 		//determine is a Key was sent in the URL by checking $id. if so we pull the requested checkbook value by checkbook ID from the database and store it in $checkbook
 		if(empty($id) === false) {
 			$reply->data = Reading::getReadingByReadingSensorId($pdo, $id, $pageNum);
-		} elseif(empty($sensorDateTime) === false) {
-			reply->data =
+		} elseif(empty($sensorSunriseDateTime) === false && empty($sensorSunriseDateTime) === false) {
+			$sensorSunriseDateTime = \DateTime::createFromFormat("U", floor
+			($sensorSunriseDateTime / 1000 ));
+			$sensorSunsetDateTime = \DateTime::createFromFormat("U", cell
+			($sensorSunsetDateTime / 1000));
+			reply->data = Reading::getReadingBySensorDateTime()Id
 		}
 	}
 }
