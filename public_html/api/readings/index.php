@@ -31,7 +31,8 @@ try {
 	//stores the Primary key for the GET methods in $id, This key will come in the URL sent by the front end. If no key is present $id will remain empty. Note that the input filtered.
 	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 	//add a start mandate after?
-	$sensorDateTime = filter_input(INPUT_GET, "sensorDateTime");
+	$sensorSunriseDateTime = filter_input(INPUT_GET, "$sensorSunriseDateTime");
+	$sensorSunsetDateTime = filter_input(INPUT_GET, "$sensorSunsetDateTime");
 	$pageNum = filter_input(INPUT_GET, "pageNum", FILTER_SANITIZE_NUMBER_INT);
 	//page number
 	if(empty($pageNum) === true || $pageNum < 0) {
@@ -45,7 +46,7 @@ try {
 		//handle GET request - if id is present, that checkbook value is present, that checkbook value is returned, otherwise all values are returned.
 		//determine is a Key was sent in the URL by checking $id. if so we pull the requested checkbook value by checkbook ID from the database and store it in $checkbook
 		if(empty($id) === false) {
-			$reply->data = Reading::getReadingByReadingSensorId($pdo, $id);
+			$reply->data = Reading::getReadingByReadingSensorId($pdo, $id, $pageNum);
 		} elseif(empty($sensorDateTime) === false) {
 			reply->data =
 		}
