@@ -386,7 +386,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 	 * @throws \TypeError when variables are not the correct dates are in the wrong format
 	 * @throws \InvalidArgumentException if either sun dates are in the wrong format
 	 **/
-public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDate, $sunsetReadingDate, int $pagNum 	) : \SplFixedArray {
+public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDate, $sunsetReadingDate, int $pageNum 	) : \SplFixedArray {
 	//enforce both date are present
 	if((empty ($sunriseReadingDate) === true) || (empty($sunsetReadingDate) === true)) {
 		throw (new \InvalidArgumentException("dates are empty or insecure"));
@@ -401,7 +401,7 @@ public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDat
 		throw(new $exceptionType($exception->getMessage(), 0, $exception));
 	}
 	//create query template
-	$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime from reading WHERE sensorDateTime >= :sunriseReadingDate AND sensorDateTime <= :sunsetReadingDate";
+	$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime from reading WHERE sensorDateTime >= :sunriseReadingDate AND sensorDateTime <= :sunsetReadingDate LIMIT :startRow, :pageSize ";
 	$statement= $pdo->prepare($query);
 
 	//format the dates so that mySQL can use them
@@ -409,6 +409,9 @@ public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDat
 	$formattedSunsetDate = $sunsetReadingDate->format("Y-m-d H:i:s.u");
 
 	$parameters = ["sunriseReadingDate" => $formattedSunriseDate, "sunsetReadingDate" => $formattedSunsetDate];
+	$startRow = $pageNum * self::$pageSize;
+	$statement->bindParam(":startRow", $startRow, \PDO::PARAM_INT);
+	$statement->bindParam(":pageSize", self::$pageSize);
 	$statement->execute($parameters);
 
 	//build an array of readings
@@ -433,10 +436,13 @@ public static function getReadingBySensorDateTime (\PDO $pdo, $sunriseReadingDat
  * @throws \PDOException when mySQL related errors occur
  * @throws \TypeError when variables are not the correct data type
  */
-public static function getAllReadings(\PDO $pdo): \SPLFixedArray {
+public static function getAllReadings(\PDO $pdo, $pageNum): \SPLFixedArray {
 	//create query template
 	$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime FROM reading";
 	$statement = $pdo->prepare($query);
+	$startRow = $pageNum * self::$pageSize;
+	$statement->bindParam(":startRow", $startRow, \PDO::PARAM_INT);
+	$statement->bindParam(":pageSize", self::$pageSize);
 	$statement->execute();
 
 	//build an array of readings
