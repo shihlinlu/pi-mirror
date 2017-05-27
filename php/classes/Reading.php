@@ -306,7 +306,7 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
-	public static function getReadingByReadingSensorId(\PDO $pdo, int $readingSensorId) : \SplFixedArray {
+	public static function getReadingByReadingSensorId(\PDO $pdo, int $readingSensorId, int $pageNum) : \SplFixedArray {
 		// sanitize the sensor id before searching
 		if($readingSensorId <= 0) {
 			throw(new \RangeException("reading sensor id must be positive"));
@@ -314,6 +314,9 @@ public static function getReadingByReadingId(\PDO $pdo, int $readingId) : ?Readi
 		// create query template
 		$query = "SELECT readingId, readingSensorId, sensorValue, sensorDateTime FROM reading WHERE readingSensorId = :readingSensorId";
 		$statement = $pdo->prepare($query);
+		$startRow = $pageNum * self::$pageSize;
+		$statement->bindParam(":startRow", $startRow, \PDO::PARAM_INT);
+		$statement->bindParam(":pageSize", self::$pageSize);
 
 		// bind the reading sensor id to the place holder in the template
 		$parameters = ["readingSensorId" => $readingSensorId];
