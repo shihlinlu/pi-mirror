@@ -20,7 +20,6 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 //prepare an empty reply
 $reply = new stdClass();
 $reply->status = 200;
-//should it really be 200?
 $reply->data = null;
 //create stdClass named $reply. this object will be used to store the results of the call to the api. sets status to 200 (success). creates data state variable, holds the result of the api call.
 try {
@@ -28,9 +27,35 @@ try {
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
 	//determines which HTTP Method needs to be processed and stores the result in $method
 	$method = array_key_exists("HTTP_x_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
-	//sanitize input
-	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
-	$tweetProfileId = filter_input(INPUT_GET, "tweetProfileId", FILTER_VALIDATE_INT);
-	$tweetContent = filter_input(INPUT_GET, "tweetContent", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	//stores the Primary key for the GET methods in $id, This key will come in the URL sent by the front end. If no key is present $id will remain empty. Note that the input filtered.
+//make sure the id is valid for methods that require it
+	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
+		throw(new InvalidArgumentException("id cannot be empty or negative", 405));
+	}
+	<?php
+if($method === "GET") {
+	//set XSRF cookie
+	setXsrfCookie();
 
+	//get a specific tweet based on arguments provided or all the tweets and update reply
+	if(empty($id) === false) {
+		$tweet = Tweet::getTweetByTweetId($pdo, $id);
+		if($tweet !== null) {
+			$reply->data = $tweet;
+		}
+	} else if(empty($tweetProfileId) === false) {
+		$tweet = Tweet::getTweetByTweetProfileId($pdo, $tweetProfileId)->toArray();
+		if($tweet !== null) {
+			$reply->data = $tweet;
+		}
+	} else if(empty($tweetContent) === false) {
+		$tweets = Tweet::getTweetByTweetContent($pdo, $tweetContent)->toArray();
+		if($tweets !== null) {
+			$reply->data = $tweets;
+		}
+	} else {
+		$tweets = Tweet::getAllTweets($pdo)->toArray();
+		if($tweets !== null) {
+			$reply->data = $tweets;
+		}
+	}
