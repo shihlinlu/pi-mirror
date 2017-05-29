@@ -1,8 +1,8 @@
 <?php
-require_once dirname(__DIR__,3)."/php/classes/autoload.php";
-require_once dirname(__DIR__,3)."/php/lib/xsrf.php";
+require_once dirname(__DIR__, 3) . "/php/classes/autoload.php";
+require_once dirname(__DIR__, 3) . "/php/lib/xsrf.php";
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
-require_once dirname(__DIR__, 3)."/vendor/autoload.php";
+require_once dirname(__DIR__, 3) . "/vendor/autoload.php";
 
 /**
  * not sure if this is use function's path is correct
@@ -41,9 +41,9 @@ try {
 
 		//create the sensor object
 		//I picked sensorUnit not sure if this is correct
-$sensor = new Sensor($sensorUnit);
+		$sensor = new Sensor($sensorUnit);
 
-	//get the sensor information for the end user
+		//get the sensor information for the end user
 		$
 	}
 }
