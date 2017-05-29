@@ -18,6 +18,7 @@ $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
 
+
 try {
 	//start session
 	if(session_status() !== PHP_SESSION_ACTIVE) {
