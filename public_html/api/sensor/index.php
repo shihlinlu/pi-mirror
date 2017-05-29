@@ -32,4 +32,18 @@ try {
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 //the array_key_exists returns true if the given key is set in the array from the documentation http://php.net/manual/en/function.array-key-exists.php
 
+	//If methoda is post handle the sign in logic
+	if($method === "POST") {
+
+		//process the request content and decode the json object into a php object
+		$requestContent = file_get_contents("php://input");
+		$requestObject = json_decode($requestContent);
+
+		//create the sensor object
+		//I picked sensorUnit not sure if this is correct
+$sensor = new Sensor($sensorUnit);
+
+	//get the sensor information for the end user
+		$
+	}
 }
