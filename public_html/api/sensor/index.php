@@ -14,6 +14,10 @@ use Edu\Cnm\PiMirror\Sensor;
  * @author Shihlin Lu
  * @author Danielle Martin
  */
+
+/*
+ * prepare an empty reply
+ */
 $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
@@ -27,33 +31,34 @@ try {
 	//grab mySQL statement
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-msql/piomirrors.ini");
 
-	//determine which HTTP method is being used
+	//determines which HTTP method needs to be used and processed comes as variable $method
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
-//the array_key_exists returns true if the given key is set in the array from the documentation http://php.net/manual/en/function.array-key-exists.php
+	//stores the Primary key for the GET methods in $sensorId
+	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+	// filter make sure it's a integer
 
-	//If method is post handle the sign in logic
-	if($method === "POST") {
 
-		//process the request content and decode the json object into a php object
-		$requestContent = file_get_contents("php://input");
-		$requestObject = json_decode($requestContent);
+	if($method === "GET"){
+		//set XSRF cookie
+		setXsrfCookie("/");
+		//handle GET request - if id is present
+		//determine if a Key was sent in the URL by checking $id. if so we pull the request
+		if(empty($id) === false) {
+			$reply-> data = Sensor::getSensorBySensorId($pdo, int)->toArray();
+		}
 
-		//create the sensor object
-		//I picked sensorId not sure if this is correct
-		$sensor = new Sensor(sensorId);
 
-		//get the sensor information for the end user
-		$sensorUnit = $sensorId->get('CO','SO2', 'NO2','PAHs','PM10','CH2O');
-		// CO is carbon Monoxide
-		// SO2 is sulfur dioxide
-		// NO2 is nitrogen dioxide
-		//PAHs polycyclic aromatic hydrocarbons
-		//PM10 air pollution particle meter
-		//CH2O is formaldhyde
 
-		var_dump($sensorUnit);
 
-	//get the sensor information for the end user
+
+
+
+
+
+
+
+
+
 
 	} else {
 		throw(new \InvalidArgumentException("invalid HTTP method request."));
