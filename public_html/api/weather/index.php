@@ -30,7 +30,7 @@ try {
 
 	//grab mySQL statement
 	//pdo is reading and writing
-	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/pimirrors.ini");
+	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
 	
 	//variable that will house the API key for the Dark Sky API
 	$darkSky = $config["darkSky"];

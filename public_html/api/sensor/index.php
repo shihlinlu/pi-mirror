@@ -37,7 +37,6 @@ try {
 	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 	// filter make sure it's a integer
 
-
 	if($method === "GET"){
 		//set XSRF cookie
 		setXsrfCookie("/");
