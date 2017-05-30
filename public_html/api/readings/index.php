@@ -86,7 +86,7 @@ try {
 	}  else {
 		throw (new InvalidArgumentException("Invalid HTTP Method Request"));
 		// If the method request is not GET, PUT, POST, or DELETE, an exception is thrown
-	}
+	} 
 }
 catch(Exception $exception) {
 	$reply->status = $exception->getCode();
