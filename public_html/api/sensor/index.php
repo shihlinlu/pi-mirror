@@ -25,11 +25,7 @@ try {
 		session_start();
 	}
 	//grab mySQL statement
-	//not sure if cconfig is the right function
-	$config = readConfig("/etc/apache2/capstone-msql/piomirrors.ini");
-
-	//variable that will house the API key for the sensor
-	$sensor = $config["sensor"];
+	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-msql/piomirrors.ini");
 
 	//determine which HTTP method is being used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
@@ -44,12 +40,18 @@ try {
 
 		//create the sensor object
 		//I picked sensorId not sure if this is correct
-		//$sensor = new Sensor(sensorId);
+		$sensor = new Sensor(sensorId);
 
 		//get the sensor information for the end user
-		//$sensorUnit = $sensorId->get(this is where the list of sensors will go example co2, ch4 etc);
+		$sensorUnit = $sensorId->get('CO','SO2', 'NO2','PAHs','PM10','CH2O');
+		// CO is carbon Monoxide
+		// SO2 is sulfur dioxide
+		// NO2 is nitrogen dioxide
+		//PAHs polycyclic aromatic hydrocarbons
+		//PM10 air pollution particle meter
+		//CH2O is formaldhyde
 
-		//var_dump($sensorUnit);
+		var_dump($sensorUnit);
 
 	//get the sensor information for the end user
 
