@@ -24,10 +24,12 @@ $reply->data = null;
 
 
 try {
+
 	//start session
 	if(session_status() !== PHP_SESSION_ACTIVE) {
 		session_start();
 	}
+
 	//grab mySQL statement
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-msql/piomirrors.ini");
 
@@ -45,11 +47,6 @@ try {
 		if(empty($id) === false) {
 			$reply-> data = Sensor::getSensorBySensorId($pdo, int)->toArray();
 		}
-
-
-
-
-
 
 
 
