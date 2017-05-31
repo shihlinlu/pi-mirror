@@ -13,29 +13,33 @@ use Forecast\Forecast;
  * @author Tucker (Github)
  **/
 
+//start session
+if(session_status() !== PHP_SESSION_ACTIVE) {
+	session_start();
+}
+
 //prepare an empty reply
 $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
-try {
-	//start session
-	if(session_status() !== PHP_SESSION_ACTIVE) {
-		session_start();
-		//initialize encrypted config variable
-		//config is reading
-		//although the name does not match the database this is correct per bridge's example
-		$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
 
-	}
+try {
+
+	//initialize encrypted config variable
+	//config is reading
+	//although the name does not match the database this is correct per bridge's example
+	$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
+
 
 	//grab mySQL statement
 	//pdo is reading and writing
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
-	
+
 	//variable that will house the API key for the Dark Sky API
 	$darkSky = $config["darkSky"];
 	//determine which HTTP method is being used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
+
 
 	//If method is get handle the sign in logic
 	if($method === "POST") {
