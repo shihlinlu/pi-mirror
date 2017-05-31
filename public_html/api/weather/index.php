@@ -33,34 +33,47 @@ try {
 
 	//grab mySQL statement
 	//pdo is reading and writing
-	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
+	//$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
 
 	//variable that will house the API key for the Dark Sky API
 	$darkSky = $config["darkSky"];
 	//determine which HTTP method is being used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
+	if($method === "GET") {
+		//set XSRF cookie
+		setXsrfCookie("/");
+		//handle GET request - if id is present
+		//determine if a key was sent in the URL by checking $id
+		//stopped here need to read documentation for GET request
 
-	//If method is get handle the sign in logic
-	if($method === "POST") {
-		//make sure the XSRF Token is valid.
-		verifyXsrf();
+	}
 
-		//process the request content and decode the json object into a php object
-		$requestContent = file_get_contents("php://input");
-		$requestObject = json_decode($requestContent);
 
-		//Latitude provided vy user's browser
-		$userLocationX = filter_var($requestObject->userLocationX, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
-		if(empty($requestObject->userLocationX) === true) {
-			throw(new \InvalidArgumentException("Currently disconnected", 401));
-		}
 
-		//Longitude provided by user's browser
-		$userLocationY = filter_var($requestObject->userLocationY, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
-		if(empty($requestObject->userLocationY) === true) {
-			throw(new \InvalidArgumentException("Currently disconnected", 401));
-		}
+
+
+//
+//	//If method is get handle the sign in logic
+//	if($method === "POST") {
+//		//make sure the XSRF Token is valid.
+//		verifyXsrf();
+//
+//		//process the request content and decode the json object into a php object
+//		$requestContent = file_get_contents("php://input");
+//		$requestObject = json_decode($requestContent);
+//
+//		//Latitude provided vy user's browser
+//		$userLocationX = filter_var($requestObject->userLocationX, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
+//		if(empty($requestObject->userLocationX) === true) {
+//			throw(new \InvalidArgumentException("Currently disconnected", 401));
+//		}
+//
+//		//Longitude provided by user's browser
+//		$userLocationY = filter_var($requestObject->userLocationY, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
+//		if(empty($requestObject->userLocationY) === true) {
+//			throw(new \InvalidArgumentException("Currently disconnected", 401));
+//		}
 
 		//TODO used only for testing latitude and longitude results. Remove prior to final deployment
 		var_dump($userLocationX);
