@@ -3,7 +3,6 @@ This is a pasted boiler plate for reference. It is best to use an IDE like PyCha
 I added them to our project as boiler plates so that I would have offline access to study them.
 '''
 
-''' Erase this line to uncomment the code
 
 # Edit made to orginal Adafruit Driver to enable it to use the SMBus module
 # instead of Adafruits i2c module.

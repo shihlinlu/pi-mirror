@@ -3,11 +3,11 @@ This is a pasted boiler plate for reference. It is best to use an IDE like PyCha
 I added them to our project as boiler plates so that I would have offline access to study them.
 '''
 
-''' Erase this line to uncomment the code
 
 # Module that contains the functions necessary for the operation
 # of the Sensly HAT
 
+# Import common modules needed for script
 # Import common modules needed for script
 import time
 from math import log10

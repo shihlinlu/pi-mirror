@@ -3,7 +3,6 @@ This is a pasted boiler plate for reference. It is best to use an IDE like PyCha
 I added them to our project as boiler plates so that I would have offline access to study them.
 '''
 
-''' Erase this line to uncomment the code
 
 import smbus
 from time import *
@@ -257,7 +256,7 @@ def Get_MQ135PPM(MQ135Rs_R0, Gases = []):
         
         
 Reset()
-datafile = time.strftime('./Sensly_%d-%m-%Y_%H_%M_%S.csv')
+datafile = time.strftime('./Sensly_%d-%m-%Y_%H_%M_%S.cspiomirrors@localhostv')
 
 with open(datafile, 'w+') as f1:
     f1.write('Time, Carbon Monoxide PPM, Ammonia PPM, Carbon Dioxide PPM, Methly PPM, Acetone PPM, Methane PPM, LPG PPM, Hydrogen PPM, Propane PPM, PM10 \n')
