@@ -45,7 +45,9 @@ try {
 		//handle GET request - if id is present
 		//determine if a Key was sent in the URL by checking $id. if so we pull the request
 		if(empty($id) === false) {
-			$reply-> data = Sensor::getSensorBySensorId($pdo, int)->toArray();
+			$reply-> data = Sensor::getSensorBySensorId($pdo, $id)->toArray();
+		} elseif(empty($snesorId))
+
 		}
 
 
