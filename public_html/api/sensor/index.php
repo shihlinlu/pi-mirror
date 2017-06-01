@@ -53,6 +53,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 				$reply->data = $sensorIds;
 			}
 		}
+
 	} else {
 			throw(new \InvalidArgumentException("invalid HTTP method request."));
 		}
