@@ -16,7 +16,6 @@ CREATE TABLE reading (
 	-- sensorValue and sensorDateTime should be readingValue and readingDateTime; however, the changes would be too heavy for ur time-line
 	sensorValue DECIMAL(12,6) UNSIGNED NOT NULL,
 	sensorDateTime DATETIME(6) NOT NULL,
-
 	INDEX (readingSensorId),
 	FOREIGN KEY (readingSensorId) REFERENCES sensor(sensorId),
 	PRIMARY KEY(readingId)

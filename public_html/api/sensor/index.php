@@ -15,21 +15,20 @@ use Edu\Cnm\PiMirror\Sensor;
  * @author Danielle Martin
  */
 
-/*
- * prepare an empty reply
- */
-$reply = new stdClass();
-$reply->status = 200;
-$reply->data = null;
+
+//start session
+if(session_status() !== PHP_SESSION_ACTIVE) {
+	session_start();
+}
+	/*
+	 * prepare an empty reply
+	 */
+	$reply = new stdClass();
+	$reply->status = 200;
+	$reply->data = null;
 
 
-try {
-
-	//start session
-	if(session_status() !== PHP_SESSION_ACTIVE) {
-		session_start();
-	}
-
+	try {
 	//grab mySQL statement
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-msql/piomirrors.ini");
 
@@ -39,28 +38,24 @@ try {
 	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 	// filter make sure it's a integer
 
+
+
 	if($method === "GET"){
 		//set XSRF cookie
 		setXsrfCookie("/");
 		//handle GET request - if id is present
 		//determine if a Key was sent in the URL by checking $id. if so we pull the request
 		if(empty($id) === false) {
-			$reply-> data = Sensor::getSensorBySensorId($pdo, $id)->toArray();
-		} elseif(empty($snesorId))
-
+			$reply->data = Sensor::getSensorBySensorId($pdo, $id);
+		} else {
+			$sensorIds = Sensor::getAllSensors($pdo)->toArray();
+			if($sensorIds !== null) {
+				$reply->data = $sensorIds;
+			}
 		}
-
-
-
-
-
-
-
-
-
 	} else {
-		throw(new \InvalidArgumentException("invalid HTTP method request."));
-	}
+			throw(new \InvalidArgumentException("invalid HTTP method request."));
+		}
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
