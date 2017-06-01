@@ -75,35 +75,48 @@ echo json_encode($reply);
  * This is work-in-progress code for the slack-string to MySQL logic
  */
 
+// variable where string from slack will be stored
 $slackString = "!todo boomshakalanaasas"; //This variable will be filled with the string from slack.
 
+//makes sure that the string from slack contains a possible bang-tag
 if(preg_match('#!#',$slackString) === 1 ) {
+	//switch statement that filters the string for the various band-tag options
+	//it then executes the case's code and places the string into the appropriate MySQL table
 	switch($slackString) {
 
 		case (preg_match('#!treky#',$slackString) === 1);
-			echo "treky";
+			echo "treky"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
 		case (preg_match('#!challenge#',$slackString) === 1);
-			echo "challenge";
+			echo "challenge"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
 		case (preg_match('#!todo#',$slackString) === 1);
-			echo "todo";
+			echo "todo"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
 		case (preg_match('#!snackbot#',$slackString) === 1);
-			echo "snackbot";
+			echo "snackbot"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
 		case (preg_match('#!pun#',$slackString) === 1);
-			echo "pun counter";
+			echo "pun counter"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
 		case (preg_match('#!tictactoe#',$slackString) === 1);
-			echo "tictactoe";
+			echo "tictactoe"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
 		case (preg_match('#!easteregg#',$slackString) === 1);
-			echo "easteregg";
+			echo "easteregg"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
 		case (preg_match('#!announce#',$slackString) === 1);
-			echo "announce";
+			echo "announce"; //this is simply for testing
+			//MySQL injection code will go here
 			break;
+		//default if there was a "!" in the string; however, it did not match our band-tag requirements
 		default;
 			echo "String did not match a switch case!";
 	}
