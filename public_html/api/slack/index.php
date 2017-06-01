@@ -70,3 +70,41 @@ try {
 header("Content-type: application/json");
 echo json_encode($reply);
 
+
+/**
+ * This is work-in-progress code for the slack-string to MySQL logic
+ */
+
+$slackString = "!todo boomshakalanaasas"; //This variable will be filled with the string from slack.
+
+if(preg_match('#!#',$slackString) === 1 ) {
+	switch($slackString) {
+
+		case (preg_match('#!treky#',$slackString) === 1);
+			echo "treky";
+			break;
+		case (preg_match('#!challenge#',$slackString) === 1);
+			echo "challenge";
+			break;
+		case (preg_match('#!todo#',$slackString) === 1);
+			echo "todo";
+			break;
+		case (preg_match('#!snackbot#',$slackString) === 1);
+			echo "snackbot";
+			break;
+		case (preg_match('#!pun#',$slackString) === 1);
+			echo "pun counter";
+			break;
+		case (preg_match('#!tictactoe#',$slackString) === 1);
+			echo "tictactoe";
+			break;
+		case (preg_match('#!easteregg#',$slackString) === 1);
+			echo "easteregg";
+			break;
+		case (preg_match('#!announce#',$slackString) === 1);
+			echo "announce";
+			break;
+		default;
+			echo "String did not match a switch case!";
+	}
+}
