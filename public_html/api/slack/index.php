@@ -73,6 +73,7 @@ echo json_encode($reply);
 
 /**
  * This is work-in-progress code for the slack-string to MySQL logic
+ * @author Tucker Logan
  */
 
 // variable where string from slack will be stored
