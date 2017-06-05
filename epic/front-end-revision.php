@@ -7,7 +7,6 @@
 		<!--font awesome for icons and stuff-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -40,21 +39,25 @@
 			<div class="row">
 				<!-- notification section -->
 				<div class="col-md-3">
-					<i class="fa fa-sun-o" fa-20px></i>
+					<i class="fa fa-sun-o"></i>
+					<p>80 degrees and sunny</p>
 				</div>
-				<div class="col-md-4 text-right">
+				<div class="col-md-4 text-center">
 					<!-- welcome message -->
 					<h1>
 						Good Evening
 					</h1>
 				</div>
 				<!-- date, time, and weather section -->
-				<?php
-				$t=time();
-				echo($t . "<br>");
-				echo(date("Y-m-d",$t));
-				?>
-				</div>
+					<div class="col-md-3" id="time">
+				<!-- php code for time echo the time -->
+						<?php
+						$t=time();
+						echo($t . "<br>");
+						echo(date("Y-m-d",$t));
+						?>
+					</div> <!-- colunm -->
+				</div> <!-- row 1 -->
 			</div>
 
 	</body>

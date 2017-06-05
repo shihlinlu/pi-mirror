@@ -8,8 +8,24 @@
 body {
 	background-color: black;
 	color: white;
+	padding-top: 2rem;
+}
+ /*
+ * text and image sizing
+  */
+.fa-sun-o{
+	color: white;
+	font-size: 8rem;
 }
 
-i{
-	color: white;
+
+p {
+	font-size: 31px;
 }
+
+#time {
+	color: white;
+	font-size: 31px;
+	text-align: right;
+}
+
