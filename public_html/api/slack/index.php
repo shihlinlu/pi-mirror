@@ -37,12 +37,15 @@ try {
 	// determine which HTTP method is being used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
-	//If method is a GET request, return the latest messages
+	//If method is a GET request, return the latest message
 	$payload = new ChannelsHistoryPayload();
 	$payload->setChannelId('C5BGUJ6R0');
 
 	$apiClient = new ApiClient('slack-token-here');
 	$response = $apiClient->send($payload);
+
+
+
 
 	if($response->isOk()) {
 		$response->getLatest()
@@ -74,7 +77,7 @@ echo json_encode($reply);
 /**
  * This is work-in-progress code for the slack-string to MySQL logic
  * @author Tucker Logan
- */
+
 
 // variable where string from slack will be stored
 $slackString = "!todo boomshakalanaasas"; //This variable will be filled with the string from slack.
@@ -122,3 +125,4 @@ if(preg_match('#!#',$slackString) === 1 ) {
 			echo "String did not match a switch case!";
 	}
 }
+ */

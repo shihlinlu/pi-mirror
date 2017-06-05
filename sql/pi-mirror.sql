@@ -13,7 +13,7 @@ CREATE TABLE sensor (
 CREATE TABLE reading (
 	readingId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	readingSensorId INT UNSIGNED NOT NULL,
-	-- sensorValue and sensorDateTime should be readingValue and readingDateTime; however, the changes would be too heavy for ur time-line
+	-- sensorValue and sensorDateTime should be readingValue and readingDateTime; however, the changes would be too heavy for our time-line
 	sensorValue DECIMAL(12,6) UNSIGNED NOT NULL,
 	sensorDateTime DATETIME(6) NOT NULL,
 	INDEX (readingSensorId),
