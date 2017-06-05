@@ -10,7 +10,7 @@ use Forecast\Forecast;
 /**
  * api for current weather
  *
- * @author Tucker (Github)
+ * @authors Tucker & Luc (Github)
  **/
 
 //start session
@@ -23,70 +23,73 @@ $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
 
-try {
 
+
+
+try {
+	
 	//initialize encrypted config variable
 	//config is reading
 	//although the name does not match the database this is correct per bridge's example
 	$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
-
-
-	//grab mySQL statement
-	//pdo is reading and writing
-	//$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
-
+	
 	//variable that will house the API key for the Dark Sky API
 	$darkSky = $config["darkSky"];
+	
 	//determine which HTTP method is being used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
-
-	if($method === "GET") {
-		//set XSRF cookie
-		setXsrfCookie("/");
-		//handle GET request - if id is present
-		//determine if a key was sent in the URL by checking $id
-		//stopped here need to read documentation for GET request
-
+	
+	//sanitize input
+	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+	$tweetProfileId = filter_input(INPUT_GET, "tweetProfileId", FILTER_VALIDATE_INT);
+	$tweetContent = filter_input(INPUT_GET, "tweetContent", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	
+	
+	//If method is get handle the sign in logic
+	if ($method === "GET") {
+		//set xsrf
+		setXsrfCookie();
+		
+		if(empty($id) === false) {        
+			$forecast = Forecast::$weather($pdo, $weather);
+			if($forecast !== null ) {
+				$reply->data = $weather;
+			}
+		}
+		
+		$forecast = new Forecast($darkSky);
+		
+		$weather = $forecast->get(35.0803, -106.6056);
+		     //$reply->data=$weather;
+		//var_dump($weather);
+		
+		
+		if(empty($weather->currently) === true ) {
+			throw new \RuntimeException("Unsure about whether or not we can get the weather", $weather->status);
+		}
+		
+		$ngWeather = new stdClass();
+		
+		$ngWeather->time = $weather->currently->time;
+		$ngWeather->temperature = $weather->currently->temperature;
+		$ngWeather->apparentTemperature = $weather->currently->apparentTemperature;
+		$ngWeather->windSpeed = $weather->currently->windSpeed;
+		$ngWeather->windBearing = $weather->currently->windBearing;
+		$reply->data = $ngWeather;
+		
+	} else {
+		throw (new \InvalidArgumentException("invalid http method request"));
+		
+		
+		// if an exception is thrown update the
 	}
-
-
-
-
-
-//
-//	//If method is get handle the sign in logic
-//	if($method === "POST") {
-//		//make sure the XSRF Token is valid.
-//		verifyXsrf();
-//
-//		//process the request content and decode the json object into a php object
-//		$requestContent = file_get_contents("php://input");
-//		$requestObject = json_decode($requestContent);
-//
-//		//Latitude provided vy user's browser
-//		$userLocationX = filter_var($requestObject->userLocationX, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
-//		if(empty($requestObject->userLocationX) === true) {
-//			throw(new \InvalidArgumentException("Currently disconnected", 401));
-//		}
-//
-//		//Longitude provided by user's browser
-//		$userLocationY = filter_var($requestObject->userLocationY, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
-//		if(empty($requestObject->userLocationY) === true) {
-//			throw(new \InvalidArgumentException("Currently disconnected", 401));
-//		}
-
-		//TODO used only for testing latitude and longitude results. Remove prior to final deployment
-		var_dump($userLocationX);
-		var_dump($userLocationY);
-	}
-
-	// if an exception is thrown update the
-} catch(\Exception $exception) {
-	$reply->status = $exception->getCode();
-	$reply->message = $exception->getMessage();
-} catch(TypeError $typeError) {
-	$reply->status = $typeError->getCode();
-	$reply->message = $typeError->getMessage();
+} catch(Exception $exception) {
+		$reply->status = $exception->getCode();
+		$reply->message = $exception->getMessage();
+	} catch(TypeError $typeError) {
+		$reply->status = $typeError->getCode();
+		$reply->message = $typeError->getMessage();
+	
 }
 header("Content-type: application/json");
 echo json_encode($reply);
