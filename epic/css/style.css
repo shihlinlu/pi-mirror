@@ -21,7 +21,7 @@ body {
 }
 
 .inverted {
-	filter: invert(1);
+	filter: invert(100%);
 }
 
 /* Classes

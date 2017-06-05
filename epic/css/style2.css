@@ -1,0 +1,15 @@
+
+
+
+ /*
+ *this is the code to invert the text to white and background to black
+  */
+
+body {
+	background-color: black;
+	color: white;
+}
+
+i{
+	color: white;
+}
