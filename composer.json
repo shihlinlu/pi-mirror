@@ -1,7 +1,7 @@
 {
   "minimum-stability" : "dev",
-  "prefer-stable" : true,
   "require": {
+    "cleentfaar/slack": "dev-master",
     "guzzlehttp/guzzle": "@stable",
     "phpdocumentor/phpdocumentor": "@stable",
     "phpunit/dbunit": "@stable",
