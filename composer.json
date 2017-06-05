@@ -1,4 +1,6 @@
 {
+  "minimum-stability" : "dev",
+  "prefer-stable" : true,
   "require": {
     "guzzlehttp/guzzle": "@stable",
     "phpdocumentor/phpdocumentor": "@stable",

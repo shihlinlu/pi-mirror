@@ -12,7 +12,6 @@ use Slack\Slack;
  * @author Shihlin Lu
  **/
 
-
 	// start session
 	if(session_status() !== PHP_SESSION_ACTIVE) {
 		session_start();
@@ -56,12 +55,6 @@ try {
 		// explained error
 		echo $response->getErrorExplanation();
 	}
-
-
-
-
-
-
 
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
