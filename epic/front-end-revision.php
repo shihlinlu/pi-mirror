@@ -38,6 +38,8 @@
 		<!--custom javscript link for front end -->
 		<script src="javascript/script.js" type="text/javascript"></script>
 
+		<!-- customer weather api call -->
+		<link rel="api-call" href="../public_html/api/weather/index.php"/>
 
 	</head>
 
@@ -80,7 +82,31 @@
 				</div> <!-- row2 for slack -->
 			</div>
 		<footer>
-
+<script>
+	function startTime() {
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		var M = today.getMonth();
+		var d = today.getDate();
+		var y = today.getFullYear();
+		m = checkTime(m);
+		s = checkTime(s);
+		document.getElementById('time').innerHTML =
+			h + ":" + m + ":" + s + "<br>" + M + "/" + d + "/" + y;
+		var t = setTimeout(startTime, 500);
+	}
+	function checkTime(i) {
+		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		return i;
+	}
+</script>
+			<div class="api-call">
+				<?php
+				echo ($ngWeather);
+				?>
+			</div>
 		</footer>
 
 	</body>
