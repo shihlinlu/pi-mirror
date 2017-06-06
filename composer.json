@@ -4,6 +4,7 @@
     "cleentfaar/slack": "dev-master",
     "guzzlehttp/guzzle": "@stable",
     "phpdocumentor/phpdocumentor": "@stable",
+    "guhelski/forecast-php":"@stable",
     "phpunit/dbunit": "@stable",
     "phpunit/phpunit": "@stable"
   },
