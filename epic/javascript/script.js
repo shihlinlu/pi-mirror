@@ -1,8 +1,18 @@
-$(document).ready(function () {
-    $('button').click(function () {
-        $('#todo').append("<ul>" + $("input[name=task]").val() + " <a href='#' class='close' aria-hidden='true'>&times;</a></ul>");
-    });
-    $("body").on('click', '#todo a', function () {
-        $(this).closest("ul").remove();
-    });
-});
+<!-- javascript clock code -->
+$(document).ready(function() {
+   function startTime() {
+	var today = new Date();
+	var h = today.getHours();
+	var m = today.getMinutes();
+	var s = today.getSeconds();
+	m = checkTime(m);
+	s = checkTime(s);
+	document.getElementById('time').innerHTML =
+		h + ":" + m + ":" + s;
+	var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+	if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+	return i;
+}
+});/*end document.ready */

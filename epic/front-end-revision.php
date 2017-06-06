@@ -6,8 +6,9 @@
 
 		<!--font awesome for icons and stuff-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+		<!-- for mobile view -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 				integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,19 +22,28 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/style2.css" type="text/css"/>
+
 		<!-- jQuery v3.0 -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" type="text/javascript"></script>
+
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 				  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 				  crossorigin="anonymous"></script>
 
-		<title>Front End- Static</title>
+		<title>Pi-mirror</title>
+
+		<!--custom javscript link for front end -->
+		<script src="javascript/script.js" type="text/javascript"></script>
+
+
 	</head>
 
 
-	<body>
+	<body onload="startTime()">
+
 		<!-- container for the page -->
 		<div class="container">
 			<div class="row">
@@ -42,7 +52,7 @@
 					<i class="fa fa-sun-o"></i>
 					<p>80 degrees and sunny</p>
 				</div>
-				<div class="col-md-4 text-center">
+				<div class="col-md-4" id="welcome">
 					<!-- welcome message -->
 					<h1>
 						Good Evening
@@ -50,15 +60,28 @@
 				</div>
 				<!-- date, time, and weather section -->
 					<div class="col-md-3" id="time">
-				<!-- php code for time echo the time -->
-						<?php
-						$t=time();
-						echo($t . "<br>");
-						echo(date("Y-m-d",$t));
-						?>
+				<!-- code for time show the time -->
+						<div class="container">
+							<script type="text/javascript">
+
+							</script>
+						</div>
+
 					</div> <!-- colunm -->
 				</div> <!-- row 1 -->
+
+				<div class="row">
+					<div class="container" id="slack">
+						<div class="col-md-12">
+							<!-- slack goes here with angular-->
+
+						</div>
+					</div> <!-- container -->
+				</div> <!-- row2 for slack -->
 			</div>
+		<footer>
+
+		</footer>
 
 	</body>
 </html>

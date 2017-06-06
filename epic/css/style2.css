@@ -28,4 +28,6 @@ p {
 	font-size: 31px;
 	text-align: right;
 }
-
+#welcome {
+	text-align: center;
+}
