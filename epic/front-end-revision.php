@@ -39,7 +39,8 @@
 		<script src="javascript/script.js" type="text/javascript"></script>
 
 		<!-- customer weather api call -->
-		<link rel="api-call" href="../public_html/api/weather/index.php"/>
+
+
 
 	</head>
 
@@ -49,10 +50,42 @@
 		<!-- container for the page -->
 		<div class="container">
 			<div class="row">
-				<!-- notification section -->
+				<!-- weather -->
 				<div class="col-md-3">
-					<i class="fa fa-sun-o"></i>
-					<p>80 degrees and sunny</p>
+					<figure class="icons">
+						<!-- these icons are thanks to the creators at skycon http://darkskyapp.github.io/skycons/ -->
+
+						<canvas id="clear-day" width="64" height="64">
+						</canvas>
+
+						<canvas id="clear-night" width="64" height="64">
+						</canvas>
+
+						<canvas id="partly-cloudy-day" width="64" height="64">
+						</canvas>
+
+						<canvas id="partly-cloudy-night" width="64" height="64">
+						</canvas>
+
+						<canvas id="cloudy" width="64" height="64">
+						</canvas>
+
+						<canvas id="rain" width="64" height="64">
+						</canvas>
+
+						<canvas id="sleet" width="64" height="64">
+						</canvas>
+
+						<canvas id="snow" width="64" height="64">
+						</canvas>
+
+						<canvas id="wind" width="64" height="64">
+						</canvas>
+
+						<canvas id="fog" width="64" height="64">
+						</canvas>
+					</figure>
+
 				</div>
 				<div class="col-md-4" id="welcome">
 					<!-- welcome message -->
@@ -82,6 +115,7 @@
 				</div> <!-- row2 for slack -->
 			</div>
 		<footer>
+			<!-- this is temporary we will add it to a js file later we jut want a proof of concept  -->
 <script>
 	function startTime() {
 		var today = new Date();
@@ -102,10 +136,19 @@
 		return i;
 	}
 </script>
-			<div class="api-call">
-				<?php
-				echo ($ngWeather);
-				?>
+			<div class="skycons">
+<script src="javascript/skycons.js">
+	var icons = new Skycons(),
+		list  = [
+			"clear-day", "clear-night", "partly-cloudy-day",
+			"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+			"fog"
+		],
+		i;
+	for(i = list.length; i--; )
+		icons.set(list[i], list[i]);
+	icons.play();
+</script>
 			</div>
 		</footer>
 

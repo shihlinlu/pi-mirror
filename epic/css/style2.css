@@ -6,7 +6,7 @@
   */
 
 body {
-	background-color: black;
+	background-color: grey;
 	color: white;
 	padding-top: 2rem;
 }
@@ -31,3 +31,12 @@ p {
 #welcome {
 	text-align: center;
 }
+
+
+/*
+weather icons from http://darkskyapp.github.io/skycons/
+ */
+
+ #skycons {
+	 color: white !important;
+ }
