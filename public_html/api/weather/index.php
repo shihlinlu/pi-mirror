@@ -61,7 +61,7 @@ try {
 		
 		$weather = $forecast->get(35.0803, -106.6056);
 		     //$reply->data=$weather;
-		//var_dump($weather);
+		//v  ar_dump($weather);
 		
 		
 		if(empty($weather->currently) === true ) {
