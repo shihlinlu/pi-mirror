@@ -64,9 +64,9 @@ try {
 		if(empty($weather->currently) === true ) {
 			throw new \RuntimeException("Unsure about whether or not we can get the weather", $weather->status);
 		}
-		
+
 		$ngWeather = new stdClass();
-		
+
 		$ngWeather->time = $weather->currently->time;
 		$ngWeather->temperature = $weather->currently->temperature;
 		$ngWeather->apparentTemperature = $weather->currently->apparentTemperature;

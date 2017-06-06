@@ -11,6 +11,9 @@ use CL\Slack\Payload\ChannelsHistoryPayload;
 /**
  * API to display Slack channel history to the mirror
  *
+ * Retrieve latest message - channels.history
+ * Retrieve user's identity - users.identity
+ *
  * @author Shihlin Lu
  **/
 
@@ -54,6 +57,7 @@ try {
 			//channel with latest history
 			$response->getLatest(); // had to add getLatest() in PayloadResponseInterface (vendor)
 
+
 		} else {
 			// error message
 			echo $response->getError();
@@ -61,6 +65,18 @@ try {
 			// error explanation
 			echo $response->getErrorExplanation();
 		}
+
+
+		/**
+		 * $ngSlack = new stdClass();
+
+		// variables formatted for angular; this will be displayed on the interface
+		$ngSlack->username =;
+		$ngSlack->avatar_hash =;
+		$ngSlack->message = $payload;
+		$ngSlack->time = ;
+		 */
+
 
 	} else {
 		throw (new \InvalidArgumentException("invalid http method request"));
