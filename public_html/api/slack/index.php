@@ -24,8 +24,6 @@ use CL\Slack\Payload\ChannelsHistoryPayload;
 	$reply->status = 200;
 	$reply->data = null;
 
-
-
 try {
 
 	// initialize encrypted config variable
@@ -54,7 +52,8 @@ try {
 
 		if($response->isOk()) {
 			//channel with latest history
-			$response->getLatest();
+			$response->getLatest(); // had to add getLatest() in PayloadResponseInterface (vendor)
+
 		} else {
 			// error message
 			echo $response->getError();
@@ -67,7 +66,7 @@ try {
 		throw (new \InvalidArgumentException("invalid http method request"));
 
 
-		// if an exception is thrown update the
+
 	}
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
