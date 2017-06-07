@@ -38,7 +38,7 @@
 		<!--custom javscript link for front end -->
 		<script src="javascript/script.js" type="text/javascript"></script>
 		<!-- for skycons -->
-		<script src="javascript/skycons.js" type="text/javascript"></script>
+<!--		<script src="javascript/skycons.js"></script>-->
 
 		<!-- customer weather api call -->
 
@@ -50,7 +50,7 @@
 	<body onload="startTime()">
 
 		<!-- container for the page -->
-		<div class="container">
+		<div class="container" id="weather">
 			<div class="row">
 				<!-- weather -->
 				<div class="col-md-3">
@@ -97,7 +97,7 @@
 				</div>
 				<!-- date, time, and weather section -->
 					<div class="col-md-3" id="time">
-				<!-- code for time show the time -->
+				<!-- code for time / show the time -->
 						<div class="container">
 							<script type="text/javascript">
 
@@ -140,6 +140,7 @@
 </script>
 			<div class="skycons">
 <script src="javascript/skycons.js">
+	<!-- from github.com/darkskyapp/skycons/blob/master/index.html -->
 	var icons = new Skycons(),
 		list  = [
 			"clear-day", "clear-night", "partly-cloudy-day",
@@ -150,6 +151,7 @@
 	for(i = list.length; i--; )
 		icons.set(list[i], list[i]);
 	icons.play();
+
 </script>
 			</div>
 		</footer>
