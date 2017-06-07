@@ -21,7 +21,9 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 //prepare an empty reply
 $reply = new stdClass();
 $reply->status = 200;
-$reply->data = null;  
+$reply->data = null;
+
+
 
 
 
@@ -58,9 +60,9 @@ try {
 		
 		$weather = $forecast->get(35.0803, -106.6056);
 		     //$reply->data=$weather;
-		//v  ar_dump($weather);
+		//var_dump($weather);
 		
-		
+		   // Testing the API
 		if(empty($weather->currently) === true ) {
 			throw new \RuntimeException("Unsure about whether or not we can get the weather", $weather->status);
 		}
@@ -72,7 +74,10 @@ try {
 		$ngWeather->apparentTemperature = $weather->currently->apparentTemperature;
 		$ngWeather->windSpeed = $weather->currently->windSpeed;
 		$ngWeather->windBearing = $weather->currently->windBearing;
+		$ngWeather->summary = $weather->currently->summary;
+		$ngWeather->icon = $weather->currently->icon;
 		$reply->data = $ngWeather;
+		
 		
 	} else {
 		throw (new \InvalidArgumentException("invalid http method request"));
@@ -86,7 +91,9 @@ try {
 	} catch(TypeError $typeError) {
 		$reply->status = $typeError->getCode();
 		$reply->message = $typeError->getMessage();
-	
 }
 header("Content-type: application/json");
 echo json_encode($reply);
+
+
+
