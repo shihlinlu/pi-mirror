@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -137,10 +137,12 @@
 		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 		return i;
 	}
-</script>
-			<div class="skycons">
-<script src="javascript/skycons.js">
 	<!-- from github.com/darkskyapp/skycons/blob/master/index.html -->
+</script>
+			<div class="icons">
+				<script src="javascript/skycons.js"></script>
+<script>
+
 	var icons = new Skycons(),
 		list  = [
 			"clear-day", "clear-night", "partly-cloudy-day",
