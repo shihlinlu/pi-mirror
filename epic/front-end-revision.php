@@ -143,7 +143,7 @@
 				<script src="javascript/skycons.js"></script>
 <script>
 
-	var icons = new Skycons(),
+	var icons = new Skycons({"color": "#ffffff"}),
 		list  = [
 			"clear-day", "clear-night", "partly-cloudy-day",
 			"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",

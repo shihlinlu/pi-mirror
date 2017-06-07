@@ -45,8 +45,7 @@ weather icons from http://darkskyapp.github.io/skycons/
  canvas {
 	 display: block;
 	 float: left;
-	 margin-left: 8px;
-	 margin-top: 8px;
+	 color: white;
  }
 
 
