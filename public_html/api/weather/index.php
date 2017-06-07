@@ -69,7 +69,7 @@ try {
 
 		$ngWeather = new stdClass();
 
-		$ngWeather->time = $weather->currently->time;
+		$ngWeather->time = $weather->currently->time * 1000;
 		$ngWeather->temperature = $weather->currently->temperature;
 		$ngWeather->apparentTemperature = $weather->currently->apparentTemperature;
 		$ngWeather->windSpeed = $weather->currently->windSpeed;
