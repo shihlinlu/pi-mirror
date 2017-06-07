@@ -37,6 +37,8 @@
 
 		<!--custom javscript link for front end -->
 		<script src="javascript/script.js" type="text/javascript"></script>
+		<!-- for skycons -->
+		<script src="javascript/skycons.js" type="text/javascript"></script>
 
 		<!-- customer weather api call -->
 
