@@ -4,94 +4,57 @@ require_once dirname(__DIR__, 3) . "/php/lib/xsrf.php";
 require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
 require_once (dirname(__DIR__, 3) . "/vendor/autoload.php");
 
+use Strime\Slackify\Api\Api;
+use Strime\Slackify\Api\Channels;
 
-use CL\Slack\Payload\ChannelsHistoryPayload;
 
-
-/**
- * API to display Slack channel history to the mirror
- *
- * Retrieve latest message - channels.history
- * Retrieve user's identity - users.identity
- *
- * @author Shihlin Lu
- **/
-
-	// start session
-	if(session_status() !== PHP_SESSION_ACTIVE) {
-		session_start();
-	}
+// start session
+if(session_status() !== PHP_SESSION_ACTIVE) {
+	session_start();
+}
 
 // prepare an empty reply
-	$reply = new stdClass();
-	$reply->status = 200;
-	$reply->data = null;
+$reply = new stdClass();
+$reply->status = 200;
+$reply->data = null;
 
-try {
+// initialize encrypted config variable
+$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
 
-	// initialize encrypted config variable
-	$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
+// grab mySQL statement
+$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
 
-	// grab mySQL statement
-	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
+// variable that will house the API key for Slack API
+$slack2 = $config["slack2"];
 
-	// variable that will house the API key for Slack API
-	$slack2 = $config["slack2"];
+// determine which HTTP method is being used
+$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
-	// determine which HTTP method is being used
-	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
+/**
+ * slack api call must have a method and parameter:
+ * https://slack.com/api/channels.history?token=n&channel=n&count=n
+ *
+ **/
 
+// if method is GET, handle the authentication to access Slack API methods
+if ($method === "GET") {
 
-	if ($method === "GET") {
-		//set xsrf
-		setXsrfCookie();
+	//$client = new \GuzzleHttp\Client();
+	//$json_response = $client->request('GET', $this->getUrl(), []);
+	//$response = \GuzzleHttp\json_decode($json_response->getBody() );
+	//send request to slack API to receive channel history
 
-		// specify slack channel for message retrieval
-		$payload = new ChannelsHistoryPayload();
-		$payload->setChannelId('C5BGUJ6R0');
+	$api_channels_request = new Channels('slack2');
+	$api_channels_request->history("C5BGUJ6R0", "",0,0,1);
+	//return data// $reply->data = $api_channels_request;
 
-		$apiClient = new \CL\Slack\Transport\ApiClient("slack2");
-		$response = $apiClient->send($payload);
-
-		if($response->isOk()) {
-			//channel with latest history
-			$response->getLatest(); // had to add getLatest() in PayloadResponseInterface (vendor)
-
-
-		} else {
-			// error message
-			echo $response->getError();
-
-			// error explanation
-			echo $response->getErrorExplanation();
-		}
-
-
-		/**
-		 * $ngSlack = new stdClass();
-
-		// variables formatted for angular; this will be displayed on the interface
-		$ngSlack->username =;
-		$ngSlack->avatar_hash =;
-		$ngSlack->message = $payload;
-		$ngSlack->time = ;
-		 */
-
-
-	} else {
-		throw (new \InvalidArgumentException("invalid http method request"));
-
-
-
-	}
-} catch(Exception $exception) {
-	$reply->status = $exception->getCode();
-	$reply->message = $exception->getMessage();
-} catch(TypeError $typeError) {
-	$reply->status = $typeError->getCode();
-	$reply->message = $typeError->getMessage();
 
 }
-header("Content-type: application/json");
-echo json_encode($reply);
+
+
+
+
+
+
+
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a5101a4d3f11e8998c23902a61de4d9",
+    "content-hash": "904dc4d42d744ff2656b196fea83ed44",
     "packages": [
         {
             "name": "cilex/cilex",
@@ -282,6 +282,80 @@
                 "parser"
             ],
             "time": "2017-05-25 15:48:57"
+        },
+        {
+            "name": "doctrine/cache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/cache.git",
+                "reference": "58f40845d8091b8cb768d6e3a49f685c8dff6928"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/58f40845d8091b8cb768d6e3a49f685c8dff6928",
+                "reference": "58f40845d8091b8cb768d6e3a49f685c8dff6928",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1"
+            },
+            "conflict": {
+                "doctrine/common": ">2.2,<2.4"
+            },
+            "require-dev": {
+                "alcaeus/mongo-php-adapter": "^1.1",
+                "mongodb/mongodb": "^1.1",
+                "phpunit/phpunit": "^5.7",
+                "predis/predis": "~1.0"
+            },
+            "suggest": {
+                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Caching library offering an object-oriented API for many cache backends",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "cache",
+                "caching"
+            ],
+            "time": "2017-05-31 18:10:38"
         },
         {
             "name": "doctrine/collections",
@@ -3115,6 +3189,64 @@
             "time": "2017-03-06T16:42:24+00:00"
         },
         {
+            "name": "strimeapp/slackify",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/strimeapp/Slackify.git",
+                "reference": "a8e9a1d09722fffacd6886004661dfa4d1f4b832"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/strimeapp/Slackify/zipball/a8e9a1d09722fffacd6886004661dfa4d1f4b832",
+                "reference": "a8e9a1d09722fffacd6886004661dfa4d1f4b832",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/cache": "^1.0",
+                "guzzlehttp/guzzle": "^6.0",
+                "php": "^5.5 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || 4.8.31",
+                "sami/sami": "^4.0 || 3.0",
+                "silex/silex": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Strime\\Slackify": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Romain Biard",
+                    "email": "contact@strime.io",
+                    "homepage": "https://www.strime.io/"
+                }
+            ],
+            "description": "Slackify, an Object Oriented library to communicate with Slack API",
+            "keywords": [
+                "api",
+                "chat",
+                "communication",
+                "notifications",
+                "php",
+                "slack",
+                "webhooks"
+            ],
+            "time": "2017-03-31T20:33:17+00:00"
+        },
+        {
             "name": "symfony/config",
             "version": "2.8.x-dev",
             "source": {
@@ -3841,12 +3973,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "c071a2e36cd08bab3cb09fabe773c2026c394a43"
+                "reference": "b3cb3d22d7bfc01cc7766cf443c8408675b8de6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c071a2e36cd08bab3cb09fabe773c2026c394a43",
-                "reference": "c071a2e36cd08bab3cb09fabe773c2026c394a43",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/b3cb3d22d7bfc01cc7766cf443c8408675b8de6c",
+                "reference": "b3cb3d22d7bfc01cc7766cf443c8408675b8de6c",
                 "shasum": ""
             },
             "require": {
@@ -3898,7 +4030,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-06-06 03:57:21"
+            "time": "2017-06-07 18:45:59"
         },
         {
             "name": "zendframework/zend-cache",
@@ -4604,6 +4736,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "cleentfaar/slack": 20,
+        "strimeapp/slackify": 0,
         "guzzlehttp/guzzle": 0,
         "phpdocumentor/phpdocumentor": 0,
         "guhelski/forecast-php": 0,

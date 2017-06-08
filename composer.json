@@ -2,6 +2,7 @@
   "minimum-stability" : "dev",
   "require": {
     "cleentfaar/slack": "dev-master",
+    "strimeapp/slackify": "@stable",
     "guzzlehttp/guzzle": "@stable",
     "phpdocumentor/phpdocumentor": "@stable",
     "guhelski/forecast-php":"@stable",
