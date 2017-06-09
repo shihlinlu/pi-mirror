@@ -25,9 +25,6 @@ try {
 	// initialize encrypted config variable
 	$config = readConfig("/etc/apache2/capstone-mysql/piomirrors.ini");
 
-// grab mySQL statement
-	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/piomirrors.ini");
-
 // variable that will house the API key for Slack API
 	$slack2 = $config["slack2"];
 
@@ -45,15 +42,16 @@ try {
 		//set xsrf
 		setXsrfCookie();
 
-		if(empty($id) === false) {
-			$message = Channels::$channel($pdo, $channel);
-			if($message !== null) {
-				$reply->data = $message;
-			}
-		}
+//		$message = new Channels("slack2");
+//		$channel = $message->history("C5BGUJ6R0","1496875875.195638", 0, 0, 1, 0);
 
-		$message = new Channels("slack2");
-		$channel = $message->history("C5BGUJ6R0","1496875875.195638", 0, 0, 1, 0);
+		$url = "https://slack.com/api/channels.history?token=" . $config["slack2"] . "&channel=C5BGUJ6R0&count=1";
+		$guzzle = new GuzzleHttp\Client();
+		$result = $guzzle->get($url);
+		if($result->getStatusCode() !== 200) {
+			throw(new \RuntimeException("can't get to Slack", $result->getStatusCode()));
+		}
+		$reply->data = json_decode($result->getBody());
 
 		//if(empty($channel->ok) === true ) {
 			//throw new \RuntimeException("Can't get message.", $channel->status);

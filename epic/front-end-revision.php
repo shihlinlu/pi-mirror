@@ -83,7 +83,12 @@
 						<canvas id="fog" width="64" height="64">
 						</canvas>
 					</figure>
+					<!-- php text to grab weather and echo to front end -->
+			<div ngClass="weather">
+				<?php
 
+				?>
+			</div>
 				</div>
 				<div class="col-md-4" id="welcome">
 					<!-- welcome message -->
@@ -136,9 +141,10 @@
 		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 		return i;
 	}
-	<!-- from github.com/darkskyapp/skycons/blob/master/index.html -->
+
 </script>
 			<div class="icons">
+				<!-- from github.com/darkskyapp/skycons/blob/master/index.html -->
 				<script src="javascript/skycons.js"></script>
 <script>
 
