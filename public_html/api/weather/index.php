@@ -23,11 +23,6 @@ $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
 
-
-
-
-
-
 try {
 	
 	//initialize encrypted config variable
@@ -40,10 +35,7 @@ try {
 	
 	//determine which HTTP method is being used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
-	
-	
-	
-	
+
 	//If method is get handle the sign in logic
 	if ($method === "GET") {
 		//set xsrf
@@ -77,8 +69,7 @@ try {
 		$ngWeather->summary = $weather->currently->summary;
 		$ngWeather->icon = $weather->currently->icon;
 		$reply->data = $ngWeather;
-		
-		
+
 	} else {
 		throw (new \InvalidArgumentException("invalid http method request"));
 		
