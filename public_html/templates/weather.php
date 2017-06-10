@@ -8,6 +8,7 @@
             <li>windSpeed: {{ weather.windSpeed }}</li>
             <li>windBearing: {{ weather.windBearing }}</li>
             <li>Summary: {{ weather.summary }}</li>
+            <li>user: {{ slack.user }} </li>
         </ul>
         </div>
     </div>

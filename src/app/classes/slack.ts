@@ -1,3 +1,3 @@
 export class Slack {
-    constructor (public text: string, public user: string, ts: number) {};
+    constructor (public type: string, public user: string, ts: Date) {};
 }
