@@ -5,8 +5,6 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-import {Clock} from "../classes/slack";
-import {BaseService} from "./base-service";
 
 @Injectable()
 export class ClockService {

@@ -2,27 +2,23 @@
  * Created by primary on 6/10/17.
  */
 
-import {Component} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ClockService} from "../services/clock-service";
 
 @Component({
     selector: 'clock',
-    templateUrl: "./templates/clock.php",
-    styleUrls: ['./app.css']
+    templateUrl: './clock.component.html',
+    styleUrls: ['./clock.component.css']
 })
-export class Clock implements OnInit, OnDestroy {
+export class ClockComponent {
 
-    private _clockSubscription: Subscription;
     time: Date;
 
-    constructor(private clockService: ClockService) { }
-
-    ngOnInit(): void {
-        this._clockSubscription = this.clockService.getClock().subscribe(time => this.time = time);
+    constructor(private clockService: ClockService) {
     }
 
-    ngOnDestroy(): void {
-        this._clockSubscription.unsubscribe();
+    ngOnInit() {
+        this.clockService.getClock().subscribe(time => this.time = time);
     }
 
 }
