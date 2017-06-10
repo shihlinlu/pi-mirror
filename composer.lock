@@ -536,12 +536,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "8882b252f802cae96f0315c3608faef95af6a7f2"
+                "reference": "8dfe52c2d14a68ff3dce6af82058391c6c4eb9b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/8882b252f802cae96f0315c3608faef95af6a7f2",
-                "reference": "8882b252f802cae96f0315c3608faef95af6a7f2",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/8dfe52c2d14a68ff3dce6af82058391c6c4eb9b3",
+                "reference": "8dfe52c2d14a68ff3dce6af82058391c6c4eb9b3",
                 "shasum": ""
             },
             "require": {
@@ -593,7 +593,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-05-09 09:16:44"
+            "time": "2017-06-10 19:55:42"
         },
         {
             "name": "herrera-io/json",
