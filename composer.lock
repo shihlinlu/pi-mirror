@@ -2695,12 +2695,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "701689164123fd8597bbc99738ac54d397338060"
+                "reference": "c7a73305b177922a6cd6ddfab6bb1780fea29c02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/701689164123fd8597bbc99738ac54d397338060",
-                "reference": "701689164123fd8597bbc99738ac54d397338060",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/c7a73305b177922a6cd6ddfab6bb1780fea29c02",
+                "reference": "c7a73305b177922a6cd6ddfab6bb1780fea29c02",
                 "shasum": ""
             },
             "require": {
@@ -2739,7 +2739,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2017-06-02 10:27:39"
+            "time": "2017-06-10 10:11:03"
         },
         {
             "name": "sebastian/environment",
@@ -2747,12 +2747,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3"
+                "reference": "0d1b04bee1356d8bb46bd6f3afcba94b0ceff073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
-                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/0d1b04bee1356d8bb46bd6f3afcba94b0ceff073",
+                "reference": "0d1b04bee1356d8bb46bd6f3afcba94b0ceff073",
                 "shasum": ""
             },
             "require": {
@@ -2789,7 +2789,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2017-05-18 10:10:00"
+            "time": "2017-06-09 05:17:49"
         },
         {
             "name": "sebastian/exporter",
@@ -3584,12 +3584,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "adebc086600bc93b45d8d6721c8f21088a2be4dc"
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/adebc086600bc93b45d8d6721c8f21088a2be4dc",
-                "reference": "adebc086600bc93b45d8d6721c8f21088a2be4dc",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
                 "shasum": ""
             },
             "require": {
@@ -3601,7 +3601,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -3635,7 +3635,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-05-29 15:51:17"
+            "time": "2017-06-09 14:24:12"
         },
         {
             "name": "symfony/process",
@@ -3973,12 +3973,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "b3cb3d22d7bfc01cc7766cf443c8408675b8de6c"
+                "reference": "d54355e9e1b2e946e282f33e92594772bc17ba75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/b3cb3d22d7bfc01cc7766cf443c8408675b8de6c",
-                "reference": "b3cb3d22d7bfc01cc7766cf443c8408675b8de6c",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d54355e9e1b2e946e282f33e92594772bc17ba75",
+                "reference": "d54355e9e1b2e946e282f33e92594772bc17ba75",
                 "shasum": ""
             },
             "require": {
@@ -4030,7 +4030,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-06-07 18:45:59"
+            "time": "2017-06-09 15:14:30"
         },
         {
             "name": "zendframework/zend-cache",

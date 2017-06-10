@@ -1,4 +1,4 @@
-<p class="pull-right"><em>Hungry for <a routerLink="bacon">tofu bacon</a>?</em></p>
+<p class="pull-right"><em> Powered by  <a routerLink="bacon">Darksky</a>?</em></p>
 <main class="container">
 	<router-outlet></router-outlet>
 </main>

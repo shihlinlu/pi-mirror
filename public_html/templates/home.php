@@ -1,2 +1,2 @@
-<h1>Home Template 1</h1>
+<h1>Hello Deep Dive Coders!</h1>
 <weather></weather>
