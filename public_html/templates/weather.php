@@ -5,7 +5,7 @@
 			<h1>Weather in Albuquerque</h1>
 			<div class="currently">
 					<ul>
-						<li>time: {{ weather.time | date }}</li>
+						<li>Date: {{ weather.time | date }}</li>
 						<li>temperature: {{ weather.temperature }}</li>
 						<li>apparentTemperature: {{ weather.apparentTemperature }}</li>
 						<li>windSpeed: {{ weather.windSpeed }}</li>
