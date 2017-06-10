@@ -4,8 +4,6 @@ require_once dirname(__DIR__, 3) . "/php/lib/xsrf.php";
 require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
 require_once (dirname(__DIR__, 3) . "/vendor/autoload.php");
 
-use Strime\Slackify\Api\Channels;
-
 /**
  * API for Slack Channel Feed
  *
@@ -42,9 +40,6 @@ try {
 		//set xsrf
 		setXsrfCookie();
 
-//		$message = new Channels("slack2");
-//		$channel = $message->history("C5BGUJ6R0","1496875875.195638", 0, 0, 1, 0);
-
 		$url = "https://slack.com/api/channels.history?token=" . $config["slack2"] . "&channel=C5BGUJ6R0&count=1";
 		$guzzle = new GuzzleHttp\Client();
 		$result = $guzzle->get($url);
@@ -52,10 +47,6 @@ try {
 			throw(new \RuntimeException("can't get to Slack", $result->getStatusCode()));
 		}
 		$reply->data = json_decode($result->getBody());
-
-		//if(empty($channel->ok) === true ) {
-			//throw new \RuntimeException("Can't get message.", $channel->status);
-		//}
 
 
 	}
