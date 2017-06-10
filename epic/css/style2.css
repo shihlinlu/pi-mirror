@@ -10,18 +10,15 @@ body {
 	color: white;
 	padding-top: 2rem;
 }
- /*
- * text and image sizing
-  */
-.fa-sun-o{
-	color: white;
-	font-size: 8rem;
-}
 
 
 p {
 	font-size: 31px;
 }
+
+/*
+what time is it?
+ */
 
 #time {
 	color: white;
@@ -50,5 +47,11 @@ weather icons from http://darkskyapp.github.io/skycons/
   */
 #messages{
 	text-align: center;
+	color: white;
 }
+
+ .fa-slack{
+	 color: white;
+	 font-size: 8rem;
+ }
 

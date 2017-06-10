@@ -45,7 +45,7 @@
     
 	<body onload="startTime()">
 
-		<!-- container for the page -->
+		<!-- container for the weather icons -->
 		<div class="container" id="weather">
 			<div class="row">
 				<!-- weather -->
@@ -83,49 +83,50 @@
 						<canvas id="fog" width="64" height="64">
 						</canvas>
 					</figure>
-					<!-- php text to grab weather and echo to front end -->
-			<div ngClass="weather">
-				<?php
-
-				?>
-			</div>
 				</div>
-				<div class="col-md-4" id="welcome">
-					<!-- slack message -->
-					<h1>Slack</h1> <i class="fa fa-slack fa-4x"></i>
-					<div class="messages">
-						<div class="col-md-6">
-							<p>user: me</p>
-							<p>message: =)</p>
-						</div>
-					</div>
+
+				<!-- start copying here luc -->
+
+<div class="row">
+	<div class="container weather">
+		<div class="col-md-4">
+			<p>80 billion degrees</p> <!-- put weather api stuff here-->
+		</div>
+	</div>
+
+
+	<div class="container slack">
+		<div class="col-md-4">
+			<!-- slack message -->
+			<h1>Slack</h1> <i class="fa fa-slack fa-4x"></i>
+			<div class="messages">
+				<div class="col-md-6">
+					<p>user: me</p> <!-- insert api stuff here -->
+					<p>message: =)</p> <!-- and here -->
 				</div>
-				<!-- date, time, and weather section -->
-					<div class="col-md-3" id="time">
-				<!-- code for time / show the time -->
-						<div class="container">
-							<script type="text/javascript">
-
-							</script>
-						</div>
-
-					</div> <!-- column -->
-				</div> <!-- row 1 -->
-
-				<div class="row">
-					<div class="container" id="slack">
-						<div class="col-md-12">
-							<!-- slack goes here with angular-->
-                            <div ngClass="weather">
-                           
-                            </div>
-
-						</div>
-					</div> <!-- container -->
-				</div> <!-- row2 for slack -->
 			</div>
+		</div>
+	</div>
+
+
+	<div Class="container time">
+		<!-- date, time, and weather section -->
+		<div class="col-md-4" id="time">
+			<!-- code for time / show the time -->
+			<div class="container">
+				<script type="text/javascript">
+				</script>
+			</div>
+		</div>
+	</div> <!-- column -->
+
+
+
+</div>
+
+			<!-- code for clock & weather icons in javascript placed in footer to load in a timely manner-->
 		<footer>
-			<!-- this is temporary we will add it to a js file later we jut want a proof of concept  -->
+
 <script>
 	function startTime() {
 		var today = new Date();
@@ -145,6 +146,8 @@
 		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 		return i;
 	}
+
+	<!--code for the weather icons  -->
 
 </script>
 			<div class="icons">
