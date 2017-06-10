@@ -84,7 +84,6 @@
 						</canvas>
 					</figure>
 				</div>
-
 				<!-- start copying here luc -->
 
 <div class="row">
