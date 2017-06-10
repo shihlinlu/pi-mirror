@@ -8,7 +8,7 @@ import {Slack} from "../classes/slack";
 })
 
 export class SlackComponent implements OnInit {
-    slack : Slack = new Slack(null, null, null);
+    slack : Slack = new Slack(null, null, null, null);
     constructor(protected slackService: SlackService) {}
 
     getSlack(): void {
