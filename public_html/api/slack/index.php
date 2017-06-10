@@ -57,6 +57,7 @@ try {
 			//throw new \RuntimeException("Can't get message.", $channel->status);
 		//}
 
+
 	}
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
