@@ -12,7 +12,7 @@ export class SlackService extends BaseService {
 
     private slackUrl = "api/slack/";
 
-    getSlack() : Observable<slack> {
+    getSlack() : Observable<Slack> {
         return(this.http.get(this.slackUrl)
             .map(this.extractData)
             .catch(this.handleError));

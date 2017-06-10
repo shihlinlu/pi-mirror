@@ -1,1 +1,1 @@
-<h1>Slack</h1>
+<h2>Slack</h2>
