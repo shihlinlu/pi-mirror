@@ -1,7 +1,57 @@
-main.container {
-    color: red;
+
+/*
+*this is the code to invert the text to white and background to black
+ */
+main{
+    background-color: black;
 }
 
-main {
-    background-color: black;
+body {
+    background-color: grey;
+    color: white;
+    padding-top: 2rem;
+}
+
+
+p {
+    font-size: 31px;
+}
+
+/*
+what time is it?
+ */
+
+#time {
+    color: white;
+    font-size: 31px;
+    text-align: right;
+}
+
+
+/*
+weather icons from http://darkskyapp.github.io/skycons/
+ */
+figure {
+    margin: 3em auto;
+    width: 368px;
+    height: 152px;
+}
+
+canvas {
+    display: block;
+    float: left;
+    color: white;
+}
+
+/*
+slack
+ */
+#messages{
+    text-align: center;
+    color: white;
+}
+
+.fa-slack{
+    color: white;
+    font-size: 8rem;
 }
