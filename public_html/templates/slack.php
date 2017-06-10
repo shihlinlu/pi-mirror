@@ -1,2 +1,7 @@
 <h2>Slack</h2>
-<p> text: {{ slack.text }}; </p>
+<div class="slack">
+    <ul>
+        <li>type: {{ slack.type }}</li>
+        <li>user: {{ slack.user }}</li>
+    </ul>
+</div>
