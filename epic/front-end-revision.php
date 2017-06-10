@@ -91,10 +91,14 @@
 			</div>
 				</div>
 				<div class="col-md-4" id="welcome">
-					<!-- welcome message -->
-					<h1>
-						Good Evening
-					</h1>
+					<!-- slack message -->
+					<h1>Slack</h1> <i class="fa fa-slack fa-4x"></i>
+					<div class="messages">
+						<div class="col-md-6">
+							<p>user: me</p>
+							<p>message: =)</p>
+						</div>
+					</div>
 				</div>
 				<!-- date, time, and weather section -->
 					<div class="col-md-3" id="time">
@@ -160,10 +164,10 @@
 	icons.play();
 
 </script>
-			
+
 			</div>
-   
-		</footer>
+
+			</footer>
     
 		
 		

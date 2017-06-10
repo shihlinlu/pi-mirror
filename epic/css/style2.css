@@ -28,9 +28,6 @@ p {
 	font-size: 31px;
 	text-align: right;
 }
-#welcome {
-	text-align: center;
-}
 
 
 /*
@@ -48,5 +45,10 @@ weather icons from http://darkskyapp.github.io/skycons/
 	 color: white;
  }
 
-
+ /*
+ slack
+  */
+#messages{
+	text-align: center;
+}
 
