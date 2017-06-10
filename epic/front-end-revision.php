@@ -86,6 +86,7 @@
 				</div>
 				<!-- start copying here luc -->
 
+
 <div class="row">
 	<div class="container weather">
 		<div class="col-md-4">
