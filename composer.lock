@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "904dc4d42d744ff2656b196fea83ed44",
+    "content-hash": "d258cf63e4dc20526916cc6a3c649e42",
     "packages": [
         {
             "name": "cilex/cilex",
@@ -125,66 +125,6 @@
             "time": "2012-12-19T10:50:58+00:00"
         },
         {
-            "name": "cleentfaar/slack",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cleentfaar/slack.git",
-                "reference": "ba7073cb79ccea423cd68f6a69096384a730a013"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cleentfaar/slack/zipball/ba7073cb79ccea423cd68f6a69096384a730a013",
-                "reference": "ba7073cb79ccea423cd68f6a69096384a730a013",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/collections": "^1.2",
-                "ext-curl": "*",
-                "guzzlehttp/guzzle": "^6.0",
-                "jms/serializer": "^1.0",
-                "php": ">=5.5",
-                "symfony/event-dispatcher": "^2.3|^3.0",
-                "symfony/yaml": "^2.3|^3.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9",
-                "phpunit/phpunit": "^4.7",
-                "symfony/var-dumper": "^2.3|^3.0"
-            },
-            "suggest": {
-                "cleentfaar/slack-bundle": "For easy integration with your Symfony projects",
-                "cleentfaar/slack-cli": "Command-line application for interacting with the Slack API"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CL\\Slack\\": "src/CL/Slack/",
-                    "CL\\Slack\\Test\\": "tests/src/CL/Slack/Test/",
-                    "CL\\Slack\\Tests\\": "tests/src/CL/Slack/Tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cas Leentfaar",
-                    "email": "info@casleentfaar.com",
-                    "homepage": "https://github.com/cleentfaar"
-                }
-            ],
-            "description": "Access your Slack Team's API through PHP objects",
-            "homepage": "http://cleentfaar.github.io/slack/",
-            "keywords": [
-                "chat",
-                "slack",
-                "slack api"
-            ],
-            "time": "2016-05-30 21:02:28"
-        },
-        {
             "name": "container-interop/container-interop",
             "version": "1.2.0",
             "source": {
@@ -282,147 +222,6 @@
                 "parser"
             ],
             "time": "2017-05-25 15:48:57"
-        },
-        {
-            "name": "doctrine/cache",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/cache.git",
-                "reference": "58f40845d8091b8cb768d6e3a49f685c8dff6928"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/58f40845d8091b8cb768d6e3a49f685c8dff6928",
-                "reference": "58f40845d8091b8cb768d6e3a49f685c8dff6928",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~7.1"
-            },
-            "conflict": {
-                "doctrine/common": ">2.2,<2.4"
-            },
-            "require-dev": {
-                "alcaeus/mongo-php-adapter": "^1.1",
-                "mongodb/mongodb": "^1.1",
-                "phpunit/phpunit": "^5.7",
-                "predis/predis": "~1.0"
-            },
-            "suggest": {
-                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Caching library offering an object-oriented API for many cache backends",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "cache",
-                "caching"
-            ],
-            "time": "2017-05-31 18:10:38"
-        },
-        {
-            "name": "doctrine/collections",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/collections.git",
-                "reference": "1a4fb7e902202c33cce8c55989b945612943c2ba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/1a4fb7e902202c33cce8c55989b945612943c2ba",
-                "reference": "1a4fb7e902202c33cce8c55989b945612943c2ba",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "~0.1@dev",
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Collections\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Collections Abstraction library",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "array",
-                "collections",
-                "iterator"
-            ],
-            "time": "2017-01-03T10:49:41+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -3189,64 +2988,6 @@
             "time": "2017-03-06T16:42:24+00:00"
         },
         {
-            "name": "strimeapp/slackify",
-            "version": "0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/strimeapp/Slackify.git",
-                "reference": "a8e9a1d09722fffacd6886004661dfa4d1f4b832"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/strimeapp/Slackify/zipball/a8e9a1d09722fffacd6886004661dfa4d1f4b832",
-                "reference": "a8e9a1d09722fffacd6886004661dfa4d1f4b832",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/cache": "^1.0",
-                "guzzlehttp/guzzle": "^6.0",
-                "php": "^5.5 || ^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7 || 4.8.31",
-                "sami/sami": "^4.0 || 3.0",
-                "silex/silex": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Strime\\Slackify": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Romain Biard",
-                    "email": "contact@strime.io",
-                    "homepage": "https://www.strime.io/"
-                }
-            ],
-            "description": "Slackify, an Object Oriented library to communicate with Slack API",
-            "keywords": [
-                "api",
-                "chat",
-                "communication",
-                "notifications",
-                "php",
-                "slack",
-                "webhooks"
-            ],
-            "time": "2017-03-31T20:33:17+00:00"
-        },
-        {
             "name": "symfony/config",
             "version": "2.8.x-dev",
             "source": {
@@ -4735,8 +4476,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "cleentfaar/slack": 20,
-        "strimeapp/slackify": 0,
         "guzzlehttp/guzzle": 0,
         "phpdocumentor/phpdocumentor": 0,
         "guhelski/forecast-php": 0,

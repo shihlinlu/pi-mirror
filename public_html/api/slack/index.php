@@ -40,14 +40,21 @@ try {
 		//set xsrf
 		setXsrfCookie();
 
-		$url = "https://slack.com/api/channels.history?token=" . $config["slack2"] . "&channel=C5BGUJ6R0&count=1";
+		// Specific channel id
+		$channelId = 'C5BGUJ6R0';
 		$guzzle = new GuzzleHttp\Client();
-		$result = $guzzle->get($url);
-		if($result->getStatusCode() !== 200) {
-			throw(new \RuntimeException("can't get to Slack", $result->getStatusCode()));
-		}
-		$reply->data = json_decode($result->getBody());
 
+		//
+		$message = getSlackMessages($channelId, $guzzle, $config)[0];
+
+		$userId = $message->user;
+
+		$userData = getSlackUserData($userId, $guzzle, $config);
+
+		// replace the userId from getSlackMessages request with username from getSlackUserData request
+		$message->user = $userData->name;
+
+		$reply->data = $message;
 
 	}
 } catch(Exception $exception) {
@@ -61,10 +68,33 @@ header("Content-type: application/json");
 echo json_encode($reply);
 
 
+// Get the latest message from Slack channel utilizing the channels.history API method call
+function getSlackMessages($channelId, $guzzle, $config){
+	$messagesUrl = "https://slack.com/api/channels.history?token=" . $config["slack2"] . "&channel=". $channelId ."&count=1";
+	$messagesResult = $guzzle->get($messagesUrl);
 
+	if($messagesResult->getStatusCode() !== 200) {
+		throw(new \RuntimeException("can't get to Slack", $messagesResult->getStatusCode()));
+	}
+	// Decode the json object to target the message array
+	$messages = json_decode($messagesResult->getBody())->messages;
 
+	return $messages;
+}
 
+// Get the username from Slack utilizing the users.info API method call
+function getSlackUserData($userId, $guzzle, $config){
+	$userDataUrl = "https://slack.com/api/users.info?token=" . $config["slack2"] . "&user=" . $userId;
+	$userDataResult = $guzzle->get($userDataUrl);
 
+	if($userDataResult->getStatusCode() !== 200) {
+		throw(new \RuntimeException("can't get to Slack", $userDataResult->getStatusCode()));
+	}
+
+	$userData = json_decode($userDataResult->getBody())->user;
+
+	return $userData;
+}
 
 
 
