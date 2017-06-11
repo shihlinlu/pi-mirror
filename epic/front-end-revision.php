@@ -37,6 +37,9 @@
 		<!-- for skycons -->
 <!--		<script src="javascript/skycons.js"></script>-->
 
+		<!-- google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
 		<!-- customer weather api call -->
        
 		
