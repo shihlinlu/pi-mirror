@@ -41,11 +41,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
 		<!-- customer weather api call -->
-       
-		
-		
 	</head>
-    
 	<body onload="startTime()">
 
 
@@ -90,7 +86,8 @@
 				<div class="row">
 					<div class="container weather">
 						<div class="col-sm-8">
-							<h1>Weather in Albuquerque</h1>
+							<h1>Weather in Albuquerque<i class="fa fa-sun-o fa-pulse fa-2p fa-fw"></i><span class="sr-only">Loading...</span></h1>
+
 							<div class="currently">
 								<ul class="fa-ul">
 									<li><i class="fa-li fa fa-clock-o"> </i>time: {{ weather.time | date }}</li>
