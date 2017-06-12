@@ -1,0 +1,33 @@
+diff --git node_modules/pubnub-angular2/lib/pubnub-angular2.d.ts node_modules/pubnub-angular2/lib/pubnub-angular2.d.ts
+index 7eec670..c2a2fa0 100644
+--- node_modules/pubnub-angular2/lib/pubnub-angular2.d.ts
++++ node_modules/pubnub-angular2/lib/pubnub-angular2.d.ts
+@@ -2,7 +2,7 @@ import {Wrapper} from "./wrapper";
+ export declare class PubNubAngular {
+     constructor();
+     getInstance(instanceName: string): Wrapper;
+-    init(initConfig: Object);
++    init(initConfig: Object): any;
+     subscribe(args: Object): void;
+     unsubscribe(args: Object): void;
+     unsubscribeAll(): void;
+@@ -46,4 +46,4 @@ export declare class PubNubAngular {
+     setUUID(uuid: string): void;
+     getFilterExpression(): string;
+     setFilterExpression(setFilterExpression: string): void;
+-}
+\ No newline at end of file
++}
+diff --git node_modules/pubnub-angular2/lib/wrapper.d.ts node_modules/pubnub-angular2/lib/wrapper.d.ts
+index d535f30..3e7e7eb 100644
+--- node_modules/pubnub-angular2/lib/wrapper.d.ts
++++ node_modules/pubnub-angular2/lib/wrapper.d.ts
+@@ -2,7 +2,7 @@ export declare class Wrapper {
+     constructor();
+     getLabel(): string;
+     getOriginalInstance(): any;
+-    init(initConfig: Object);
++    init(initConfig: Object): any;
+     subscribe(args: Object): void;
+     unsubscribe(args: Object): void;
+     unsubscribeAll(): void;
