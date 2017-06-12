@@ -6,6 +6,7 @@ import {SlackComponent} from "./components/slack-component";
 import {SlackService} from "./services/slack-service";
 import {ClockService} from "./services/clock-service";
 import {ClockComponent} from "./components/clock-component";
+import {PubNubAngular} from "pubnub-angular2";
 
 export const allAppComponents = [HomeComponent, WeatherComponent, SlackComponent, ClockComponent];
 
@@ -13,6 +14,6 @@ export const routes: Routes = [
 	{path: "", component: HomeComponent}
 ];
 
-export const appRoutingProviders: any[] = [WeatherService, SlackService, ClockService];
+export const appRoutingProviders: any[] = [WeatherService, SlackService, ClockService, PubNubAngular];
 
 export const routing = RouterModule.forRoot(routes);
