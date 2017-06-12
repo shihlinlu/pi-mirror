@@ -2,8 +2,8 @@
 	<div class="container weather">
 		<div class="col-sm-8">
 			<h1>Weather in</h1>
-			<h1>Albuquerque</h1>
-			<i class="fa fa-sun-o fa-pulse fa-2p fa-fw"></i><span class="sr-only">Loading...</span>
+			<h1>Albuquerque<i class="fa fa-sun-o fa-pulse fa-2p fa-fw"></i><span class="sr-only">Loading...</span></h1>
+
 
 			<div class="currently">
 				<ul class="fa-ul">
