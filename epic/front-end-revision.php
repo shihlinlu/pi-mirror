@@ -97,6 +97,7 @@
 									<li><i class="fa-li fa fa-mixcloud"></i>windBearing: {{ weather.windBearing }}</li>
 									<li><i class="fa-li fa fa-sun-o"></i>Summary: {{ weather.summary }}</li>
 								</ul>
+								<img src="images2/{{weather.icon}}">
 							</div>
 						</div>
 					</div>
