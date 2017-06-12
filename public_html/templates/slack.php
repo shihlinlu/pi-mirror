@@ -10,7 +10,7 @@
 			<ul class="fa-ul">
 				<li><i class="fa-li fa fa-user"></i>user: {{ slack.user }}</li>
 				<li><i class="fa-li fa fa-envelope-o"></i>text: {{ slack.text }}</li>
-				<li><i class="fa-li fa fa-clock-o"></i>time: {{ slack.ts | date: short }}</li>
+				<li><i class="fa-li fa fa-clock-o"></i>time: {{ slack.ts | date: 'short' }}</li>
 			</ul>
 		</div>
 	</div>
