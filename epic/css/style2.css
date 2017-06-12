@@ -54,14 +54,14 @@ slack
 /*
 weather icons from http://darkskyapp.github.io/skycons/
  */
-/*figure {*/
-	/*margin: 3em auto;*/
-	/*width: 368px;*/
-	/*height: 152px;*/
-/*}*/
+figure {
+	margin: 3em auto;
+	width: 368px;
+	height: 152px;
+}
 
-/*canvas {*/
-	/*display: block;*/
-	/*float: left;*/
-	/*color: white;*/
-/*}*/
+canvas {
+	display: block;
+	float: left;
+	color: white;
+}

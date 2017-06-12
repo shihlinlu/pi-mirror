@@ -27,22 +27,26 @@ what time is it?
 /*
 Weather
  */
-.weather {
-    display: inline-block;
-    float:right;
-    width:50%;
+
+.weather, .slack {
     font-size: 17px;
-    padding-left: 12rem;
 }
+
+/*.weather {*/
+    /*display: inline-block;*/
+    /*float:right;*/
+    /*width:50%;*/
+    /*padding-left: 12rem;*/
+/*}*/
 
 /*
 slack
  */
-.slack{
-    width: 50%;
-    display: inline-block;
-    font-size: 17px;
-}
+/*.slack{*/
+    /*width: 50%;*/
+    /*display: inline-block;*/
+    /*font-size: 17px;*/
+/*}*/
 .fa-slack{
     color: white;
     font-size: 8rem;

@@ -46,135 +46,88 @@
 
 
 				<!-- weather -->
-<!--				<div class="col-md-3">-->
-<!--					<figure class="icons">-->
-<!--						<!-- these icons are thanks to the creators at skycon http://darkskyapp.github.io/skycons/ -->
-<!---->
-<!--						<canvas id="clear-day" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="clear-night" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="partly-cloudy-day" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="partly-cloudy-night" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="cloudy" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="rain" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="sleet" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="snow" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="wind" width="64" height="64">-->
-<!--						</canvas>-->
-<!---->
-<!--						<canvas id="fog" width="64" height="64">-->
-<!--						</canvas>-->
-<!--					</figure>-->
-<!--				</div>-->
+				<div class="col-md-3">
+					<figure class="icons">
 
+						<!-- these icons are thanks to the creators at skycon http://darkskyapp.github.io/skycons/ -->
 
+						<canvas id="clear-day" width="64" height="64">-->
+						</canvas>
 
-					<div class="container weather">
-						<div class="col-sm-8">
-							<h1>Weather in Albuquerque<i class="fa fa-sun-o fa-pulse fa-2p fa-fw"></i><span class="sr-only">Loading...</span></h1>
+						<canvas id="clear-night" width="64" height="64">
+						</canvas>
 
-							<div class="currently">
-								<ul class="fa-ul">
-									<li><i class="fa-li fa fa-clock-o"> </i>time: {{ weather.time | date }}</li>
-									<li><i class="fa-li fa fa-thermometer-three-quarters"></i>temperature: {{ weather.temperature }}</li>
-									<li><i class="fa-li fa fa-thermometer-full"></i>apparentTemperature: {{ weather.apparentTemperature }}</li>
-									<li><i class="fa-li fa fa-skyatlas"></i>windSpeed: {{ weather.windSpeed }}</li>
-									<li><i class="fa-li fa fa-mixcloud"></i>windBearing: {{ weather.windBearing }}</li>
-									<li><i class="fa-li fa fa-sun-o"></i>Summary: {{ weather.summary }}</li>
-								</ul>
-								<img src="images2/{{weather.icon}}">
-							</div>
-						</div>
-					</div>
+						<canvas id="partly-cloudy-day" width="64" height="64">
+						</canvas>
+						<canvas id="partly-cloudy-night" width="64" height="64">
+
+						</canvas>
+						<canvas id="cloudy" width="64" height="64">
+						</canvas>
+
+						<canvas id="rain" width="64" height="64">--></canvas>
+
+						<canvas id="sleet" width="64" height="64">
+						</canvas>
+
+						<canvas id="snow" width="64" height="64">
+						</canvas>
+
+						<canvas id="wind" width="64" height="64">
+						</canvas>
+
+						<canvas id="fog" width="64" height="64">
+						</canvas>
+					</figure>
+				</div>
 
 
 
 
+			<!-- code for clock & weather icons in javascript placed in footer to load in a timely manner -->
+		<footer>
+			<script>
+	function startTime() {
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		var M = today.getMonth();
+		var d = today.getDate();
+		var y = today.getFullYear();
+		m = checkTime(m);
+		s = checkTime(s);
+		document.getElementById('time').innerHTML =
+			h + ":" + m + ":" + s + "<br>" + M + "/" + d + "/" + y;
+		var t = setTimeout(startTime, 500);
+	}
+	function checkTime(i) {
+		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		return i;
+	}
 
-					<div class="container slack">
-						<div class="col-md-6">
-							<!-- slack message -->
-							<h1>Slack <i class="fa fa-slack fa-2x"></i></h1>
-							<div class="messages">
+	<!--code for the weather icons  -->
 
-								<ul class="fa-ul">
-									<li><i class="fa-li fa fa-user"></i>user: {{ slack.user }}</li>
-									<li><i class="fa-li fa fa-envelope-o"></i>text: {{ slack.text }}</li>
-									<li><i class="fa-li fa fa-clock-o"></i>time: {{ slack.ts }}</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+</script>
+			<div class="icons">
+				<!-- from github.com/darkskyapp/skycons/blob/master/index.html -->
+				<script src="javascript/skycons.js"></script>
+<script>
+	var icons = new Skycons({"color": "#ffffff"}),
+		list  = [
+			"clear-day", "clear-night", "partly-cloudy-day",-->
+			"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+			"fog"
+		],
+		i;
+	for(i = list.length; i--; )
+		icons.set(list[i], list[i]);
+	icons.play();
 
+</script>
 
+			</div>
 
-<!---->
-<!--</div>-->
-<!---->
-<!--			<!-- code for clock & weather icons in javascript placed in footer to load in a timely manner-->
-<!--		<footer>-->
-<!---->
-<!--<script>-->
-<!--	function startTime() {-->
-<!--		var today = new Date();-->
-<!--		var h = today.getHours();-->
-<!--		var m = today.getMinutes();-->
-<!--		var s = today.getSeconds();-->
-<!--		var M = today.getMonth();-->
-<!--		var d = today.getDate();-->
-<!--		var y = today.getFullYear();-->
-<!--		m = checkTime(m);-->
-<!--		s = checkTime(s);-->
-<!--		document.getElementById('time').innerHTML =-->
-<!--			h + ":" + m + ":" + s + "<br>" + M + "/" + d + "/" + y;-->
-<!--		var t = setTimeout(startTime, 500);-->
-<!--	}-->
-<!--	function checkTime(i) {-->
-<!--		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10-->
-<!--		return i;-->
-<!--	}-->
-<!---->
-<!--	<!--code for the weather icons  -->
-<!---->
-<!--</script>-->
-<!--			<div class="icons">-->
-<!--				<!-- from github.com/darkskyapp/skycons/blob/master/index.html -->
-<!--				<script src="javascript/skycons.js"></script>-->
-<!--<script>-->
-<!---->
-<!--	var icons = new Skycons({"color": "#ffffff"}),-->
-<!--		list  = [-->
-<!--			"clear-day", "clear-night", "partly-cloudy-day",-->
-<!--			"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",-->
-<!--			"fog"-->
-<!--		],-->
-<!--		i;-->
-<!--	for(i = list.length; i--; )-->
-<!--		icons.set(list[i], list[i]);-->
-<!--	icons.play();-->
-<!---->
-<!--</script>-->
-<!---->
-<!--			</div>-->
-<!---->
-<!--			</footer>-->
-<!--    -->
-<!--		-->
-<!--		-->
+			</footer>
     </body>
 </html>
