@@ -46,12 +46,12 @@
 
 
 				<!-- weather -->
-				<div class="col-md-3">
+				<div class="weather">
 					<figure class="icons">
 
 						<!-- these icons are thanks to the creators at skycon http://darkskyapp.github.io/skycons/ -->
 
-						<canvas id="clear-day" width="64" height="64">-->
+						<canvas id="clear-day" width="64" height="64">
 						</canvas>
 
 						<canvas id="clear-night" width="64" height="64">
@@ -107,13 +107,14 @@
 	}
 
 	<!--code for the weather icons  -->
-
 </script>
-			<div class="icons">
+
+
+
 				<!-- from github.com/darkskyapp/skycons/blob/master/index.html -->
 				<script src="javascript/skycons.js"></script>
 <script>
-	var icons = new Skycons({"color": "#ffffff"}),
+	var icons = new Skycons(),
 		list  = [
 			"clear-day", "clear-night", "partly-cloudy-day",-->
 			"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
@@ -122,11 +123,11 @@
 		i;
 	for(i = list.length; i--; )
 		icons.set(list[i], list[i]);
+
 	icons.play();
 
 </script>
 
-			</div>
 
 			</footer>
     </body>
