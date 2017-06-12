@@ -53,6 +53,7 @@ try {
 
 		// replace the userId from getSlackMessages request with username from getSlackUserData request
 		$message->user = $userData->name;
+		$message->ts = $message->ts * 1000;
 
 		$reply->data = $message;
 
