@@ -16,6 +16,6 @@
 				</ul>
 				<img src="images2/{{weather.icon}}">
 			</div>
-		</div>
+		</div> 
 	</div>
 
