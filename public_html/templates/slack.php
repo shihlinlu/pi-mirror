@@ -4,7 +4,8 @@
 <div class="container slack">
 	<div class="col-md-6">
 		<!-- slack message -->
-		<h1>Slack  <i class="fa fa-slack fa-4p"></i> </h1>
+		<h1>Slack</h1>
+		<img src="images2/slack-logo.png" alt="slack-logo" style="max-height: 10rem">
 		<div class="messages">
 
 			<ul class="fa-ul">

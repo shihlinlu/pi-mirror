@@ -10,7 +10,7 @@
 			<slack></slack>
 		</div>
 		<div class="col-xs-4">
-			clock here
+			<clock></clock>
 		</div>
 		<div class="col-xs-4">
 			<weather></weather>
