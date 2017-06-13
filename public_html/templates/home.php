@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12">
-			<h1>Hello Deep Dive Coders!</h1>
+			<h1>Hello, Deep Dive Coders!</h1>
 		</div>
 	</div>
 
