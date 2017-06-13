@@ -4,7 +4,7 @@
 <div class="container slack">
 	<div class="col-md-6">
 		<!-- slack message -->
-		<h1>Slack <i class="fa fa-slack fa-2x"></i></h1>
+		<h1>Slack  <i class="fa fa-slack fa-4p"></i> </h1>
 		<div class="messages">
 
 			<ul class="fa-ul">
