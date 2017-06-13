@@ -1,8 +1,9 @@
 
 	<div class="container weather">
 		<div class="col-sm-8">
-			<h1>Weather in</h1>
-			<h1>Albuquerque</h1>
+			<h1>Albuquerque's</h1>
+			<h1>Weather</h1>
+
 			<img src="images2/{{weather.icon}}">
 
 			<div class="currently">
