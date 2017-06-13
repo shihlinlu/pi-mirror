@@ -1,8 +1,8 @@
 
 	<div class="container weather">
-		<div class="col-sm-8">
-			<h1>Albuquerque's</h1>
-			<h1>Weather</h1>
+		<div class="col-sm-4">
+			<h1>Albuquerque, NM</h1>
+            <div class="clock">{{ myDate | date:'mediumTime' }}</div>
 
 			<img src="images2/{{weather.icon}}">
 

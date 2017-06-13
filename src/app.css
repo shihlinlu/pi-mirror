@@ -47,9 +47,13 @@ slack
     /*display: inline-block;*/
     /*font-size: 17px;*/
 /*}*/
-.fa-slack{
+.fa-slack {
     color: white;
     font-size: 8rem;
 }
 
+.clock {
+    color: white;
+    font-size: 4rem;
+}
 

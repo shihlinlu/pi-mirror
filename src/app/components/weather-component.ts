@@ -9,6 +9,7 @@ import {Weather} from "../classes/weather";
 
 export class WeatherComponent implements OnInit {
     weather : Weather = new Weather(null, null, null, null, null, null, null);
+    myDate: Date;
     constructor(protected weatherService: WeatherService) {}
 
     getWeather(): void {
@@ -18,5 +19,11 @@ export class WeatherComponent implements OnInit {
 
     ngOnInit() : void {
         this.getWeather();
+        this.utcTime();
+    }
+    utcTime(): void {
+        setInterval(() => {
+            this.myDate = new Date();
+        }, 1000);
     }
 }
