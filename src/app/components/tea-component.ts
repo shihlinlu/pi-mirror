@@ -1,37 +1,36 @@
 import {Component, OnInit} from "@angular/core";
 import { PubNubAngular } from 'pubnub-angular2';
-import { TeaService } from '../services/tea-service';
+declare var PubNub: any;
 
 @Component({
 	selector: "tea",
-	templateUrl: "./templates/tea.php",
-	providers: [PubNubAngular]
-
+	templateUrl: "templates/tea.php"
 })
 
 export class TeaComponent implements OnInit {
 	//tea : Tea = new Tea(null);
-	pubnub: PubNubAngular;
-	channel: string;
-	constructor(protected teaService: TeaService, pubnub: PubNubAngular) {
-		this.channel = 'tea';
-		this.pubnub = pubnub;
+	pubnub: PubNubAngular = null;
+
+	constructor() {
+		this.pubnub = new PubNubAngular();
 		this.pubnub.init({
-			publishKey: 'publish',
-			subscribeKey: 'subscribe'
-		});
-		this.pubnub.subscribe({
-			channels: [this.channel],
-			triggerEvents: ['message']
+			publishKey: 'pub-c-0fad7fd8-eb53-401e-9af9-a86b1f134dfd',
+			subscribeKey: 'sub-c-53061538-4e36-11e7-ab90-02ee2ddab7fe'
 		});
 	}
+
 	ngOnInit() {
-		setInterval(() => {
-			let hw = 'Hello World, ' + Date.now();
-			this.pubnub.publish({
-				channel: this.channel, message: hw
-			});
-		}, 1000);
+		this.pubnub.subscribe({
+			channels: ["tea"],
+			triggerEvents: ['message'],
+			withPresence: true
+		});
+		// setInterval(() => {
+		// 	let hw = 'Hello World, ' + Date.now();
+		// 	this.pubnub.publish({
+		// 		channel: this.channel, message: hw
+		// 	});
+		// }, 1000);
 	}
 
 	/*

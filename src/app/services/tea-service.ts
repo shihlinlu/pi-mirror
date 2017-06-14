@@ -11,9 +11,9 @@ export class TeaService extends BaseService {
 
 	private teaUrl = "api/tea/";
 
-	getSlack() : Observable<Tea> {
+	/*getSlack() : Observable<Tea> {
 		return(this.http.get(this.teaUrl)
 			.map(this.extractData)
 			.catch(this.handleError));
-	}
+	}*/
 }

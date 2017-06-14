@@ -14,5 +14,5 @@ import "rxjs";
 import "jquery";
 import "bootstrap-loader";
 import "font-awesome-webpack2";
-import "pubnub";
+// import "pubnub";
 import "pubnub-angular2";
