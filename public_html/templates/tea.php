@@ -6,7 +6,7 @@
 		<div class="messages">
 
 			<ul>
-				<li *ngFor='let item of PubNub.getMessage(channel)'>{{item.message}}</li>
+				<li *ngFor='let item of pubnub.getMessage(channel)'>{{item.message}}</li>
 			</ul>
 		</div>
 	</div>
