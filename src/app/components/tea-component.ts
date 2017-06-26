@@ -14,13 +14,13 @@ export class TeaComponent implements OnInit {
 
 	constructor() {
 		this.pubnub = new PubNubAngular();
-		this.channel = "tea";
+		this.channel = "snack";
 		this.pubnub.init({
 			publishKey: 'pub-c-0fad7fd8-eb53-401e-9af9-a86b1f134dfd',
 			subscribeKey: 'sub-c-53061538-4e36-11e7-ab90-02ee2ddab7fe'
 		});
 		this.pubnub.subscribe({
-			channels: ["tea"],
+			channels: ["snack"],
 			triggerEvents: ['message'],
 			withPresence: true
 		});
