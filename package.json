@@ -9,6 +9,14 @@
 	},
 	"contributors": [
 		{
+			"name": "Shihlin Lu",
+			"email": "shihlinlu@me.com"
+		},
+		{
+			"name": "Danielle Martin",
+			"email": "danielleislesmartin@gmail.com"
+		},
+		{
 			"name": "George Kephart",
 			"email": "gkephart@cnm.edu"
 		},
@@ -16,6 +24,7 @@
 			"name": "Mason Crane",
 			"email": "mcrane2@cnm.edu"
 		}
+		
 	],
 	"scripts": {
 		"build": "rimraf public_html/dist && tsc && webpack --config webpack/webpack.live.js --progress --profile --bail"

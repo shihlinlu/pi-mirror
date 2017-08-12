@@ -6,11 +6,14 @@ View important information in your daily life, such as weather, meeting reminder
 - Current weather
 - Time and date 
 - Slack feed integration
+ 
+### Upcoming Features:
 - Indoor air quality detection of common pollutants, particulate matter, and even propane
-- Motion detection 
+- Motion detection
+- Tutorial 
 
 ### Installation and Documentation
-- Stay tuned for updates on how you can build + install your own smart mirror! :D 
+- Stay tuned for updates on how you can build + install your own smart mirror! 
 
 ### Feature requests and Contact
 Do you have any features you'd like to see? While this Pi Mirror v1.0 has not officially launched yet, please don't hesitate to drop us a <a href="mailto:piomirrors@gmail.com">line.</a> 
