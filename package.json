@@ -16,6 +16,22 @@
 			"name": "Danielle Martin",
 			"email": "danielleislesmartin@gmail.com"
 		},
+        {
+        "name": "Luc Flynn",
+        "email": "lflynn7@cnm.edu"
+        },
+        {
+        "name": "Tucker Logan",
+        "email": "tlogan4@cnm.edu"
+        },
+        {
+        "name": "Sebastian Jackson",
+        "email": "sjackson37@cnm.edu"
+        },
+        {
+        "name": "Dylan McDonald",
+        "email": "dmcdonald21@cnm.edu"
+        },
 		{
 			"name": "George Kephart",
 			"email": "gkephart@cnm.edu"
@@ -24,7 +40,6 @@
 			"name": "Mason Crane",
 			"email": "mcrane2@cnm.edu"
 		}
-		
 	],
 	"scripts": {
 		"build": "rimraf public_html/dist && tsc && webpack --config webpack/webpack.live.js --progress --profile --bail"
