@@ -7,3 +7,4 @@
 /src/**/*.js.map
 /public_html/dist
 /npm-debug.log
+yarn.lock
