@@ -43,7 +43,7 @@
   ],
   "scripts": {
     "build": "rimraf public_html/dist && tsc && webpack --config webpack/webpack.live.js --progress --profile --bail",
-    "start": "start --port 3000"
+    "start": "lite-server -c ./bs-config.js"
   },
   "repository": {
     "type": "git",
@@ -61,6 +61,7 @@
     "angular-in-memory-web-api": "~0.3.2",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
+    "lite-server": "^2.3.0",
     "pubnub": "^4.10.0",
     "pubnub-angular2": "^1.0.2",
     "rxjs": "^5.3.1",

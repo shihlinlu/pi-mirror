@@ -12,7 +12,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 		<base href="<?php echo dirname($_SERVER["PHP_SELF"]) . "/"; ?>" />
 		<script type="text/javascript" src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.10.0.min.js"></script>
 
-		<title>Ang 4 Example</title>
+		<title>Pi Mirror</title>
 	</head>
 	<body>
 		<pi-mirror>Loading&hellip;</pi-mirror>
